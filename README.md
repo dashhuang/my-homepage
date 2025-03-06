@@ -59,10 +59,47 @@ npm run dev
 
 ## 最近更新
 
-- 移除了标题的红色下划线样式，改为使用中文书法风格字体
-- 优化了相册页面的布局和照片展示
-- 改进了响应式设计，确保在各种屏幕尺寸上都有良好表现
-- 调整了主页照片和内容布局，使设计更加简约优雅
+### 2024年3月6日
+- 优化网站布局：调整首页照片比例和宽度
+- 修改标题从"黄家 · Huang Family"为"黄 · Huang"
+- 添加页脚信息并调整位置样式
+
+### 2024年3月7日
+- 添加首页随机相册功能：每次刷新页面随机展示8张照片
+- 增强相册功能：添加点击查看原图功能
+- 修复相册标题的样式问题，移除红色和下划线
+
+### 2024年3月8日
+- 修复API大小超限问题：改用静态照片列表，优化Next.js配置
+- 优化Vercel部署：
+  - 使用静态照片列表替代动态文件系统读取
+  - 修改Next.js配置，使用standalone输出模式
+  - 将fs和path设为外部包，减小函数体积
+  - 改进客户端API调用方式
+
+## 部署问题解决方案
+
+### Vercel部署大小限制
+
+Vercel对Serverless函数有300MB的大小限制，而我们的API函数因为包含了所有照片文件，达到了762MB。解决方案：
+
+1. **使用静态照片列表**：
+   - 在`app/api/photos/route.ts`中预定义照片路径列表
+   - 不再动态读取文件系统
+
+2. **优化Next.js配置**：
+   - 在`next.config.js`中添加`output: 'standalone'`
+   - 设置`serverComponentsExternalPackages: ['fs', 'path']`
+
+3. **改进API调用**：
+   - 创建专门的客户端照片获取函数(`getPhotoPathsClient`)
+   - 更新相册和首页组件使用新的API方法
+
+### 照片管理
+
+如需添加新照片：
+1. 将照片放入`public/family-photos/`目录
+2. 在`app/api/photos/route.ts`中的`PHOTOS`对象中添加照片路径
 
 ## 部署
 
@@ -71,3 +108,5 @@ npm run dev
 ```bash
 git clone https://github.com/dashhuang/my-homepage.git
 ```
+
+项目已部署到Vercel，访问URL：[my-homepage-dashhuang.vercel.app](https://my-homepage-dashhuang.vercel.app)
