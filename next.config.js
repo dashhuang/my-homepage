@@ -9,8 +9,17 @@ const nextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   // 添加输出模式配置，优化API函数大小
-  output: 'standalone'
-  // 我们已经完全移除了对fs和path的使用，不再需要将它们标记为外部包
+  output: 'standalone',
+  // 排除公共静态资源，避免这些大文件被打包进函数
+  outputFileTracing: true,
+  experimental: {
+    outputFileTracingExcludes: {
+      '*': [
+        'public/family-photos/**',
+        'node_modules/**',
+      ],
+    },
+  }
 };
 
 module.exports = nextConfig; 
