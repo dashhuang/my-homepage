@@ -44,7 +44,7 @@
    ```
 3. 提交更改：
    ```bash
-   git add app/api/photos/route.ts public/family-photos/[新照片]
+   git add public/photos-data.json app/api/photos/route.ts public/family-photos/[新照片]
    git commit -m "添加新照片"
    git push
    ```
@@ -53,13 +53,14 @@
 
 - 构建过程中会自动更新照片列表（通过 `npm run build` 命令）
 - 可以单独运行 `npm run update-photos` 来更新照片列表
-- 照片列表在 `app/api/photos/route.ts` 中维护
+- 照片列表在 `app/api/photos/route.ts` 和 `public/photos-data.json` 中维护
 
 ### 技术实现
 
 - 照片列表由 `scripts/generate-photo-list.js` 脚本生成
-- 相册页面通过API获取照片列表并显示所有照片
-- 使用静态照片列表而不是动态文件系统操作，确保在Vercel上正常工作
+- 相册页面通过静态JSON文件获取照片列表并显示所有照片
+- 使用静态JSON文件完全避免了API路由调用，确保在Vercel上更稳定地工作
+- 保留了API路由作为备份，但前端默认使用静态JSON文件
 
 ## 运行项目
 

@@ -2,7 +2,7 @@
  * 生成照片列表脚本
  * 
  * 这个脚本会扫描public/family-photos目录，
- * 生成所有照片的列表，并更新API路由文件
+ * 生成所有照片的列表，并更新API路由文件以及静态JSON文件
  */
 
 const fs = require('fs');
@@ -12,6 +12,7 @@ const path = require('path');
 const CONFIG = {
   photoDir: path.join(process.cwd(), 'public', 'family-photos'),
   outputFile: path.join(process.cwd(), 'app', 'api', 'photos', 'route.ts'),
+  jsonOutputFile: path.join(process.cwd(), 'public', 'photos-data.json'),
   templateFile: path.join(process.cwd(), 'scripts', 'photo-route-template.txt')
 };
 
@@ -75,7 +76,17 @@ export async function GET() {
 
   // 写入文件
   fs.writeFileSync(CONFIG.outputFile, fileContent);
-  console.log(`成功更新照片列表，包含 ${photoData.standard.length} 张标准格式照片和 ${photoData.heic.length} 张HEIC格式照片`);
+  console.log(`成功更新API照片列表，包含 ${photoData.standard.length} 张标准格式照片和 ${photoData.heic.length} 张HEIC格式照片`);
+}
+
+// 更新静态JSON文件
+function updateJsonFile(photoData) {
+  // 创建JSON对象
+  const jsonContent = JSON.stringify(photoData, null, 2);
+  
+  // 写入文件
+  fs.writeFileSync(CONFIG.jsonOutputFile, jsonContent);
+  console.log(`成功更新静态JSON照片列表`);
 }
 
 // 主函数
@@ -83,6 +94,7 @@ function main() {
   console.log('开始生成照片列表...');
   const photoData = getPhotoPaths();
   updateApiRouteFile(photoData);
+  updateJsonFile(photoData);
   console.log('照片列表生成完成！');
 }
 

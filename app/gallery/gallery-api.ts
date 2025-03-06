@@ -7,8 +7,8 @@ export type PhotoSets = {
 // 在客户端导入时使用的静态方法
 export async function getPhotoPathsClient(): Promise<PhotoSets> {
   try {
-    // 从API获取照片列表
-    const response = await fetch('/api/photos');
+    // 使用静态JSON文件而不是API路由
+    const response = await fetch('/photos-data.json');
     if (!response.ok) {
       throw new Error('获取照片失败');
     }
