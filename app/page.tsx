@@ -114,38 +114,6 @@ export default function Home() {
       padding: '0',
       margin: '0'
     }}>
-      {/* 导航菜单按钮 */}
-      <div style={{
-        position: 'fixed',
-        top: '2rem',
-        right: '2rem',
-        zIndex: 100
-      }}>
-        <button style={{
-          width: '3rem',
-          height: '3rem',
-          borderRadius: '50%',
-          backgroundColor: 'white',
-          border: 'none',
-          boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'pointer'
-        }}>
-          <div style={{
-            width: '1.5rem',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '4px'
-          }}>
-            <span style={{ height: '2px', backgroundColor: colors.darkText, width: '100%' }}></span>
-            <span style={{ height: '2px', backgroundColor: colors.darkText, width: '100%' }}></span>
-            <span style={{ height: '2px', backgroundColor: colors.darkText, width: '100%' }}></span>
-          </div>
-        </button>
-      </div>
-
       {/* 主页块 */}
       <section style={{
         display: 'flex',
