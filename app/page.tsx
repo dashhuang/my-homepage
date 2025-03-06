@@ -13,7 +13,7 @@ export default function Home() {
 
   // 选择一些照片用于不同部分
   const photos = {
-    hero: '/family-photos/CW__4659.jpg?t=' + new Date().getTime(),  // 主页照片，添加时间戳
+    hero: '/family-photos/CW__4659.jpg',  // 主页照片，添加时间戳
     dash: '/family-photos/IMG_1903.jpeg',       // Dash照片
     cherry: '/family-photos/IMG_1570.jpeg',     // Cherry照片
     jimmy: '/family-photos/IMG_0115.jpeg',      // Jimmy照片
