@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run update-photos && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "update-photos": "node scripts/generate-photo-list.js"
   },
   "dependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.2",
