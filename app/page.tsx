@@ -13,10 +13,10 @@ export default function Home() {
 
   // 选择一些照片用于不同部分
   const photos = {
-    hero: '/family-photos/CW__4659.jpg',  // 主页照片，添加时间戳
+    hero: '/family-photos/719BD143-ADD6-4F94-8CFC-BAF43235608A.jpg',  // 主页照片，添加时间戳
     dash: '/family-photos/IMG_1903.jpeg',       // Dash照片
     cherry: '/family-photos/IMG_1570.jpeg',     // Cherry照片
-    jimmy: '/family-photos/IMG_0115.jpeg',      // Jimmy照片
+    jimmy: '/family-photos/jimmy.jpg',      // Jimmy照片
     tinny: '/family-photos/IMG_4473.jpeg',      // Tinny照片
     kelly: '/family-photos/IMG_0896.jpeg',      // Kelly照片
     gallery: [                                  // 相册照片
@@ -84,12 +84,12 @@ export default function Home() {
           margin: '0 auto',
           width: '90%',
           maxWidth: '1600px',
-          height: '90vh',
+          height: '75vh',
           boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
         }}>
           {/* 左侧照片 */}
           <div style={{
-            flex: '1',
+            flex: '8',
             minWidth: '300px',
             position: 'relative',
             overflow: 'hidden'
@@ -106,7 +106,7 @@ export default function Home() {
           {/* 右侧内容 */}
           <div style={{
             backgroundColor: colors.white,
-            flex: '1',
+            flex: '5',
             minWidth: '300px',
             display: 'flex',
             flexDirection: 'column',
@@ -167,8 +167,11 @@ export default function Home() {
                 fontSize: '1.2rem',
                 color: colors.lightText,
                 lineHeight: '1.8',
-                marginTop: '0',
-                marginBottom: '2rem'
+                marginTop: '1.5rem',
+                marginBottom: '2.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                minHeight: '80px'
               }}>
                 <p>家，是港湾，是依靠，是永远的归属。欢迎来到我们的家庭主页，在这里分享我们的故事、回忆和未来。</p>
               </div>
@@ -583,7 +586,7 @@ export default function Home() {
             color: colors.lightText,
             lineHeight: '1.8',
             marginBottom: '2rem'
-          }}>© 2024 黄家 · Huang Family</p>
+          }}>© 2024 黄 · Huang</p>
         </div>
       </section>
     </div>

@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "黄家 - Huang Family",
+  title: "黄 · Huang",
   description: "黄家的家庭个人主页 - huang.co",
 };
 
@@ -31,6 +31,20 @@ export default function RootLayout({
       >
         <ThemeInitializer />
         {children}
+        
+        {/* 页脚信息 */}
+        <footer style={{
+          textAlign: 'right',
+          padding: '1rem 2rem',
+          marginTop: '2rem',
+          fontSize: '0.9rem',
+          color: '#666',
+          fontWeight: 300,
+          backgroundColor: 'rgba(200, 214, 207, 0.3)',
+          position: 'relative'
+        }}>
+          <p style={{ margin: 0 }}>本页由 <span style={{ color: '#e25555' }}>❤️</span> + <span style={{ fontWeight: 500 }}>Cursor</span> + <span style={{ fontWeight: 500 }}>Next.js</span> 构建</p>
+        </footer>
       </body>
     </html>
   );

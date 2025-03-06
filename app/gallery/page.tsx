@@ -146,7 +146,7 @@ export default function Gallery() {
           margin: '0',
           fontSize: '0.9rem',
           color: colors.lightText
-        }}>© 2024 黄家 · Huang Family</p>
+        }}>© 2024 黄 · Huang</p>
       </footer>
 
       {/* 添加CSS样式 */}
