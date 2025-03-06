@@ -140,7 +140,7 @@ export default function Home() {
                     margin: '0 0 1rem',
                     lineHeight: '1.2',
                     color: colors.darkText,
-                    fontFamily: '"华文行楷", "楷体", "STKaiti", "KaiTi", serif',
+                    fontFamily: '"造字工房朗宋", "汉仪瑞兽", "FZLangSong", "华文隶书", "LiSu", serif',
                     letterSpacing: '0.05em',
                     textDecoration: 'none',
                     border: 'none'
@@ -153,7 +153,7 @@ export default function Home() {
                     fontWeight: '300',
                     opacity: 0.7,
                     color: colors.darkText,
-                    fontFamily: '"Baskerville", "Times New Roman", serif',
+                    fontFamily: '"Cinzel", "Trajan Pro", "Times New Roman", serif',
                     fontStyle: 'italic',
                     letterSpacing: '0.08em',
                     textDecoration: 'none',

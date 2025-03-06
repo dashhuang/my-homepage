@@ -108,7 +108,7 @@ export default function Gallery() {
             fontWeight: '300',
             margin: '0 0 1rem',
             color: colors.darkText,
-            fontFamily: '"华文行楷", "楷体", "STKaiti", "KaiTi", serif',
+            fontFamily: '"思源宋体", "Source Han Serif", "方正姚体", "SimSun", serif',
           }}>家庭相册</div>
           <p style={{
             fontSize: 'clamp(1rem, 2vw, 1.25rem)',
