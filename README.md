@@ -33,6 +33,34 @@
 - 响应式布局，适配从移动设备到大屏显示器
 - 精心优化的排版与文字层次
 
+## 照片管理
+
+### 添加新照片
+
+1. 将新照片添加到 `public/family-photos/` 目录
+2. 运行以下命令更新照片列表：
+   ```bash
+   npm run update-photos
+   ```
+3. 提交更改：
+   ```bash
+   git add app/api/photos/route.ts public/family-photos/[新照片]
+   git commit -m "添加新照片"
+   git push
+   ```
+
+### 自动化
+
+- 构建过程中会自动更新照片列表（通过 `npm run build` 命令）
+- 可以单独运行 `npm run update-photos` 来更新照片列表
+- 照片列表在 `app/api/photos/route.ts` 中维护
+
+### 技术实现
+
+- 照片列表由 `scripts/generate-photo-list.js` 脚本生成
+- 相册页面通过API获取照片列表并显示所有照片
+- 使用静态照片列表而不是动态文件系统操作，确保在Vercel上正常工作
+
 ## 运行项目
 
 首先，安装依赖：
