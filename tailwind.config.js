@@ -6,7 +6,11 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      gradientColorStops: theme => ({
+        ...theme('colors'),
+      }),
+    },
   },
   plugins: [
     require('@tailwindcss/aspect-ratio'),
