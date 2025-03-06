@@ -1,35 +1,31 @@
+'use client'
+
 import Image from "next/image";
 import Link from "next/link";
-import fs from "fs";
-import path from "path";
+import { useState, useEffect } from "react";
+import type { PhotoSets } from "./gallery-api";
 
-// 使用服务器端生成的静态图片列表
-export function generateStaticParams() {
-  return [];
-}
-
-// 静态预定义的照片列表
+// 相册组件
 export default function Gallery() {
-  // 获取照片列表
-  const getPhotoPaths = () => {
-    try {
-      const publicDir = path.join(process.cwd(), "public", "family-photos");
-      const fileNames = fs.readdirSync(publicDir);
-      
-      // 只保留图片文件
-      const imageFiles = fileNames.filter((fileName) => 
-        /\.(jpg|jpeg|png|gif)$/i.test(fileName)
-      );
-      
-      // 返回完整路径
-      return imageFiles.map((fileName) => `/family-photos/${fileName}`);
-    } catch (error) {
-      console.error("获取照片错误:", error);
-      return [];
+  const [photoSets, setPhotoSets] = useState<PhotoSets>({ standard: [], heic: [] });
+  
+  // 在服务器端获取照片列表
+  useEffect(() => {
+    // 通过API获取照片列表
+    async function fetchPhotos() {
+      try {
+        const response = await fetch('/api/photos');
+        if (response.ok) {
+          const data = await response.json();
+          setPhotoSets(data);
+        }
+      } catch (error) {
+        console.error("获取照片错误:", error);
+      }
     }
-  };
-
-  const photos = getPhotoPaths();
+    
+    fetchPhotos();
+  }, []);
   
   // 柔和的配色方案
   const colors = {
@@ -69,123 +65,118 @@ export default function Gallery() {
             justifyContent: 'center',
             cursor: 'pointer'
           }}>
-            <div style={{
-              width: '1.5rem',
-              height: '1.5rem',
-              position: 'relative',
-              transform: 'rotate(45deg)'
-            }}>
-              <span style={{ 
-                position: 'absolute',
-                height: '2px', 
-                width: '100%', 
-                backgroundColor: colors.darkText,
-                top: '50%',
-                left: '0',
-                transform: 'translateY(-50%)'
-              }}></span>
-              <span style={{ 
-                position: 'absolute',
-                width: '2px', 
-                height: '100%', 
-                backgroundColor: colors.darkText,
-                left: '50%',
-                top: '0',
-                transform: 'translateX(-50%)'
-              }}></span>
-            </div>
+            <span style={{ fontSize: '1.5rem' }}>←</span>
           </button>
         </Link>
       </div>
 
-      {/* 页面标题 */}
-      <div style={{ 
-        backgroundColor: colors.sand,
-        padding: '8rem 2rem 4rem',
-        textAlign: 'center'
-      }}>
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto'
-        }}>
-          <div style={{
-            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-            fontWeight: '300',
-            margin: '0 0 1rem',
-            color: colors.darkText,
-            fontFamily: '"思源宋体", "Source Han Serif", "方正姚体", "SimSun", serif',
-          }}>家庭相册</div>
-          <p style={{
-            fontSize: 'clamp(1rem, 2vw, 1.25rem)',
-            color: colors.lightText,
-            maxWidth: '800px',
-            margin: '0 auto'
-          }}>我们家庭的珍贵回忆</p>
-          <div style={{
-            margin: '2rem auto 0',
-            display: 'inline-block'
-          }}>
-            <Link href="/" style={{
-              color: colors.darkText,
-              textDecoration: 'none',
-              borderBottom: `1px solid ${colors.darkText}`,
-              paddingBottom: '0.25rem',
-              fontSize: '0.9rem',
-              letterSpacing: '1px',
-              textTransform: 'uppercase'
-            }}>
-              ← 返回首页
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      {/* 照片网格 */}
+      {/* 相册标题 */}
       <div style={{
-        padding: '4rem 2rem',
-        backgroundColor: colors.white
+        textAlign: 'center',
+        padding: '8rem 0 4rem',
+        maxWidth: '800px',
+        margin: '0 auto'
       }}>
-        <div style={{
-          maxWidth: '1600px',
-          margin: '0 auto'
-        }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-            gap: '2rem'
-          }}>
-            {photos.map((photo, index) => (
-              <div key={index} style={{
-                position: 'relative',
-                paddingBottom: '75%', // 4:3 宽高比
-                overflow: 'hidden',
-                boxShadow: '0 5px 15px rgba(0,0,0,0.1)'
-              }}>
-                <Image 
-                  src={photo}
-                  alt={`家庭照片 ${index+1}`}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+        <h1 style={{
+          fontSize: 'clamp(2.5rem, 5vw, 4rem)',
+          fontWeight: '300',
+          margin: '0',
+          color: colors.darkText
+        }}>家庭相册</h1>
+        <p style={{
+          margin: '1.5rem 0 0',
+          fontSize: '1.2rem',
+          color: colors.lightText,
+          lineHeight: '1.6'
+        }}>我们家庭的珍贵回忆</p>
       </div>
 
-      {/* 底部 */}
+      {/* 相册内容 */}
+      <div style={{
+        padding: '0 5%',
+        paddingBottom: '8rem',
+        maxWidth: '1600px',
+        margin: '0 auto'
+      }}>
+        {/* 标准格式图片 */}
+        <div className="gallery-grid">
+          {photoSets.standard.map((photo, index) => (
+            <div key={`standard-${index}`} className="gallery-item">
+              <Image
+                src={photo}
+                alt={`家庭照片 ${index + 1}`}
+                width={300}
+                height={300}
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
+          ))}
+          
+          {/* HEIC格式图片 - 使用img标签代替Image组件，以便实现客户端错误处理 */}
+          {photoSets.heic.map((photo, index) => (
+            <div key={`heic-${index}`} className="gallery-item">
+              <img
+                src={photo}
+                alt={`家庭照片 HEIC ${index + 1}`}
+                width={300}
+                height={300}
+                style={{ objectFit: 'cover' }}
+                onError={(e) => {
+                  // 如果浏览器不支持HEIC，则隐藏图片
+                  e.currentTarget.style.display = 'none';
+                  // 安全地操作父元素
+                  const parent = e.currentTarget.parentElement;
+                  if (parent) {
+                    parent.style.display = 'none';
+                  }
+                }}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      {/* 页脚 */}
       <footer style={{
-        backgroundColor: colors.sand,
-        padding: '3rem 2rem',
+        backgroundColor: colors.white,
+        padding: '3rem',
         textAlign: 'center'
       }}>
         <p style={{
-          fontSize: '1rem',
-          color: colors.lightText,
-          margin: '0'
+          margin: '0',
+          fontSize: '0.9rem',
+          color: colors.lightText
         }}>© 2024 黄家 · Huang Family</p>
       </footer>
+
+      {/* 添加CSS样式 */}
+      <style jsx global>{`
+        .gallery-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          gap: 1.5rem;
+          margin-top: 3rem;
+        }
+        
+        .gallery-item {
+          height: 300px;
+          overflow: hidden;
+          border-radius: 4px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+          position: relative;
+        }
+        
+        .gallery-item img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+          transform: scale(1.05);
+        }
+      `}</style>
     </div>
   );
 } 
