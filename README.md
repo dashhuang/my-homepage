@@ -1,22 +1,37 @@
-# 黄家家庭主页 - huang.co
+# 黄家家庭主页
 
-这是一个使用[Next.js](https://nextjs.org)开发的家庭个人主页项目，为黄家（huang.co）打造。
+这是一个使用 [Next.js](https://nextjs.org) 开发的家庭主页项目，为黄家打造的简约而优雅的在线空间。
 
 ## 项目特点
 
-- 展示黄家家庭成员信息（Dash 黄一孟、Cherry 吴智群、Jimmy、Tinny、Kelly）
-- 提供家庭照片展示区
+- 现代简约的设计风格，突出家庭照片和成员介绍
+- 完整展示黄家成员信息（Dash 黄一孟、Cherry 吴智群、Jimmy、Tinny、Kelly）
+- 独立的相册页面，展示家庭珍贵回忆
 - 响应式设计，在各种设备上都能良好显示
-- 暗色/亮色模式支持
-- 现代化UI设计，包含动画和交互效果
-- 页面平滑滚动与锚点导航
+- 中文与英文双语展示
+- 优雅的字体选择，特别为"黄"字使用了传统中文书法字体
 
 ## 技术栈
 
-- Next.js (App Router)
-- Tailwind CSS (使用@tailwindcss/postcss插件)
-- @tailwindcss/aspect-ratio (用于照片展示)
-- 响应式设计，适配手机到大屏显示器
+- Next.js 15.2.1 (使用 App Router)
+- React 同构渲染
+- CSS-in-JS 样式（内联样式对象）
+- 响应式设计（使用clamp()等现代CSS特性）
+- 图片优化（使用Next.js的Image组件）
+
+## 页面结构
+
+- **主页 (/)**: 展示家庭概览和所有成员简介
+- **相册页面 (/gallery)**: 展示家庭照片集
+- 未来可扩展更多页面
+
+## 设计特色
+
+- 柔和的配色方案（薄荷绿、沙色、白色等）
+- 大幅照片展示与文字内容平衡布局
+- 中文书法风格的标题设计
+- 响应式布局，适配从移动设备到大屏显示器
+- 精心优化的排版与文字层次
 
 ## 运行项目
 
@@ -34,22 +49,25 @@ npm run dev
 
 在浏览器中打开 [http://localhost:3000](http://localhost:3000) 查看结果。
 
-## 项目结构
+## 文件结构
 
 - `app/page.tsx` - 主页组件
 - `app/layout.tsx` - 全局布局组件
-- `app/components/ThemeToggle.tsx` - 主题切换组件
-- `app/components/ThemeInitializer.tsx` - 主题初始化组件
+- `app/gallery/page.tsx` - 相册页面组件
+- `app/globals.css` - 全局样式
 - `public/family-photos/` - 存放家庭照片的目录
 
-## 设计特色
+## 最近更新
 
-- 渐变色与毛玻璃效果
-- 悬停动画与交互效果
-- 自适应网格布局
-- 精美的照片展示组件
-- 优雅的排版与文字层次
+- 移除了标题的红色下划线样式，改为使用中文书法风格字体
+- 优化了相册页面的布局和照片展示
+- 改进了响应式设计，确保在各种屏幕尺寸上都有良好表现
+- 调整了主页照片和内容布局，使设计更加简约优雅
 
 ## 部署
 
-项目可以部署到Vercel上，以便通过huang.co域名访问。
+项目已部署到GitHub，可通过以下命令复制代码库：
+
+```bash
+git clone https://github.com/dashhuang/my-homepage.git
+```
