@@ -9,11 +9,8 @@ const nextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   // 添加输出模式配置，优化API函数大小
-  output: 'standalone',
-  // 禁止API路由打包public目录
-  experimental: {
-    serverComponentsExternalPackages: ['fs', 'path']
-  }
+  output: 'standalone'
+  // 我们已经完全移除了对fs和path的使用，不再需要将它们标记为外部包
 };
 
 module.exports = nextConfig; 
