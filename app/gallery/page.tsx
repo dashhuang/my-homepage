@@ -1,7 +1,32 @@
 import Image from "next/image";
 import Link from "next/link";
+import fs from "fs/promises"; // 使用异步文件系统API
+import path from "path";
 
-export default function Gallery() {
+// 获取照片路径的函数
+async function getPhotoPaths() {
+  try {
+    const publicDir = path.join(process.cwd(), "public", "family-photos");
+    const fileNames = await fs.readdir(publicDir);
+    
+    // 只保留图片文件
+    const imageFiles = fileNames.filter((fileName) => 
+      /\.(jpg|jpeg|png|gif)$/i.test(fileName)
+    );
+    
+    // 返回完整路径
+    return imageFiles.map((fileName) => `/family-photos/${fileName}`);
+  } catch (error) {
+    console.error("获取照片错误:", error);
+    return [];
+  }
+}
+
+// 这是一个服务器组件，可以是异步的
+export default async function Gallery() {
+  // 获取照片列表
+  const photos = await getPhotoPaths();
+  
   // 柔和的配色方案
   const colors = {
     mint: '#c8d6cf',      // 淡薄荷绿色背景
@@ -10,42 +35,6 @@ export default function Gallery() {
     darkText: '#3a3a3a',  // 深色文字
     lightText: '#6a6a6a'  // 浅色文字
   };
-
-  // 静态预定义的照片列表，而不是读取文件系统
-  const photos = [
-    '/family-photos/CW__4659.jpg',
-    '/family-photos/IMG_1903.jpeg',
-    '/family-photos/IMG_1570.jpeg',
-    '/family-photos/IMG_0115.jpeg',
-    '/family-photos/IMG_4473.jpeg',
-    '/family-photos/IMG_0896.jpeg',
-    '/family-photos/IMG_9200.jpeg',
-    '/family-photos/IMG_9147.jpeg',
-    '/family-photos/IMG_9139.jpeg',
-    '/family-photos/IMG_9071.jpeg',
-    '/family-photos/IMG_1435.jpeg',
-    '/family-photos/IMG_7604.jpeg',
-    '/family-photos/2U2A5457.jpg',
-    '/family-photos/2U2A5495.jpg',
-    '/family-photos/2U2A5498.jpg',
-    '/family-photos/2U2A5506.jpg',
-    '/family-photos/2U2A5569.jpg',
-    '/family-photos/09A5D818-AA9A-43D2-B177-CA1901A0CBDB.jpg',
-    '/family-photos/0D72608E-AD55-4B4D-BC32-02AED1EFE052.jpg',
-    '/family-photos/37545F19-BEE8-4006-97C1-CB8F3E0C5A5C.jpg',
-    '/family-photos/388ED0BA-052B-4C4A-AB71-A413B6150BB2.jpg',
-    '/family-photos/3C54DBB6-EC95-4239-A462-A70CB1676335.jpg',
-    '/family-photos/4CD2D181-F5D5-4444-A7B0-C5DA358A0E5B.jpg',
-    '/family-photos/719BD143-ADD6-4F94-8CFC-BAF43235608A.jpg',
-    '/family-photos/76BDC83B-BE39-40AF-A727-2A80C6E3AD80.jpg',
-    '/family-photos/7BEC102F-E2B6-4F11-BADA-3A0A82A713DF.jpg',
-    '/family-photos/ADE7BEC9-AEAE-4840-BB9D-C7CEB5BC6380.jpg',
-    '/family-photos/BDBE8C4A-2729-42A6-8B44-CAAF8A8C0FC6.jpg',
-    '/family-photos/C2AC0575-C298-4FC7-A17B-69D69448A6E3.jpg',
-    '/family-photos/CW__4778.jpg',
-    '/family-photos/CW__4837.jpg'
-    // 这里可以根据需要添加更多照片
-  ];
 
   return (
     <div style={{ 
