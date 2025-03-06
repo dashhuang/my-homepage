@@ -2,9 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  // 添加随机照片状态
+  const [randomPhotos, setRandomPhotos] = useState<string[]>([]);
+  // 添加加载状态
+  const [isLoading, setIsLoading] = useState(true);
+  
   // 添加灯箱状态
   const [lightbox, setLightbox] = useState({
     isOpen: false,
@@ -30,7 +35,23 @@ export default function Home() {
     // 恢复背景滚动
     document.body.style.overflow = 'auto';
   };
-
+  
+  // 从照片集合中随机选择特定数量的照片
+  const getRandomPhotos = (photos: string[], count: number) => {
+    // 复制数组，以免修改原数组
+    const photosCopy = [...photos];
+    const result = [];
+    
+    // 随机选择照片
+    for (let i = 0; i < count && photosCopy.length > 0; i++) {
+      const randomIndex = Math.floor(Math.random() * photosCopy.length);
+      result.push(photosCopy[randomIndex]);
+      photosCopy.splice(randomIndex, 1); // 移除已选照片，避免重复
+    }
+    
+    return result;
+  };
+  
   // 柔和的配色方案
   const colors = {
     mint: '#c8d6cf',      // 淡薄荷绿色背景
@@ -47,8 +68,8 @@ export default function Home() {
     cherry: '/family-photos/L1030065.JPG',     // Cherry照片
     jimmy: '/family-photos/jimmy.jpg',      // Jimmy照片
     tinny: '/family-photos/IMG_3908.jpeg',      // Tinny照片
-    kelly: '/family-photos/IMG_9664.jpeg',      // Kelly照片，使用JPEG格式
-    gallery: [                                  // 相册照片
+    kelly: '/family-photos/IMG_9664.jpeg',      // Kelly照片
+    gallery: [                                  // 相册照片（作为备用）
       '/family-photos/IMG_9200.jpeg',
       '/family-photos/IMG_9147.jpeg',
       '/family-photos/IMG_9139.jpeg',
@@ -59,6 +80,32 @@ export default function Home() {
       '/family-photos/2U2A5506.jpg'             // 添加新照片
     ]
   };
+  
+  // 获取照片
+  useEffect(() => {
+    async function fetchPhotos() {
+      setIsLoading(true);
+      try {
+        const response = await fetch('/api/photos');
+        if (response.ok) {
+          const data = await response.json();
+          // 将标准格式和HEIC格式的照片合并
+          const allPhotos = [...data.standard, ...data.heic];
+          // 随机选择8张照片
+          const selected = getRandomPhotos(allPhotos, 8);
+          setRandomPhotos(selected);
+        }
+      } catch (error) {
+        console.error("获取照片错误:", error);
+        // 如果API调用失败，使用默认照片
+        setRandomPhotos(photos.gallery);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    
+    fetchPhotos();
+  }, []);
 
   return (
     <div style={{ 
@@ -564,22 +611,45 @@ export default function Home() {
               gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
               gap: '1.5rem'
             }}>
-              {photos.gallery.map((photo, index) => (
-                <div key={index} style={{
-                  position: 'relative',
-                  height: '250px',
-                  overflow: 'hidden',
-                  boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
-                  cursor: 'pointer'
-                }} onClick={() => openLightbox(photo)}>
-                  <Image 
-                    src={photo}
-                    alt={`家庭照片 ${index+1}`}
-                    fill
-                    style={{ objectFit: 'cover' }}
-                  />
+              {isLoading ? (
+                // 加载状态
+                <div style={{ 
+                  gridColumn: '1 / -1', 
+                  textAlign: 'center', 
+                  padding: '3rem 0',
+                  color: colors.lightText 
+                }}>
+                  加载照片中...
                 </div>
-              ))}
+              ) : randomPhotos.length > 0 ? (
+                // 显示随机照片
+                randomPhotos.map((photo, index) => (
+                  <div key={index} style={{
+                    position: 'relative',
+                    height: '250px',
+                    overflow: 'hidden',
+                    boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+                    cursor: 'pointer'
+                  }} onClick={() => openLightbox(photo)}>
+                    <Image 
+                      src={photo}
+                      alt={`家庭照片 ${index+1}`}
+                      fill
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                ))
+              ) : (
+                // 没有照片时显示
+                <div style={{ 
+                  gridColumn: '1 / -1', 
+                  textAlign: 'center', 
+                  padding: '3rem 0',
+                  color: colors.lightText 
+                }}>
+                  暂无照片可显示
+                </div>
+              )}
             </div>
             <div style={{
               textAlign: 'center',
