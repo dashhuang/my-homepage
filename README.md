@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 黄家家庭主页 - huang.co
 
-## Getting Started
+这是一个使用[Next.js](https://nextjs.org)开发的家庭个人主页项目，为黄家（huang.co）打造。
 
-First, run the development server:
+## 项目特点
+
+- 展示黄家家庭成员信息（Dash 黄一孟、Cherry 吴智群、Jimmy、Tinny、Kelly）
+- 提供家庭照片展示区
+- 响应式设计，在各种设备上都能良好显示
+- 暗色/亮色模式支持
+- 现代化UI设计，包含动画和交互效果
+- 页面平滑滚动与锚点导航
+
+## 技术栈
+
+- Next.js (App Router)
+- Tailwind CSS (使用@tailwindcss/postcss插件)
+- @tailwindcss/aspect-ratio (用于照片展示)
+- 响应式设计，适配手机到大屏显示器
+
+## 运行项目
+
+首先，安装依赖：
+
+```bash
+npm install
+```
+
+然后，运行开发服务器：
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+在浏览器中打开 [http://localhost:3000](http://localhost:3000) 查看结果。
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 项目结构
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `app/page.tsx` - 主页组件
+- `app/layout.tsx` - 全局布局组件
+- `app/components/ThemeToggle.tsx` - 主题切换组件
+- `app/components/ThemeInitializer.tsx` - 主题初始化组件
+- `public/family-photos/` - 存放家庭照片的目录
 
-## Learn More
+## 设计特色
 
-To learn more about Next.js, take a look at the following resources:
+- 渐变色与毛玻璃效果
+- 悬停动画与交互效果
+- 自适应网格布局
+- 精美的照片展示组件
+- 优雅的排版与文字层次
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 部署
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+项目可以部署到Vercel上，以便通过huang.co域名访问。
