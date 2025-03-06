@@ -1,7 +1,36 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Home() {
+  // 添加灯箱状态
+  const [lightbox, setLightbox] = useState({
+    isOpen: false,
+    currentImage: ''
+  });
+  
+  // 打开灯箱
+  const openLightbox = (imageSrc: string) => {
+    setLightbox({
+      isOpen: true,
+      currentImage: imageSrc
+    });
+    // 禁止背景滚动
+    document.body.style.overflow = 'hidden';
+  };
+  
+  // 关闭灯箱
+  const closeLightbox = () => {
+    setLightbox({
+      isOpen: false,
+      currentImage: ''
+    });
+    // 恢复背景滚动
+    document.body.style.overflow = 'auto';
+  };
+
   // 柔和的配色方案
   const colors = {
     mint: '#c8d6cf',      // 淡薄荷绿色背景
@@ -14,18 +43,20 @@ export default function Home() {
   // 选择一些照片用于不同部分
   const photos = {
     hero: '/family-photos/719BD143-ADD6-4F94-8CFC-BAF43235608A.jpg',  // 主页照片，添加时间戳
-    dash: '/family-photos/IMG_1903.jpeg',       // Dash照片
-    cherry: '/family-photos/IMG_1570.jpeg',     // Cherry照片
+    dash: '/family-photos/IMG_0875.jpeg',       // Dash照片
+    cherry: '/family-photos/L1030065.JPG',     // Cherry照片
     jimmy: '/family-photos/jimmy.jpg',      // Jimmy照片
-    tinny: '/family-photos/IMG_4473.jpeg',      // Tinny照片
-    kelly: '/family-photos/IMG_0896.jpeg',      // Kelly照片
+    tinny: '/family-photos/IMG_3908.jpeg',      // Tinny照片
+    kelly: '/family-photos/IMG_9664.jpeg',      // Kelly照片，使用JPEG格式
     gallery: [                                  // 相册照片
       '/family-photos/IMG_9200.jpeg',
       '/family-photos/IMG_9147.jpeg',
       '/family-photos/IMG_9139.jpeg',
       '/family-photos/IMG_9071.jpeg',
       '/family-photos/IMG_1435.jpeg',
-      '/family-photos/IMG_7604.jpeg'
+      '/family-photos/IMG_7604.jpeg',
+      '/family-photos/2U2A5498.jpg',            // 添加新照片
+      '/family-photos/2U2A5506.jpg'             // 添加新照片
     ]
   };
 
@@ -538,8 +569,9 @@ export default function Home() {
                   position: 'relative',
                   height: '250px',
                   overflow: 'hidden',
-                  boxShadow: '0 5px 15px rgba(0,0,0,0.1)'
-                }}>
+                  boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+                  cursor: 'pointer'
+                }} onClick={() => openLightbox(photo)}>
                   <Image 
                     src={photo}
                     alt={`家庭照片 ${index+1}`}
@@ -589,6 +621,66 @@ export default function Home() {
           }}>© 2024 黄 · Huang</p>
         </div>
       </section>
+
+      {/* 灯箱组件 */}
+      {lightbox.isOpen && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.9)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 1000,
+            cursor: 'zoom-out'
+          }}
+          onClick={closeLightbox}
+        >
+          {/* 关闭按钮 */}
+          <button
+            style={{
+              position: 'absolute',
+              top: '20px',
+              right: '20px',
+              backgroundColor: 'transparent',
+              border: 'none',
+              color: 'white',
+              fontSize: '24px',
+              cursor: 'pointer',
+              zIndex: 1001
+            }}
+            onClick={closeLightbox}
+          >
+            ✕
+          </button>
+          
+          {/* 图片容器 */}
+          <div
+            style={{
+              maxWidth: '90%',
+              maxHeight: '90%',
+              position: 'relative'
+            }}
+            onClick={(e) => e.stopPropagation()} // 防止点击图片时关闭灯箱
+          >
+            <img
+              src={lightbox.currentImage}
+              alt="原图"
+              style={{
+                maxWidth: '100%',
+                maxHeight: '90vh',
+                objectFit: 'contain',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+                cursor: 'default'
+              }}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

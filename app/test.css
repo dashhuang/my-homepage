@@ -4,10 +4,11 @@ body {
   font-family: Arial, sans-serif !important;
 }
 
-h1 {
+/* 删除或注释掉h1的样式 */
+/* h1 {
   color: red !important;
   text-decoration: underline !important;
-}
+} */
 
 .container {
   border: 5px solid red !important;
