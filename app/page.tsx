@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { getPhotoPathsClient } from "./gallery/gallery-api";
 
 export default function Home() {
   // 添加随机照片状态
@@ -86,15 +87,12 @@ export default function Home() {
     async function fetchPhotos() {
       setIsLoading(true);
       try {
-        const response = await fetch('/api/photos');
-        if (response.ok) {
-          const data = await response.json();
-          // 将标准格式和HEIC格式的照片合并
-          const allPhotos = [...data.standard, ...data.heic];
-          // 随机选择8张照片
-          const selected = getRandomPhotos(allPhotos, 8);
-          setRandomPhotos(selected);
-        }
+        const data = await getPhotoPathsClient();
+        // 将标准格式和HEIC格式的照片合并
+        const allPhotos = [...data.standard, ...data.heic];
+        // 随机选择8张照片
+        const selected = getRandomPhotos(allPhotos, 8);
+        setRandomPhotos(selected);
       } catch (error) {
         console.error("获取照片错误:", error);
         // 如果API调用失败，使用默认照片

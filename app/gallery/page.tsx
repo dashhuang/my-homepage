@@ -4,21 +4,44 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import type { PhotoSets } from "./gallery-api";
+import { getPhotoPathsClient } from "./gallery-api";
 
 // 相册组件
 export default function Gallery() {
   const [photoSets, setPhotoSets] = useState<PhotoSets>({ standard: [], heic: [] });
+  // 添加灯箱状态
+  const [lightbox, setLightbox] = useState({
+    isOpen: false,
+    currentImage: ''
+  });
   
-  // 在服务器端获取照片列表
+  // 打开灯箱
+  const openLightbox = (imageSrc: string) => {
+    setLightbox({
+      isOpen: true,
+      currentImage: imageSrc
+    });
+    // 禁止背景滚动
+    document.body.style.overflow = 'hidden';
+  };
+  
+  // 关闭灯箱
+  const closeLightbox = () => {
+    setLightbox({
+      isOpen: false,
+      currentImage: ''
+    });
+    // 恢复背景滚动
+    document.body.style.overflow = 'auto';
+  };
+  
+  // 在客户端获取照片列表
   useEffect(() => {
     // 通过API获取照片列表
     async function fetchPhotos() {
       try {
-        const response = await fetch('/api/photos');
-        if (response.ok) {
-          const data = await response.json();
-          setPhotoSets(data);
-        }
+        const data = await getPhotoPathsClient();
+        setPhotoSets(data);
       } catch (error) {
         console.error("获取照片错误:", error);
       }
@@ -107,7 +130,8 @@ export default function Gallery() {
                 alt={`家庭照片 ${index + 1}`}
                 width={300}
                 height={300}
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: 'cover', cursor: 'pointer' }}
+                onClick={() => openLightbox(photo)}
               />
             </div>
           ))}
@@ -120,7 +144,8 @@ export default function Gallery() {
                 alt={`家庭照片 HEIC ${index + 1}`}
                 width={300}
                 height={300}
-                style={{ objectFit: 'cover' }}
+                style={{ objectFit: 'cover', cursor: 'pointer' }}
+                onClick={() => openLightbox(photo)}
                 onError={(e) => {
                   // 如果浏览器不支持HEIC，则隐藏图片
                   e.currentTarget.style.display = 'none';
@@ -135,6 +160,66 @@ export default function Gallery() {
           ))}
         </div>
       </div>
+      
+      {/* 灯箱组件 */}
+      {lightbox.isOpen && (
+        <div 
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.9)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            zIndex: 1000,
+            cursor: 'zoom-out'
+          }}
+          onClick={closeLightbox}
+        >
+          {/* 关闭按钮 */}
+          <button
+            style={{
+              position: 'absolute',
+              top: '20px',
+              right: '20px',
+              backgroundColor: 'transparent',
+              border: 'none',
+              color: 'white',
+              fontSize: '24px',
+              cursor: 'pointer',
+              zIndex: 1001
+            }}
+            onClick={closeLightbox}
+          >
+            ✕
+          </button>
+          
+          {/* 图片容器 */}
+          <div
+            style={{
+              maxWidth: '90%',
+              maxHeight: '90%',
+              position: 'relative'
+            }}
+            onClick={(e) => e.stopPropagation()} // 防止点击图片时关闭灯箱
+          >
+            <img
+              src={lightbox.currentImage}
+              alt="原图"
+              style={{
+                maxWidth: '100%',
+                maxHeight: '90vh',
+                objectFit: 'contain',
+                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+                cursor: 'default'
+              }}
+            />
+          </div>
+        </div>
+      )}
       
       {/* 页脚 */}
       <footer style={{
