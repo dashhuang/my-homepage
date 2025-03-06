@@ -119,7 +119,9 @@ export default function Home() {
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
-        padding: '5vh 0'
+        padding: '5vh 0',
+        width: '100%',
+        boxSizing: 'border-box'
       }}>
         <div style={{
           display: 'flex',
@@ -128,15 +130,18 @@ export default function Home() {
           margin: '0 auto',
           width: '90%',
           maxWidth: '1600px',
-          height: '75vh',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
+          height: 'auto',
+          minHeight: '75vh',
+          boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+          boxSizing: 'border-box'
         }}>
           {/* 左侧照片 */}
           <div style={{
             flex: '8',
             minWidth: '300px',
             position: 'relative',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            minHeight: '300px'
           }}>
             <Image 
               src={photos.hero}
@@ -155,19 +160,17 @@ export default function Home() {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
-            padding: '5rem',
-            position: 'relative'
+            padding: 'clamp(2rem, 5vw, 5rem)',
+            position: 'relative',
+            boxSizing: 'border-box'
           }}>
             <div style={{
-              position: 'absolute',
-              left: '5rem',
-              right: '5rem',
-              top: '50%',
-              transform: 'translateY(-50%)'
+              position: 'relative',
+              padding: '2rem 0'
             }}>
               <div style={{
                 position: 'relative',
-                marginBottom: '3rem'
+                marginBottom: '2rem'
               }}>
                 {/* 使用自定义div替代h1来避免任何默认样式 */}
                 <div style={{
@@ -179,9 +182,9 @@ export default function Home() {
                 }}>
                   <div style={{
                     display: 'block',
-                    fontSize: 'clamp(5.5rem, 8vw, 7rem)',
+                    fontSize: 'clamp(4rem, 6vw, 7rem)',
                     fontWeight: '300',
-                    margin: '0 0 1rem',
+                    margin: '0 0 0.5rem',
                     lineHeight: '1.2',
                     color: colors.darkText,
                     fontFamily: '"造字工房朗宋", "汉仪瑞兽", "FZLangSong", "华文隶书", "LiSu", serif',
@@ -193,7 +196,7 @@ export default function Home() {
                   </div>
                   <div style={{ 
                     display: 'block',
-                    fontSize: 'clamp(3.5rem, 5vw, 4.5rem)', 
+                    fontSize: 'clamp(2.5rem, 4vw, 4.5rem)', 
                     fontWeight: '300',
                     opacity: 0.7,
                     color: colors.darkText,
@@ -208,7 +211,7 @@ export default function Home() {
                 </div>
               </div>
               <div style={{
-                fontSize: '1.2rem',
+                fontSize: 'clamp(1rem, 1.2vw, 1.2rem)',
                 color: colors.lightText,
                 lineHeight: '1.8',
                 marginTop: '1.5rem',
