@@ -1,31 +1,35 @@
 import Image from "next/image";
 import Link from "next/link";
-import fs from "fs/promises"; // 使用异步文件系统API
+import fs from "fs";
 import path from "path";
 
-// 获取照片路径的函数
-async function getPhotoPaths() {
-  try {
-    const publicDir = path.join(process.cwd(), "public", "family-photos");
-    const fileNames = await fs.readdir(publicDir);
-    
-    // 只保留图片文件
-    const imageFiles = fileNames.filter((fileName) => 
-      /\.(jpg|jpeg|png|gif)$/i.test(fileName)
-    );
-    
-    // 返回完整路径
-    return imageFiles.map((fileName) => `/family-photos/${fileName}`);
-  } catch (error) {
-    console.error("获取照片错误:", error);
-    return [];
-  }
+// 使用服务器端生成的静态图片列表
+export function generateStaticParams() {
+  return [];
 }
 
-// 这是一个服务器组件，可以是异步的
-export default async function Gallery() {
+// 静态预定义的照片列表
+export default function Gallery() {
   // 获取照片列表
-  const photos = await getPhotoPaths();
+  const getPhotoPaths = () => {
+    try {
+      const publicDir = path.join(process.cwd(), "public", "family-photos");
+      const fileNames = fs.readdirSync(publicDir);
+      
+      // 只保留图片文件
+      const imageFiles = fileNames.filter((fileName) => 
+        /\.(jpg|jpeg|png|gif)$/i.test(fileName)
+      );
+      
+      // 返回完整路径
+      return imageFiles.map((fileName) => `/family-photos/${fileName}`);
+    } catch (error) {
+      console.error("获取照片错误:", error);
+      return [];
+    }
+  };
+
+  const photos = getPhotoPaths();
   
   // 柔和的配色方案
   const colors = {
