@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getPhotoPathsClient } from "./gallery/gallery-api";
 
 // 定义自定义事件类型
@@ -21,8 +21,12 @@ export default function Home() {
   // 添加灯箱状态
   const [lightbox, setLightbox] = useState({
     isOpen: false,
-    currentImage: ''
+    currentImage: '',
+    loading: true // 添加加载状态
   });
+  
+  // 记录是否已经获取过照片
+  const photosLoadedRef = useRef(false);
   
   // 初始化语言设置
   useEffect(() => {
@@ -65,7 +69,8 @@ export default function Home() {
   const openLightbox = (imageSrc: string) => {
     setLightbox({
       isOpen: true,
-      currentImage: imageSrc
+      currentImage: imageSrc,
+      loading: true
     });
     // 禁止背景滚动
     document.body.style.overflow = 'hidden';
@@ -75,10 +80,16 @@ export default function Home() {
   const closeLightbox = () => {
     setLightbox({
       isOpen: false,
-      currentImage: ''
+      currentImage: '',
+      loading: true
     });
     // 恢复背景滚动
     document.body.style.overflow = 'auto';
+  };
+  
+  // 图片加载完成
+  const handleImageLoad = () => {
+    setLightbox(prev => ({ ...prev, loading: false }));
   };
   
   // 从照片集合中随机选择特定数量的照片
@@ -227,6 +238,9 @@ export default function Home() {
   // 获取照片
   useEffect(() => {
     async function fetchPhotos() {
+      // 如果已经加载过照片，就不再重复加载
+      if (photosLoadedRef.current) return;
+      
       setIsLoading(true);
       try {
         const data = await getPhotoPathsClient();
@@ -235,17 +249,21 @@ export default function Home() {
         // 随机选择8张照片
         const selected = getRandomPhotos(allPhotos, 8);
         setRandomPhotos(selected);
+        // 标记已加载过照片
+        photosLoadedRef.current = true;
       } catch (error) {
         console.error("获取照片错误:", error);
         // 如果API调用失败，使用默认照片
         setRandomPhotos(photos.gallery);
+        // 标记已加载过照片
+        photosLoadedRef.current = true;
       } finally {
         setIsLoading(false);
       }
     }
     
     fetchPhotos();
-  }, [photos.gallery]);
+  }, []);
 
   return (
     <div style={{ 
@@ -760,6 +778,8 @@ export default function Home() {
                       alt={`家庭照片 ${index+1}`}
                       fill
                       style={{ objectFit: 'cover' }}
+                      priority={index < 4} // 优先加载前4张图片
+                      loading={index < 4 ? "eager" : "lazy"} // 前4张立即加载，其余懒加载
                     />
                   </div>
                 ))
@@ -869,9 +889,22 @@ export default function Home() {
                 maxHeight: '90vh',
                 objectFit: 'contain',
                 boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
-                cursor: 'default'
+                cursor: 'default',
+                // 如果正在加载，则隐藏图片
+                display: lightbox.loading ? 'none' : 'block'
               }}
+              onLoad={handleImageLoad}
             />
+            {/* 加载指示器 */}
+            {lightbox.loading && (
+              <div style={{ 
+                color: 'white',
+                fontSize: '1.2rem',
+                textAlign: 'center'
+              }}>
+                加载中...
+              </div>
+            )}
           </div>
         </div>
       )}

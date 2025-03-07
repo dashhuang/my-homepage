@@ -153,15 +153,30 @@ Next.js 15.2.1版本中，一些配置选项已移动或重命名，会导致警
 
 ### React Hooks警告
 
-useEffect的依赖项警告可以通过添加所有使用的外部变量到依赖数组解决：
+React Hook的依赖项问题可能引起几种类型的警告和错误：
 
-```javascript
-useEffect(() => {
-  // 函数体
-}, [dependency1, dependency2]); // 添加所有依赖项
-```
+1. **缺失依赖警告**：
+   ```javascript
+   useEffect(() => {
+     // 使用了外部变量，但没有在依赖数组中列出
+   }, []); // 警告：React Hook useEffect has a missing dependency
+   ```
 
-例如，将`photos.gallery`添加到fetchPhotos的useEffect依赖数组中。
+2. **无限循环错误**：
+   ```javascript
+   useEffect(() => {
+     // 设置状态
+     setRandomPhotos(photos.gallery);
+     // 如果photos.gallery在依赖数组中，可能导致无限循环
+   }, [photos.gallery]); // 可能导致：Maximum update depth exceeded
+   ```
+
+解决方案：
+- 对于缺失依赖，添加所有必要的依赖到数组中
+- 对于可能引起循环的依赖，使用useRef、useMemo或空依赖数组
+- 有时组件只需要在挂载时执行一次，使用`[]`依赖数组是合适的
+
+特别是对于数据获取等操作，通常只需在组件挂载时执行一次，不需要添加可能引起循环的依赖。
 
 ### Vercel部署大小限制
 
