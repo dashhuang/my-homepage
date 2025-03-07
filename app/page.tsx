@@ -141,8 +141,8 @@ export default function Home() {
         en: 'Family Pillar'
       },
       desc: {
-        zh: '作为家庭的中流砥柱，Dash不仅关心每个家庭成员的需求，也为家庭提供坚实的依靠。他喜欢编程和技术，闲暇时会带领全家一起户外活动。',
-        en: 'As the backbone of the family, Dash not only cares for the needs of each family member but also provides solid support. He enjoys programming and technology, and in his spare time, leads the family in outdoor activities.'
+        zh: '作为家庭的中流砥柱，Dash不仅关心每个家庭成员的需求，也为家庭提供坚实的依靠。他喜欢编程和技术，闲暇时会带领全家一起户外活动。在 <a href="https://x.com/DashHuang" target="_blank" rel="noopener noreferrer" style="color: #1DA1F2; text-decoration: none;">X</a> 和 <a href="https://www.instagram.com/dashhuang/" target="_blank" rel="noopener noreferrer" style="color: #E1306C; text-decoration: none;">Instagram</a> 上分享技术和生活。',
+        en: 'As the backbone of the family, Dash not only cares for the needs of each family member but also provides solid support. He enjoys programming and technology, and in his spare time, leads the family in outdoor activities. Follow him on <a href="https://x.com/DashHuang" target="_blank" rel="noopener noreferrer" style="color: #1DA1F2; text-decoration: none;">X</a> and <a href="https://www.instagram.com/dashhuang/" target="_blank" rel="noopener noreferrer" style="color: #E1306C; text-decoration: none;">Instagram</a> for tech and life.'
       }
     },
     cherry: {
@@ -488,13 +488,15 @@ export default function Home() {
                 backgroundColor: colors.sand,
                 marginBottom: '2rem'
               }}></div>
-              <p style={{
-                fontSize: '1.1rem',
-                lineHeight: '1.8',
-                color: colors.lightText,
-                marginBottom: '1.5rem'
-              }}>
-                {texts.dash.desc[language]}
+              <p 
+                style={{
+                  fontSize: '1.1rem',
+                  lineHeight: '1.8',
+                  color: colors.lightText,
+                  marginBottom: '1.5rem'
+                }}
+                dangerouslySetInnerHTML={{ __html: texts.dash.desc[language] }}
+              >
               </p>
             </div>
           </div>
