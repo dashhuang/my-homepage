@@ -245,7 +245,7 @@ export default function Home() {
     }
     
     fetchPhotos();
-  }, []);
+  }, [photos.gallery]);
 
   return (
     <div style={{ 

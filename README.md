@@ -130,6 +130,39 @@ npm run dev
    - 使用`as EventListener`替代`as any`进行类型转换
    - 确保事件触发和监听使用相同的类型定义
 
+### Next.js配置更新
+
+Next.js 15.2.1版本中，一些配置选项已移动或重命名，会导致警告。解决方案：
+
+1. **移动配置选项**：
+   - 将`experimental.outputFileTracingExcludes`移到根级别的`outputFileTracingExcludes`
+   - 移除`outputFileTracing: true`，现在这是默认行为
+
+2. **添加缺失的配置**：
+   - 使用`serverComponentsExternalPackages: ['fs', 'path']`外部化模块
+   - 确保viewport配置从metadata中分离出来
+
+### 图片优化警告
+
+项目中可能出现关于使用`<img>`标签而非Next.js的`<Image>`组件的警告。这些警告不是错误，而是性能建议。
+
+某些情况下，保留`<img>`标签是有意为之的：
+1. **HEIC格式图片**：需要特殊的错误处理，在浏览器不支持时隐藏
+2. **灯箱（Lightbox）组件**：需要精确控制图片显示行为和样式
+3. **动态加载的内容**：某些情况下，Image组件对动态内容支持有限
+
+### React Hooks警告
+
+useEffect的依赖项警告可以通过添加所有使用的外部变量到依赖数组解决：
+
+```javascript
+useEffect(() => {
+  // 函数体
+}, [dependency1, dependency2]); // 添加所有依赖项
+```
+
+例如，将`photos.gallery`添加到fetchPhotos的useEffect依赖数组中。
+
 ### Vercel部署大小限制
 
 Vercel对Serverless函数有300MB的大小限制，而我们的API函数因为包含了所有照片文件，达到了762MB。解决方案：
