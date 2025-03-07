@@ -26,8 +26,14 @@ export default function Home() {
       if (savedLanguage) {
         setLanguage(savedLanguage);
       } else {
-        // 如果没有保存过语言设置，默认使用中文并保存
-        localStorage.setItem('language', 'zh');
+        // 如果没有保存过语言设置，检测浏览器语言
+        const browserLang = navigator.language.toLowerCase();
+        const preferredLang = browserLang.startsWith('zh') ? 'zh' : 'en';
+        setLanguage(preferredLang);
+        localStorage.setItem('language', preferredLang);
+        
+        // 更新HTML lang属性
+        document.documentElement.lang = preferredLang === 'zh' ? 'zh-CN' : 'en';
       }
     }
   }, []);
