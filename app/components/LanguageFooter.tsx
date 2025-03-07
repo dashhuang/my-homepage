@@ -2,6 +2,13 @@
 
 import { useState, useEffect } from "react";
 
+// 定义自定义事件类型
+interface LanguageChangeEventDetail {
+  language: 'zh' | 'en';
+}
+
+type LanguageChangeEvent = CustomEvent<LanguageChangeEventDetail>;
+
 export function LanguageFooter() {
   const [language, setLanguage] = useState<'zh' | 'en'>('zh');
   const [isClient, setIsClient] = useState(false);
@@ -30,13 +37,13 @@ export function LanguageFooter() {
   // 监听语言变化事件
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const handleLanguageChange = (e: CustomEvent) => {
+      const handleLanguageChange = (e: LanguageChangeEvent) => {
         setLanguage(e.detail.language);
       };
 
-      window.addEventListener('languageChange' as any, handleLanguageChange);
+      window.addEventListener('languageChange', handleLanguageChange as EventListener);
       return () => {
-        window.removeEventListener('languageChange' as any, handleLanguageChange);
+        window.removeEventListener('languageChange', handleLanguageChange as EventListener);
       };
     }
   }, []);

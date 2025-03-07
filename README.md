@@ -118,6 +118,18 @@ npm run dev
 
 ## 部署问题解决方案
 
+### ESLint错误修复
+
+在部署到Vercel时可能遇到ESLint检查错误，特别是关于TypeScript的`no-explicit-any`规则。解决方案：
+
+1. **定义正确的类型**：
+   - 为自定义事件创建明确的接口定义而不是使用`any`类型
+   - 示例：`interface LanguageChangeEventDetail { language: 'zh' | 'en'; }`
+
+2. **类型转换**：
+   - 使用`as EventListener`替代`as any`进行类型转换
+   - 确保事件触发和监听使用相同的类型定义
+
 ### Vercel部署大小限制
 
 Vercel对Serverless函数有300MB的大小限制，而我们的API函数因为包含了所有照片文件，达到了762MB。解决方案：

@@ -5,6 +5,11 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { getPhotoPathsClient } from "./gallery/gallery-api";
 
+// 定义自定义事件类型
+interface LanguageChangeEventDetail {
+  language: 'zh' | 'en';
+}
+
 export default function Home() {
   // 添加随机照片状态
   const [randomPhotos, setRandomPhotos] = useState<string[]>([]);
@@ -50,7 +55,7 @@ export default function Home() {
     document.documentElement.lang = newLang === 'zh' ? 'zh-CN' : 'en';
     
     // 触发自定义事件，通知layout组件
-    const event = new CustomEvent('languageChange', { 
+    const event = new CustomEvent<LanguageChangeEventDetail>('languageChange', { 
       detail: { language: newLang } 
     });
     window.dispatchEvent(event);
