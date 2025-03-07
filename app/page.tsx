@@ -10,12 +10,45 @@ export default function Home() {
   const [randomPhotos, setRandomPhotos] = useState<string[]>([]);
   // 添加加载状态
   const [isLoading, setIsLoading] = useState(true);
+  // 添加语言状态(zh:中文，en:英文)
+  const [language, setLanguage] = useState<'zh' | 'en'>('zh');
   
   // 添加灯箱状态
   const [lightbox, setLightbox] = useState({
     isOpen: false,
     currentImage: ''
   });
+  
+  // 初始化语言设置
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedLanguage = localStorage.getItem('language') as 'zh' | 'en' | null;
+      if (savedLanguage) {
+        setLanguage(savedLanguage);
+      } else {
+        // 如果没有保存过语言设置，默认使用中文并保存
+        localStorage.setItem('language', 'zh');
+      }
+    }
+  }, []);
+  
+  // 切换语言
+  const toggleLanguage = () => {
+    const newLang = language === 'zh' ? 'en' : 'zh';
+    setLanguage(newLang);
+    
+    // 保存到localStorage
+    localStorage.setItem('language', newLang);
+    
+    // 更新HTML lang属性
+    document.documentElement.lang = newLang === 'zh' ? 'zh-CN' : 'en';
+    
+    // 触发自定义事件，通知layout组件
+    const event = new CustomEvent('languageChange', { 
+      detail: { language: newLang } 
+    });
+    window.dispatchEvent(event);
+  };
   
   // 打开灯箱
   const openLightbox = (imageSrc: string) => {
@@ -60,6 +93,104 @@ export default function Home() {
     white: '#ffffff',     // 白色块
     darkText: '#3a3a3a',  // 深色文字
     lightText: '#6a6a6a'  // 浅色文字
+  };
+
+  // 中英文文本内容
+  const texts = {
+    homeIntro: {
+      zh: '家，是港湾，是依靠，是永远的归属。欢迎来到我们的家庭主页，在这里分享我们的故事、回忆和未来。',
+      en: 'Home is our haven, our support, and our eternal belonging. Welcome to our family homepage, where we share our stories, memories, and future.'
+    },
+    exploreFamily: {
+      zh: '了解我们的家庭 →',
+      en: 'Meet Our Family →'
+    },
+    familyMembers: {
+      zh: '家庭成员',
+      en: 'Family Members'
+    },
+    dash: {
+      name: {
+        zh: 'Dash 黄一孟',
+        en: 'Dash Huang'
+      },
+      title: {
+        zh: '家庭顶梁柱',
+        en: 'Family Pillar'
+      },
+      desc: {
+        zh: '作为家庭的中流砥柱，Dash不仅关心每个家庭成员的需求，也为家庭提供坚实的依靠。他喜欢编程和技术，闲暇时会带领全家一起户外活动。',
+        en: 'As the backbone of the family, Dash not only cares for the needs of each family member but also provides solid support. He enjoys programming and technology, and in his spare time, leads the family in outdoor activities.'
+      }
+    },
+    cherry: {
+      name: {
+        zh: 'Cherry 吴智群',
+        en: 'Cherry Wu'
+      },
+      title: {
+        zh: '家庭的灵魂人物',
+        en: 'Soul of the Family'
+      },
+      desc: {
+        zh: 'Cherry是家庭的情感核心，善解人意且充满智慧。她热爱阅读和烹饪，总是能为家人带来美味佳肴和温暖的关怀，是孩子们心中的避风港。',
+        en: 'Cherry is the emotional core of the family, understanding and full of wisdom. She loves reading and cooking, always bringing delicious food and warm care to the family, and is a safe harbor for the children.'
+      }
+    },
+    jimmy: {
+      name: {
+        zh: 'Jimmy',
+        en: 'Jimmy'
+      },
+      title: {
+        zh: '大儿子',
+        en: 'Eldest Son'
+      },
+      desc: {
+        zh: 'Jimmy聪明好学，对科学和自然充满好奇心。他喜欢游戏和网球，总是能带给家人欢乐和惊喜。',
+        en: 'Jimmy is intelligent and eager to learn, with curiosity about science and nature. He enjoys gaming and tennis, always bringing joy and surprises to the family.'
+      }
+    },
+    tinny: {
+      name: {
+        zh: 'Tinny',
+        en: 'Tinny'
+      },
+      title: {
+        zh: '大女儿',
+        en: 'Eldest Daughter'
+      },
+      desc: {
+        zh: 'Tinny充满创造力，热爱艺术和音乐。她喜欢跳舞和钢琴，有着丰富的想象力和细腻的情感。',
+        en: 'Tinny is full of creativity, loving art and music. She enjoys dancing and playing the piano, with rich imagination and delicate emotions.'
+      }
+    },
+    kelly: {
+      name: {
+        zh: 'Kelly',
+        en: 'Kelly'
+      },
+      title: {
+        zh: '二女儿',
+        en: 'Younger Daughter'
+      },
+      desc: {
+        zh: 'Kelly活泼可爱，才3岁，充满好奇心。她最喜欢和姐姐妈妈玩，总是用她天真的笑容感染着全家人。',
+        en: 'Kelly is lively and adorable, only 3 years old, full of curiosity. She loves playing with her sister and mother, always infecting the whole family with her innocent smile.'
+      }
+    },
+    gallery: {
+      zh: '家庭相册',
+      en: 'Family Gallery'
+    },
+    viewGallery: {
+      zh: '查看完整相册 →',
+      en: 'View Full Gallery →'
+    },
+    languageSwitch: {
+      zh: 'English',
+      en: '中文'
+    }
   };
 
   // 选择一些照片用于不同部分
@@ -114,127 +245,154 @@ export default function Home() {
       padding: '0',
       margin: '0'
     }}>
+      {/* 语言切换按钮 */}
+      <button 
+        onClick={toggleLanguage}
+        style={{
+          position: 'fixed',
+          top: '2rem',
+          right: '2rem',
+          padding: '0.5rem 1rem',
+          backgroundColor: 'rgba(255, 255, 255, 0.7)',
+          border: 'none',
+          borderRadius: '4px',
+          fontSize: '0.9rem',
+          cursor: 'pointer',
+          zIndex: 100,
+          boxShadow: '0 2px 5px rgba(0,0,0,0.1)',
+          transition: 'all 0.3s ease'
+        }}
+      >
+        {texts.languageSwitch[language]}
+      </button>
+
       {/* 主页块 */}
       <section style={{
-        display: 'flex',
-        flexDirection: 'column',
+        position: 'relative',
         minHeight: '100vh',
-        padding: '5vh 0',
-        width: '100%',
-        boxSizing: 'border-box'
+        backgroundColor: colors.mint,
+        overflow: 'hidden'
       }}>
         <div style={{
+          position: 'relative',
+          width: '100%',
+          height: '100vh',
           display: 'flex',
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          margin: '0 auto',
-          width: '90%',
-          maxWidth: '1600px',
-          height: 'auto',
-          minHeight: '75vh',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
-          boxSizing: 'border-box'
+          alignItems: 'center'
         }}>
-          {/* 左侧照片 */}
           <div style={{
-            flex: '8',
-            minWidth: '300px',
-            position: 'relative',
-            overflow: 'hidden',
-            minHeight: '300px'
-          }}>
-            <Image 
-              src={photos.hero}
-              alt="家庭照片"
-              fill
-              style={{ objectFit: 'cover' }}
-              priority
-            />
-          </div>
-
-          {/* 右侧内容 */}
-          <div style={{
-            backgroundColor: colors.white,
-            flex: '5',
-            minWidth: '300px',
             display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            padding: 'clamp(2rem, 5vw, 5rem)',
-            position: 'relative',
+            flexDirection: 'row',
+            flexWrap: 'wrap',
+            margin: '0 auto',
+            width: '90%',
+            maxWidth: '1600px',
+            height: 'auto',
+            minHeight: '75vh',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
             boxSizing: 'border-box'
           }}>
+            {/* 左侧照片 */}
             <div style={{
+              flex: '8',
+              minWidth: '300px',
               position: 'relative',
-              padding: '2rem 0'
+              overflow: 'hidden',
+              minHeight: '300px'
+            }}>
+              <Image 
+                src={photos.hero}
+                alt="家庭照片"
+                fill
+                style={{ objectFit: 'cover' }}
+                priority
+              />
+            </div>
+
+            {/* 右侧内容 */}
+            <div style={{
+              backgroundColor: colors.white,
+              flex: '5',
+              minWidth: '300px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              padding: 'clamp(2rem, 5vw, 5rem)',
+              position: 'relative',
+              boxSizing: 'border-box'
             }}>
               <div style={{
                 position: 'relative',
-                marginBottom: '2rem'
+                padding: '2rem 0'
               }}>
-                {/* 使用自定义div替代h1来避免任何默认样式 */}
                 <div style={{
-                  fontWeight: '300',
-                  margin: '0',
-                  padding: '0',
-                  border: 'none',
-                  textDecoration: 'none'
+                  position: 'relative',
+                  marginBottom: '2rem'
                 }}>
+                  {/* 使用自定义div替代h1来避免任何默认样式 */}
                   <div style={{
-                    display: 'block',
-                    fontSize: 'clamp(4rem, 6vw, 7rem)',
                     fontWeight: '300',
-                    margin: '0 0 0.5rem',
-                    lineHeight: '1.2',
-                    color: colors.darkText,
-                    fontFamily: '"造字工房朗宋", "汉仪瑞兽", "FZLangSong", "华文隶书", "LiSu", serif',
-                    letterSpacing: '0.05em',
-                    textDecoration: 'none',
-                    border: 'none'
+                    margin: '0',
+                    padding: '0',
+                    border: 'none',
+                    textDecoration: 'none'
                   }}>
-                    黄
-                  </div>
-                  <div style={{ 
-                    display: 'block',
-                    fontSize: 'clamp(2.5rem, 4vw, 4.5rem)', 
-                    fontWeight: '300',
-                    opacity: 0.7,
-                    color: colors.darkText,
-                    fontFamily: '"Cinzel", "Trajan Pro", "Times New Roman", serif',
-                    fontStyle: 'italic',
-                    letterSpacing: '0.08em',
-                    textDecoration: 'none',
-                    border: 'none'
-                  }}>
-                    Huang
+                    <div style={{
+                      display: 'block',
+                      fontSize: 'clamp(4rem, 6vw, 7rem)',
+                      fontWeight: '300',
+                      margin: '0 0 0.5rem',
+                      lineHeight: '1.2',
+                      color: colors.darkText,
+                      fontFamily: '"造字工房朗宋", "汉仪瑞兽", "FZLangSong", "华文隶书", "LiSu", serif',
+                      letterSpacing: '0.05em',
+                      textDecoration: 'none',
+                      border: 'none'
+                    }}>
+                      黄
+                    </div>
+                    <div style={{ 
+                      display: 'block',
+                      fontSize: 'clamp(2.5rem, 4vw, 4.5rem)', 
+                      fontWeight: '300',
+                      opacity: 0.7,
+                      color: colors.darkText,
+                      fontFamily: '"Cinzel", "Trajan Pro", "Times New Roman", serif',
+                      fontStyle: 'italic',
+                      letterSpacing: '0.08em',
+                      textDecoration: 'none',
+                      border: 'none'
+                    }}>
+                      Huang
+                    </div>
                   </div>
                 </div>
+                <div style={{
+                  fontSize: 'clamp(1rem, 1.2vw, 1.2rem)',
+                  color: colors.lightText,
+                  lineHeight: '1.8',
+                  marginTop: '1.5rem',
+                  marginBottom: '2.5rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  minHeight: '80px'
+                }}>
+                  {texts.homeIntro[language]}
+                </div>
+                <a href="#family" style={{
+                  display: 'inline-block',
+                  marginTop: '1rem',
+                  color: colors.darkText,
+                  textDecoration: 'none',
+                  borderBottom: `1px solid ${colors.darkText}`,
+                  paddingBottom: '0.25rem',
+                  fontSize: '0.9rem',
+                  letterSpacing: '1px',
+                  textTransform: 'uppercase'
+                }}>
+                  {texts.exploreFamily[language]}
+                </a>
               </div>
-              <div style={{
-                fontSize: 'clamp(1rem, 1.2vw, 1.2rem)',
-                color: colors.lightText,
-                lineHeight: '1.8',
-                marginTop: '1.5rem',
-                marginBottom: '2.5rem',
-                display: 'flex',
-                alignItems: 'center',
-                minHeight: '80px'
-              }}>
-                <p>家，是港湾，是依靠，是永远的归属。欢迎来到我们的家庭主页，在这里分享我们的故事、回忆和未来。</p>
-              </div>
-              <a href="#family" style={{
-                display: 'inline-block',
-                marginTop: '1rem',
-                color: colors.darkText,
-                textDecoration: 'none',
-                borderBottom: `1px solid ${colors.darkText}`,
-                paddingBottom: '0.25rem',
-                fontSize: '0.9rem',
-                letterSpacing: '1px',
-                textTransform: 'uppercase'
-              }}>
-                了解我们的家庭 →
-              </a>
             </div>
           </div>
         </div>
@@ -255,7 +413,7 @@ export default function Home() {
             marginBottom: '5rem',
             textAlign: 'center',
             color: colors.darkText
-          }}>家庭成员</h2>
+          }}>{texts.familyMembers[language]}</h2>
 
           {/* Dash 块 */}
           <div style={{
@@ -276,7 +434,7 @@ export default function Home() {
             }}>
               <Image 
                 src={photos.dash}
-                alt="Dash 黄一孟"
+                alt={texts.dash.name[language]}
                 fill
                 style={{ objectFit: 'cover' }}
               />
@@ -294,7 +452,7 @@ export default function Home() {
                 fontWeight: '300',
                 marginBottom: '1.5rem',
                 color: colors.darkText
-              }}>Dash 黄一孟</h3>
+              }}>{texts.dash.name[language]}</h3>
               <div style={{
                 width: '50px',
                 height: '2px',
@@ -307,14 +465,7 @@ export default function Home() {
                 color: colors.lightText,
                 marginBottom: '1.5rem'
               }}>
-                家庭顶梁柱
-              </p>
-              <p style={{
-                fontSize: '1.1rem',
-                lineHeight: '1.8',
-                color: colors.lightText
-              }}>
-                作为家庭的中流砥柱，Dash不仅关心每个家庭成员的需求，也为家庭提供坚实的依靠。他喜欢编程和技术，闲暇时会带领全家一起户外活动。
+                {texts.dash.desc[language]}
               </p>
             </div>
           </div>
@@ -338,7 +489,7 @@ export default function Home() {
             }}>
               <Image 
                 src={photos.cherry}
-                alt="Cherry 吴智群"
+                alt={texts.cherry.name[language]}
                 fill
                 style={{ objectFit: 'cover' }}
               />
@@ -356,7 +507,7 @@ export default function Home() {
                 fontWeight: '300',
                 marginBottom: '1.5rem',
                 color: colors.darkText
-              }}>Cherry 吴智群</h3>
+              }}>{texts.cherry.name[language]}</h3>
               <div style={{
                 width: '50px',
                 height: '2px',
@@ -369,14 +520,7 @@ export default function Home() {
                 color: colors.lightText,
                 marginBottom: '1.5rem'
               }}>
-                家庭的灵魂人物
-              </p>
-              <p style={{
-                fontSize: '1.1rem',
-                lineHeight: '1.8',
-                color: colors.lightText
-              }}>
-                Cherry是家庭的情感核心，善解人意且充满智慧。她热爱阅读和烹饪，总是能为家人带来美味佳肴和温暖的关怀，是孩子们心中的避风港。
+                {texts.cherry.desc[language]}
               </p>
             </div>
           </div>
@@ -406,7 +550,7 @@ export default function Home() {
               }}>
                 <Image 
                   src={photos.jimmy}
-                  alt="Jimmy"
+                  alt={texts.jimmy.name[language]}
                   fill
                   style={{ objectFit: 'cover' }}
                 />
@@ -422,7 +566,7 @@ export default function Home() {
                   fontWeight: '300',
                   marginBottom: '1rem',
                   color: colors.darkText
-                }}>Jimmy</h3>
+                }}>{texts.jimmy.name[language]}</h3>
                 <div style={{
                   width: '30px',
                   height: '2px',
@@ -435,14 +579,14 @@ export default function Home() {
                   color: colors.lightText,
                   marginBottom: '1rem'
                 }}>
-                  大儿子
+                  {texts.jimmy.title[language]}
                 </p>
                 <p style={{
                   fontSize: '1rem',
                   lineHeight: '1.8',
                   color: colors.lightText
                 }}>
-                  Jimmy聪明好学，对科学和自然充满好奇心。他喜欢足球和围棋，总是能带给家人欢乐和惊喜。
+                  {texts.jimmy.desc[language]}
                 </p>
               </div>
             </div>
@@ -464,7 +608,7 @@ export default function Home() {
               }}>
                 <Image 
                   src={photos.tinny}
-                  alt="Tinny"
+                  alt={texts.tinny.name[language]}
                   fill
                   style={{ objectFit: 'cover' }}
                 />
@@ -480,7 +624,7 @@ export default function Home() {
                   fontWeight: '300',
                   marginBottom: '1rem',
                   color: colors.darkText
-                }}>Tinny</h3>
+                }}>{texts.tinny.name[language]}</h3>
                 <div style={{
                   width: '30px',
                   height: '2px',
@@ -493,14 +637,14 @@ export default function Home() {
                   color: colors.lightText,
                   marginBottom: '1rem'
                 }}>
-                  大女儿
+                  {texts.tinny.title[language]}
                 </p>
                 <p style={{
                   fontSize: '1rem',
                   lineHeight: '1.8',
                   color: colors.lightText
                 }}>
-                  Tinny充满创造力，热爱艺术和音乐。她擅长钢琴和画画，有着丰富的想象力和细腻的情感。
+                  {texts.tinny.desc[language]}
                 </p>
               </div>
             </div>
@@ -522,7 +666,7 @@ export default function Home() {
               }}>
                 <Image 
                   src={photos.kelly}
-                  alt="Kelly"
+                  alt={texts.kelly.name[language]}
                   fill
                   style={{ objectFit: 'cover' }}
                 />
@@ -538,7 +682,7 @@ export default function Home() {
                   fontWeight: '300',
                   marginBottom: '1rem',
                   color: colors.darkText
-                }}>Kelly</h3>
+                }}>{texts.kelly.name[language]}</h3>
                 <div style={{
                   width: '30px',
                   height: '2px',
@@ -551,14 +695,14 @@ export default function Home() {
                   color: colors.lightText,
                   marginBottom: '1rem'
                 }}>
-                  二女儿
+                  {texts.kelly.title[language]}
                 </p>
                 <p style={{
                   fontSize: '1rem',
                   lineHeight: '1.8',
                   color: colors.lightText
                 }}>
-                  Kelly活泼可爱，充满好奇心。她喜欢跳舞和讲故事，总是用她天真的笑容感染着全家人。
+                  {texts.kelly.desc[language]}
                 </p>
               </div>
             </div>
@@ -574,7 +718,7 @@ export default function Home() {
               marginBottom: '3rem',
               textAlign: 'center',
               color: colors.darkText
-            }}>家庭相册</h2>
+            }}>{texts.gallery[language]}</h2>
             <div style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
@@ -634,7 +778,7 @@ export default function Home() {
                 letterSpacing: '1px',
                 textTransform: 'uppercase'
               }}>
-                查看更多照片 →
+                {texts.viewGallery[language]}
               </Link>
             </div>
           </div>
