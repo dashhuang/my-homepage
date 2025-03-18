@@ -130,3 +130,101 @@ p {
     width: 100vw;
   }
 }
+
+/* 气球效果样式 */
+.balloon-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 10000;
+  overflow: hidden;
+  pointer-events: none; /* 允许点击穿透 */
+}
+
+/* 气球包装器 - 用于同时控制气球和线的动画 */
+.balloon-wrapper {
+  position: absolute;
+  bottom: -200px; /* 修改为-200px，确保初始位置在屏幕外 */
+  z-index: 9999;
+  /* 包装器本身不应有任何背景或边框 */
+  will-change: transform, opacity;
+  transform: translateZ(0); /* 触发GPU加速 */
+}
+
+/* 气球样式 */
+.balloon {
+  width: 70px;
+  height: 90px;
+  border-radius: 50%;
+  position: relative;
+  opacity: 0.85;
+  
+  /* 立体效果 - 径向渐变创造光影效果 */
+  background: radial-gradient(
+      circle at 30% 30%, 
+      rgba(255, 255, 255, 0.8) 5%, 
+      rgba(255, 255, 255, 0.4) 20%, 
+      rgba(255, 255, 255, 0.1) 40%, 
+      rgba(0, 0, 0, 0.1) 80%
+  );
+  
+  /* 添加内部阴影增强立体感 */
+  box-shadow: 
+      inset -5px -5px 15px rgba(0, 0, 0, 0.2),
+      inset 5px 5px 15px rgba(255, 255, 255, 0.4);
+  
+  /* 使气球表面光滑 */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* 气球线 - 使用单一线条 */
+.balloon-string {
+  position: absolute;
+  left: 50%;
+  top: 100%; /* 从气球底部开始 */
+  height: 45px; /* 较长的单一线条 */
+  width: 1px;
+  background: linear-gradient(to bottom, rgba(200,200,200,0.8), rgba(180,180,180,0.1));
+  transform: translateX(-50%); /* 居中定位 */
+  transform-origin: top; /* 从顶部开始转动 */
+}
+
+/* 添加轻微弯曲效果 */
+.balloon-string:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-left: 1px solid transparent; /* 透明边框，不可见但增加曲线效果 */
+  border-radius: 50%;
+  transform-origin: top left;
+  transform: rotate(3deg) translateX(-1px);
+}
+
+/* 浮动动画 - 更快速度，调整初始阶段 */
+@keyframes float {
+  0% { bottom: -200px; opacity: 0; } /* 开始时完全不可见 */
+  5% { bottom: -150px; opacity: 0.3; } /* 增加屏幕外的渐变过程 */
+  15% { bottom: -50px; opacity: 0.85; } /* 慢慢进入屏幕底部 */
+  25% { bottom: 10vh; opacity: 0.85; }
+  40% { bottom: 25vh; opacity: 0.85; }
+  60% { bottom: 60vh; opacity: 0.85; }
+  75% { bottom: 75vh; opacity: 0.85; }
+  85% { bottom: 90vh; opacity: 0.75; }
+  90% { bottom: 95vh; opacity: 0.5; }
+  100% { bottom: 110vh; opacity: 0; }
+}
+
+/* 摇摆动画 - 使用margin-left而不是transform */
+@keyframes sway {
+  0% { margin-left: 0; }
+  25% { margin-left: -15px; }
+  75% { margin-left: 15px; }
+  100% { margin-left: 0; }
+}
