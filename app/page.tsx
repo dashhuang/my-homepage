@@ -120,8 +120,8 @@ export default function Home() {
   // 中英文文本内容
   const texts = {
     homeIntro: {
-      zh: '家，是港湾，是依靠，是永远的归属。欢迎来到我们的家庭主页，在这里分享我们的故事、回忆和未来。',
-      en: 'Home is our haven, our support, and our eternal belonging. Welcome to our family homepage, where we share our stories, memories, and future.'
+      zh: '家，是生活最初的诗篇，是记忆长久的温暖。欢迎来到我们的家庭主页，在这里分享我们的故事、回忆和未来。',
+      en: 'Home is the first poem of life, and the enduring warmth of memories. Welcome to our family homepage, where we share our stories, memories, and future.'
     },
     exploreFamily: {
       zh: '了解我们的家庭 →',
