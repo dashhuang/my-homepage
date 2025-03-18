@@ -3,6 +3,13 @@
 import { useState, useEffect } from 'react';
 import BalloonEffect from './BalloonEffect';
 
+// 为Window对象声明triggerBalloonEffect方法
+declare global {
+  interface Window {
+    triggerBalloonEffect?: () => void;
+  }
+}
+
 // 定义组件属性类型
 interface BalloonTriggerProps {
   // 自动显示气球的特殊日期, 格式: 'MM-DD'，如："01-01"表示1月1日
@@ -121,14 +128,14 @@ export default function BalloonTrigger({
   // 将触发方法暴露给全局，以便其他组件可以调用
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // @ts-expect-error - 添加全局方法
+      // 添加全局方法
       window.triggerBalloonEffect = triggerBalloons;
     }
     
     // 组件卸载时移除全局方法
     return () => {
       if (typeof window !== 'undefined') {
-        // @ts-expect-error - 移除全局方法
+        // 移除全局方法
         delete window.triggerBalloonEffect;
       }
     };
