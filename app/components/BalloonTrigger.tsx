@@ -121,14 +121,14 @@ export default function BalloonTrigger({
   // 将触发方法暴露给全局，以便其他组件可以调用
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      // @ts-ignore - 添加全局方法
+      // @ts-expect-error - 添加全局方法
       window.triggerBalloonEffect = triggerBalloons;
     }
     
     // 组件卸载时移除全局方法
     return () => {
       if (typeof window !== 'undefined') {
-        // @ts-ignore - 移除全局方法
+        // @ts-expect-error - 移除全局方法
         delete window.triggerBalloonEffect;
       }
     };
