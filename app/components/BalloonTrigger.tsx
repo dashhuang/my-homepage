@@ -100,6 +100,7 @@ export default function BalloonTrigger({
           notification.style.zIndex = '10001';
           notification.style.fontSize = '1.2rem';
           notification.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+          notification.style.whiteSpace = 'nowrap';
           notification.textContent = message;
           
           document.body.appendChild(notification);
