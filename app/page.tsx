@@ -397,17 +397,17 @@ export default function Home() {
                   </div>
                 </div>
                 <div style={{
-                  fontSize: 'clamp(1rem, 1.2vw, 1.2rem)',
-                  color: colors.lightText,
+                  marginTop: '2rem',
+                  fontSize: 'clamp(1rem, 1.3vw, 1.3rem)',
                   lineHeight: '1.8',
-                  marginTop: '1.5rem',
-                  marginBottom: '2.5rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  minHeight: '80px'
-                }}>
-                  {texts.homeIntro[language]}
-                </div>
+                  letterSpacing: '0.02em',
+                  color: colors.darkText,
+                  maxWidth: '600px'
+                }} 
+                  dangerouslySetInnerHTML={{ __html: texts.homeIntro[language] }}
+                />
+                
+                {/* 浏览家庭链接 */}
                 <a href="#family" style={{
                   display: 'inline-block',
                   marginTop: '1rem',
