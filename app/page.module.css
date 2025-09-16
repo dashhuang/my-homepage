@@ -1,4 +1,4 @@
-:global(:root) {
+.page {
   --family-mint: #c8d6cf;
   --family-sand: #d7cec0;
   --family-white: #ffffff;
@@ -9,9 +9,7 @@
   --family-card-text: var(--family-dark-text);
   --family-card-accent: var(--family-sand);
   --family-link-color: #1f4d5a;
-}
 
-.page {
   background-color: var(--family-mint);
   min-height: 100vh;
   font-family: "Times New Roman", serif;
