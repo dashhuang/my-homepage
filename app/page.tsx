@@ -317,7 +317,9 @@ export default function Home() {
       title: texts.jimmy.title[language],
       description: familyDescriptions.jimmy[language],
       imageSrc: photos.jimmy,
-      orientation: 'vertical' as const
+      orientation: 'vertical' as const,
+      imagePosition: 'left' as const,
+      className: undefined
     },
     {
       key: 'tinny',
@@ -325,7 +327,9 @@ export default function Home() {
       title: texts.tinny.title[language],
       description: familyDescriptions.tinny[language],
       imageSrc: photos.tinny,
-      orientation: 'vertical' as const
+      orientation: 'vertical' as const,
+      imagePosition: 'left' as const,
+      className: undefined
     },
     {
       key: 'kelly',
@@ -333,7 +337,9 @@ export default function Home() {
       title: texts.kelly.title[language],
       description: familyDescriptions.kelly[language],
       imageSrc: photos.kelly,
-      orientation: 'vertical' as const
+      orientation: 'vertical' as const,
+      imagePosition: 'left' as const,
+      className: undefined
     }
   ] as const;
 
@@ -350,7 +356,7 @@ export default function Home() {
         photosLoadedRef.current = true;
       } catch (error) {
         console.error('获取照片错误:', error);
-        setRandomPhotos(photos.gallery);
+        setRandomPhotos([...photos.gallery]);
         photosLoadedRef.current = true;
       } finally {
         setIsLoading(false);
