@@ -183,9 +183,8 @@
 }
 
 .verticalCard {
-  width: 100%;
-  max-width: 360px;
-  justify-self: center;
+  grid-column: 1 / -1;
+  justify-self: stretch;
 }
 
 .gallerySection {
@@ -340,10 +339,6 @@
 }
 
 @media (max-width: 768px) {
-  .verticalCard {
-    max-width: none;
-  }
-
   .heroDescription {
     max-width: none;
   }
