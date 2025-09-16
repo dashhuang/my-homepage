@@ -319,7 +319,7 @@ export default function Home() {
       imageSrc: photos.jimmy,
       orientation: 'vertical' as const,
       imagePosition: 'left' as const,
-      className: undefined
+      className: styles.verticalCard
     },
     {
       key: 'tinny',
@@ -329,7 +329,7 @@ export default function Home() {
       imageSrc: photos.tinny,
       orientation: 'vertical' as const,
       imagePosition: 'left' as const,
-      className: undefined
+      className: styles.verticalCard
     },
     {
       key: 'kelly',
@@ -339,7 +339,7 @@ export default function Home() {
       imageSrc: photos.kelly,
       orientation: 'vertical' as const,
       imagePosition: 'left' as const,
-      className: undefined
+      className: styles.verticalCard
     }
   ] as const;
 

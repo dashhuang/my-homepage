@@ -174,11 +174,18 @@
   display: grid;
   gap: 3rem;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  align-items: stretch;
+  align-items: start;
 }
 
 .horizontalCard {
   grid-column: 1 / -1;
+  justify-self: stretch;
+}
+
+.verticalCard {
+  width: 100%;
+  max-width: 360px;
+  justify-self: center;
 }
 
 .gallerySection {
@@ -333,6 +340,10 @@
 }
 
 @media (max-width: 768px) {
+  .verticalCard {
+    max-width: none;
+  }
+
   .heroDescription {
     max-width: none;
   }
