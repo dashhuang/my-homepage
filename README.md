@@ -80,13 +80,76 @@ npm run dev
 
 ## 文件结构
 
-- `app/page.tsx` - 主页组件
-- `app/layout.tsx` - 全局布局组件
-- `app/gallery/page.tsx` - 相册页面组件
-- `app/globals.css` - 全局样式
-- `public/family-photos/` - 存放家庭照片的目录
+```
+app/
+├── page.tsx                          # 主页入口（已优化，200行左右）
+├── layout.tsx                        # 全局布局（含SEO和结构化数据）
+├── globals.css                       # 全局样式
+├── components/                       # 组件目录
+│   ├── HeroSection.tsx              # 首页英雄区组件
+│   ├── FamilyMemberCard.tsx         # 家庭成员卡片组件
+│   ├── PhotoGalleryPreview.tsx      # 相册预览组件
+│   ├── LanguageSwitcher.tsx         # 语言切换器
+│   ├── Lightbox.tsx                 # 图片灯箱组件
+│   ├── BalloonEffect.tsx            # 气球特效组件
+│   ├── BalloonTrigger.tsx           # 气球触发器
+│   ├── CelebrationButton.tsx        # 庆祝按钮
+│   ├── LanguageFooter.tsx           # 多语言页脚
+│   ├── ThemeInitializer.tsx         # 主题初始化
+│   └── ThemeToggle.tsx              # 主题切换器
+├── constants/                        # 配置常量
+│   ├── styles.ts                    # 样式和颜色配置
+│   └── texts.ts                     # 多语言文本内容
+├── utils/                            # 工具函数
+│   └── imageBlurData.ts             # 图片模糊占位符
+├── gallery/                          # 相册功能
+│   ├── page.tsx                     # 相册页面
+│   └── gallery-api.ts               # 照片API
+└── api/
+    └── photos/
+        └── route.ts                 # 照片路由API
+
+public/
+└── family-photos/                    # 家庭照片目录（172张照片）
+
+scripts/
+└── generate-photo-list.js            # 自动生成照片列表脚本
+```
 
 ## 最近更新
+
+### 2024年10月 - 重大性能和结构优化
+- **代码重构与模块化**：
+  - 将900+行的page.tsx拆分成多个可复用组件
+  - 创建独立的组件：HeroSection、FamilyMemberCard、PhotoGalleryPreview、LanguageSwitcher、Lightbox
+  - 提取样式配置到`constants/styles.ts`
+  - 提取文本内容到`constants/texts.ts`
+  - 创建图片优化工具`utils/imageBlurData.ts`
+
+- **SEO全面优化**：
+  - 添加详细的meta标签（描述、关键词、作者等）
+  - 添加Open Graph标签，优化社交媒体分享效果
+  - 添加Twitter Card配置
+  - 实现JSON-LD结构化数据，帮助搜索引擎理解家庭成员关系
+  - 设置robots配置，优化搜索引擎爬取
+
+- **性能优化**：
+  - 为所有图片添加blur placeholder，改善加载体验
+  - 优化图片sizes属性，实现响应式图片加载
+  - 图片懒加载策略：前4张eager加载，其余lazy加载
+  - 改进组件结构，减少不必要的重渲染
+
+- **用户体验提升**：
+  - 添加hover动画效果到链接和图片卡片
+  - 改进语言切换按钮样式，添加毛玻璃效果
+  - 优化移动端触摸滚动体验
+  - 添加响应式字体大小（移动端16px，平板17px，桌面18px）
+  - 改进Lightbox组件的可访问性，添加aria-label
+
+- **可访问性改进**：
+  - 为所有交互元素添加适当的aria标签
+  - 改进键盘导航支持
+  - 优化图片alt文本的多语言支持
 
 ### 2024年4月
 - 优化气球飘飞效果：
