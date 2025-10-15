@@ -129,6 +129,30 @@ p {
     position: relative;
     width: 100vw;
   }
+  
+  /* 改进移动端的触摸滚动 */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* 优化移动端字体大小 */
+  html {
+    font-size: 16px;
+  }
+}
+
+/* 平板优化 */
+@media (min-width: 768px) and (max-width: 1024px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+/* 桌面优化 */
+@media (min-width: 1025px) {
+  html {
+    font-size: 18px;
+  }
 }
 
 /* 气球效果样式 */
