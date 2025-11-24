@@ -75,7 +75,7 @@ export default function Gallery() {
       <div style={{
         position: 'fixed',
         top: '2rem',
-        right: '2rem',
+        left: '2rem', // right 改为 left
         zIndex: 100
       }}>
         <Link href="/">
@@ -89,7 +89,8 @@ export default function Gallery() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            textDecoration: 'none' // 添加这一行，确保没有下划线
           }}>
             <span style={{ fontSize: '1.5rem' }}>←</span>
           </button>
@@ -208,7 +209,9 @@ export default function Gallery() {
           margin: '0',
           fontSize: '0.9rem',
           color: colors.lightText
-        }}>© 2024 黄 · Huang</p>
+        }}>
+          © {new Date().getFullYear()} 黄 · Huang
+        </p>
       </footer>
 
       {/* 添加CSS样式 */}

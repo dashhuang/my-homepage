@@ -186,7 +186,9 @@ export default function Home() {
             color: colors.lightText,
             lineHeight: '1.8',
             marginBottom: '2rem'
-          }}>© 2024 黄 · Huang</p>
+          }}>
+            © {new Date().getFullYear()} 黄 · Huang
+          </p>
         </div>
       </section>
 
