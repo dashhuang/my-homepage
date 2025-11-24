@@ -149,7 +149,7 @@ export default function RootLayout({
         {/* 气球效果触发器 */}
         <BalloonTrigger 
           specialDates={specialDates}
-          showOnFirstVisit={true}
+          showOnFirstVisit={false}
           autoTriggerEnabled={true}
         />
         
