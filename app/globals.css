@@ -42,6 +42,12 @@ img {
   height: auto;
 }
 
+/* 链接颜色统一 */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 /* 布局样式 */
 .container {
   min-height: 100vh;
