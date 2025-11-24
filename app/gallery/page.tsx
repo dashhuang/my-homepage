@@ -78,7 +78,7 @@ export default function Gallery() {
         left: '2rem', // right 改为 left
         zIndex: 100
       }}>
-        <Link href="/">
+        <Link href="/" style={{ textDecoration: 'none' }}>
           <button style={{
             width: '3rem',
             height: '3rem',
@@ -89,8 +89,7 @@ export default function Gallery() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            cursor: 'pointer',
-            textDecoration: 'none' // 添加这一行，确保没有下划线
+            cursor: 'pointer'
           }}>
             <span style={{ fontSize: '1.5rem' }}>←</span>
           </button>
