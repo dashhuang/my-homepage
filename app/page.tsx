@@ -78,9 +78,6 @@ export default function Home() {
       padding: '0',
       margin: '0'
     }}>
-      {/* 语言切换按钮 */}
-      <LanguageSwitcher language={language} onToggle={toggleLanguage} />
-
       {/* 主页块 */}
       <HeroSection language={language} />
 
@@ -173,21 +170,37 @@ export default function Home() {
       {/* 底部 */}
       <section style={{
         backgroundColor: colors.white,
-        padding: '10vh 0'
+        padding: '5vh 5%',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: '2rem'
       }}>
+        {/* 语言切换 - 左侧 */}
+        <LanguageSwitcher language={language} onToggle={toggleLanguage} />
+
         <div style={{
-          margin: '0 auto',
-          width: '90%',
-          maxWidth: '800px',
-          textAlign: 'center'
+          textAlign: 'right'
         }}>
           <p style={{
-            fontSize: '1.2rem',
+            fontSize: '1rem',
             color: colors.lightText,
             lineHeight: '1.8',
-            marginBottom: '2rem'
+            margin: 0
           }}>
             © {new Date().getFullYear()} 黄 · Huang
+          </p>
+          <p style={{
+            fontSize: '0.85rem',
+            color: '#999',
+            marginTop: '0.5rem',
+            fontWeight: 300
+          }}>
+            {language === 'zh' ? 
+              <>本页由 <span style={{ color: '#e25555' }}>❤️</span> + <span style={{ fontWeight: 500 }}>Cursor</span> + <span style={{ fontWeight: 500 }}>Next.js</span> 构建</> : 
+              <>Built with <span style={{ color: '#e25555' }}>❤️</span> + <span style={{ fontWeight: 500 }}>Cursor</span> + <span style={{ fontWeight: 500 }}>Next.js</span></>
+            }
           </p>
         </div>
       </section>

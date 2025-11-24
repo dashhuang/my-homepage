@@ -211,6 +211,14 @@ export default function Gallery() {
         }}>
           © {new Date().getFullYear()} 黄 · Huang
         </p>
+        <p style={{
+          fontSize: '0.85rem',
+          color: '#999',
+          marginTop: '0.5rem',
+          fontWeight: 300
+        }}>
+          本页由 <span style={{ color: '#e25555' }}>❤️</span> + <span style={{ fontWeight: 500 }}>Cursor</span> + <span style={{ fontWeight: 500 }}>Next.js</span> 构建
+        </p>
       </footer>
 
       {/* 添加CSS样式 */}

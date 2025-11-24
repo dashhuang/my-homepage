@@ -143,8 +143,8 @@ export default function RootLayout({
         <ThemeInitializer />
         {children}
         
-        {/* 使用客户端Footer组件 */}
-        <LanguageFooter />
+        {/* 使用客户端Footer组件，它已被集成到 page.tsx 底部，这里可以移除或保留作为全局 fallback */}
+        {/* <LanguageFooter /> */}
         
         {/* 气球效果触发器 */}
         <BalloonTrigger 
