@@ -78,8 +78,8 @@ export const texts = {
       en: 'Younger Daughter'
     },
     desc: {
-      zh: 'Kelly活泼可爱，才3岁，充满好奇心。她最喜欢和姐姐妈妈玩，总是用她天真的笑容感染着全家人。',
-      en: 'Kelly is lively and adorable, only 3 years old, full of curiosity. She loves playing with her sister and mother, always infecting the whole family with her innocent smile.'
+      zh: 'Kelly活泼可爱，已经4岁了，充满好奇心。她最喜欢和姐姐妈妈玩，总是用她天真的笑容感染着全家人。',
+      en: 'Kelly is lively and adorable, already 4 years old, full of curiosity. She loves playing with her sister and mother, always infecting the whole family with her innocent smile.'
     }
   },
   gallery: {
