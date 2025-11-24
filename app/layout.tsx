@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeInitializer } from "./components/ThemeInitializer";
-import { LanguageFooter } from "./components/LanguageFooter";
 import { Analytics } from '@vercel/analytics/react';
 import BalloonTrigger from "./components/BalloonTrigger";
 
@@ -142,9 +141,6 @@ export default function RootLayout({
         
         <ThemeInitializer />
         {children}
-        
-        {/* 使用客户端Footer组件，它已被集成到 page.tsx 底部，这里可以移除或保留作为全局 fallback */}
-        {/* <LanguageFooter /> */}
         
         {/* 气球效果触发器 */}
         <BalloonTrigger 
