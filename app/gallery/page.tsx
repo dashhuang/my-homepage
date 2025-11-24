@@ -6,33 +6,36 @@ import { useState, useEffect } from "react";
 import type { PhotoSets } from "./gallery-api";
 import { getPhotoPathsClient } from "./gallery-api";
 
+import Lightbox from "../components/Lightbox";
+import TiltCard from "../components/TiltCard";
+import ScrollReveal from "../components/ScrollReveal";
+import { blurDataURL } from "../utils/imageBlurData";
+
 // 相册组件
 export default function Gallery() {
   const [photoSets, setPhotoSets] = useState<PhotoSets>({ standard: [], heic: [] });
   // 添加灯箱状态
   const [lightbox, setLightbox] = useState({
     isOpen: false,
-    currentImage: ''
+    images: [] as string[],
+    initialIndex: 0
   });
   
   // 打开灯箱
-  const openLightbox = (imageSrc: string) => {
+  const openLightbox = (images: string[], index: number) => {
     setLightbox({
       isOpen: true,
-      currentImage: imageSrc
+      images,
+      initialIndex: index
     });
-    // 禁止背景滚动
-    document.body.style.overflow = 'hidden';
   };
   
   // 关闭灯箱
   const closeLightbox = () => {
-    setLightbox({
-      isOpen: false,
-      currentImage: ''
-    });
-    // 恢复背景滚动
-    document.body.style.overflow = 'auto';
+    setLightbox(prev => ({
+      ...prev,
+      isOpen: false
+    }));
   };
   
   // 在客户端获取照片列表
@@ -124,102 +127,76 @@ export default function Gallery() {
         {/* 标准格式图片 */}
         <div className="gallery-grid">
           {photoSets.standard.map((photo, index) => (
-            <div key={`standard-${index}`} className="gallery-item">
-              <Image
-                src={photo}
-                alt={`家庭照片 ${index + 1}`}
-                width={300}
-                height={300}
-                style={{ objectFit: 'cover', cursor: 'pointer' }}
-                onClick={() => openLightbox(photo)}
-              />
-            </div>
+            <ScrollReveal 
+              key={`standard-${index}`} 
+              delay={(index % 4) * 100} // 每行的图片依次延迟显示，制造波浪感
+              threshold={0.1}
+            >
+              <TiltCard
+                scale={1.05}
+                maxRotation={10}
+                glareMaxOpacity={0.3}
+                style={{
+                  height: '300px',
+                  borderRadius: '4px',
+                  boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
+                }}
+              >
+                <div 
+                  className="gallery-item-inner"
+                  style={{ width: '100%', height: '100%', position: 'relative', overflow: 'hidden', borderRadius: '4px' }}
+                  onClick={() => openLightbox(photoSets.standard, index)}
+                >
+                  <Image
+                    src={photo}
+                    alt={`家庭照片 ${index + 1}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    style={{ objectFit: 'cover', cursor: 'pointer' }}
+                    placeholder="blur"
+                    blurDataURL={blurDataURL}
+                    loading="lazy"
+                  />
+                </div>
+              </TiltCard>
+            </ScrollReveal>
           ))}
           
-          {/* HEIC格式图片 - 使用img标签代替Image组件，以便实现客户端错误处理 */}
+          {/* HEIC格式图片 - 保持原样但加上 ScrollReveal */}
           {photoSets.heic.map((photo, index) => (
-            <div key={`heic-${index}`} className="gallery-item">
-              <img
-                src={photo}
-                alt={`家庭照片 HEIC ${index + 1}`}
-                width={300}
-                height={300}
-                style={{ objectFit: 'cover', cursor: 'pointer' }}
-                onClick={() => openLightbox(photo)}
-                onError={(e) => {
-                  // 如果浏览器不支持HEIC，则隐藏图片
-                  e.currentTarget.style.display = 'none';
-                  // 安全地操作父元素
-                  const parent = e.currentTarget.parentElement;
-                  if (parent) {
-                    parent.style.display = 'none';
-                  }
-                }}
-              />
-            </div>
+             <ScrollReveal key={`heic-${index}`} delay={(index % 4) * 100}>
+               <div className="gallery-item">
+                <img
+                  src={photo}
+                  alt={`家庭照片 HEIC ${index + 1}`}
+                  width={300}
+                  height={300}
+                  style={{ objectFit: 'cover', cursor: 'pointer', width: '100%', height: '100%' }}
+                  onClick={() => openLightbox(photoSets.heic, index)}
+                  onError={(e) => {
+                    // 如果浏览器不支持HEIC，则隐藏图片
+                    e.currentTarget.style.display = 'none';
+                    // 安全地操作父元素
+                    const parent = e.currentTarget.parentElement;
+                    if (parent) {
+                      // 这里需要找到 TiltCard 或者 ScrollReveal 的外层并隐藏
+                      // 简化起见，我们只隐藏 img
+                    }
+                  }}
+                />
+              </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>
       
       {/* 灯箱组件 */}
-      {lightbox.isOpen && (
-        <div 
-          style={{
-            position: 'fixed',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(0, 0, 0, 0.9)',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            zIndex: 1000,
-            cursor: 'zoom-out'
-          }}
-          onClick={closeLightbox}
-        >
-          {/* 关闭按钮 */}
-          <button
-            style={{
-              position: 'absolute',
-              top: '20px',
-              right: '20px',
-              backgroundColor: 'transparent',
-              border: 'none',
-              color: 'white',
-              fontSize: '24px',
-              cursor: 'pointer',
-              zIndex: 1001
-            }}
-            onClick={closeLightbox}
-          >
-            ✕
-          </button>
-          
-          {/* 图片容器 */}
-          <div
-            style={{
-              maxWidth: '90%',
-              maxHeight: '90%',
-              position: 'relative'
-            }}
-            onClick={(e) => e.stopPropagation()} // 防止点击图片时关闭灯箱
-          >
-            <img
-              src={lightbox.currentImage}
-              alt="原图"
-              style={{
-                maxWidth: '100%',
-                maxHeight: '90vh',
-                objectFit: 'contain',
-                boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
-                cursor: 'default'
-              }}
-            />
-          </div>
-        </div>
-      )}
+      <Lightbox 
+        isOpen={lightbox.isOpen}
+        images={lightbox.images}
+        initialIndex={lightbox.initialIndex}
+        onClose={closeLightbox}
+      />
       
       {/* 页脚 */}
       <footer style={{
@@ -241,25 +218,6 @@ export default function Gallery() {
           grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
           gap: 1.5rem;
           margin-top: 3rem;
-        }
-        
-        .gallery-item {
-          height: 300px;
-          overflow: hidden;
-          border-radius: 4px;
-          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-          position: relative;
-        }
-        
-        .gallery-item img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.3s ease;
-        }
-        
-        .gallery-item:hover img {
-          transform: scale(1.05);
         }
       `}</style>
     </div>

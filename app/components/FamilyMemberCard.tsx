@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { colors } from '../constants/styles';
 import { blurDataURL } from '../utils/imageBlurData';
+import TiltCard from './TiltCard';
 
 interface FamilyMemberCardProps {
   name: string;
@@ -21,17 +22,98 @@ export default function FamilyMemberCard({
 }: FamilyMemberCardProps) {
   if (layout === 'vertical') {
     return (
+      <TiltCard
+        style={{
+          flex: '1',
+          minWidth: '300px',
+        }}
+        maxRotation={5}
+        glareMaxOpacity={0.15}
+      >
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+          height: '100%'
+        }}>
+          {/* 上方照片 */}
+          <div style={{
+            backgroundColor: colors.sand,
+            minHeight: '300px',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            <Image 
+              src={imageSrc}
+              alt={name}
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              placeholder="blur"
+              blurDataURL={blurDataURL}
+            />
+          </div>
+          {/* 下方内容 */}
+          <div style={{
+            backgroundColor: colors.white,
+            padding: '3rem',
+            flex: '1'
+          }}>
+            <h3 style={{
+              fontSize: 'clamp(1.5rem, 2vw, 2rem)',
+              fontWeight: '300',
+              marginBottom: '1rem',
+              color: colors.darkText
+            }}>{name}</h3>
+            <div style={{
+              width: '30px',
+              height: '2px',
+              backgroundColor: colors.sand,
+              marginBottom: '1.5rem'
+            }}></div>
+            <p style={{
+              fontSize: '1rem',
+              lineHeight: '1.8',
+              color: colors.lightText,
+              marginBottom: '1rem'
+            }}>
+              {title}
+            </p>
+            <p style={{
+              fontSize: '1rem',
+              lineHeight: '1.8',
+              color: colors.lightText
+            }}>
+              {description}
+            </p>
+          </div>
+        </div>
+      </TiltCard>
+    );
+  }
+
+  return (
+    <TiltCard
+      style={{
+        marginBottom: '8rem',
+      }}
+      maxRotation={3}
+      glareMaxOpacity={0.1}
+      scale={1.02}
+    >
       <div style={{
-        flex: '1',
-        minWidth: '300px',
         display: 'flex',
-        flexDirection: 'column',
-        boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
+        flexDirection: layout === 'horizontal-reverse' ? 'row-reverse' : 'row',
+        flexWrap: 'wrap',
+        boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
+        height: '100%'
       }}>
-        {/* 上方照片 */}
+        {/* 照片 */}
         <div style={{
           backgroundColor: colors.sand,
-          minHeight: '300px',
+          flex: '1',
+          minWidth: '300px',
+          minHeight: '400px',
           position: 'relative',
           overflow: 'hidden'
         }}>
@@ -40,106 +122,42 @@ export default function FamilyMemberCard({
             alt={name}
             fill
             style={{ objectFit: 'cover' }}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 768px) 100vw, 50vw"
             placeholder="blur"
             blurDataURL={blurDataURL}
           />
         </div>
-        {/* 下方内容 */}
+        {/* 内容 */}
         <div style={{
           backgroundColor: colors.white,
-          padding: '3rem',
-          flex: '1'
+          flex: '1',
+          minWidth: '300px',
+          padding: '4rem',
+          position: 'relative'
         }}>
           <h3 style={{
-            fontSize: 'clamp(1.5rem, 2vw, 2rem)',
+            fontSize: 'clamp(2rem, 3vw, 2.5rem)',
             fontWeight: '300',
-            marginBottom: '1rem',
+            marginBottom: '1.5rem',
             color: colors.darkText
           }}>{name}</h3>
           <div style={{
-            width: '30px',
+            width: '50px',
             height: '2px',
             backgroundColor: colors.sand,
-            marginBottom: '1.5rem'
+            marginBottom: '2rem'
           }}></div>
-          <p style={{
-            fontSize: '1rem',
-            lineHeight: '1.8',
-            color: colors.lightText,
-            marginBottom: '1rem'
-          }}>
-            {title}
-          </p>
-          <p style={{
-            fontSize: '1rem',
-            lineHeight: '1.8',
-            color: colors.lightText
-          }}>
-            {description}
-          </p>
+          <p 
+            style={{
+              fontSize: '1.1rem',
+              lineHeight: '1.8',
+              color: colors.lightText,
+              marginBottom: '1.5rem'
+            }}
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
         </div>
       </div>
-    );
-  }
-
-  return (
-    <div style={{
-      display: 'flex',
-      flexDirection: layout === 'horizontal-reverse' ? 'row-reverse' : 'row',
-      flexWrap: 'wrap',
-      marginBottom: '8rem',
-      boxShadow: '0 10px 30px rgba(0,0,0,0.05)'
-    }}>
-      {/* 照片 */}
-      <div style={{
-        backgroundColor: colors.sand,
-        flex: '1',
-        minWidth: '300px',
-        minHeight: '400px',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        <Image 
-          src={imageSrc}
-          alt={name}
-          fill
-          style={{ objectFit: 'cover' }}
-          sizes="(max-width: 768px) 100vw, 50vw"
-          placeholder="blur"
-          blurDataURL={blurDataURL}
-        />
-      </div>
-      {/* 内容 */}
-      <div style={{
-        backgroundColor: colors.white,
-        flex: '1',
-        minWidth: '300px',
-        padding: '4rem',
-        position: 'relative'
-      }}>
-        <h3 style={{
-          fontSize: 'clamp(2rem, 3vw, 2.5rem)',
-          fontWeight: '300',
-          marginBottom: '1.5rem',
-          color: colors.darkText
-        }}>{name}</h3>
-        <div style={{
-          width: '50px',
-          height: '2px',
-          backgroundColor: colors.sand,
-          marginBottom: '2rem'
-        }}></div>
-        <p 
-          style={{
-            fontSize: '1.1rem',
-            lineHeight: '1.8',
-            color: colors.lightText,
-            marginBottom: '1.5rem'
-          }}
-          dangerouslySetInnerHTML={{ __html: description }}
-        />
-      </div>
-    </div>
+    </TiltCard>
   );
 }

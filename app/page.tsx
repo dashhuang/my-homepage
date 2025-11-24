@@ -8,6 +8,7 @@ import FamilyMemberCard from "./components/FamilyMemberCard";
 import PhotoGalleryPreview from "./components/PhotoGalleryPreview";
 import LanguageSwitcher from "./components/LanguageSwitcher";
 import Lightbox from "./components/Lightbox";
+import ScrollReveal from "./components/ScrollReveal";
 
 // 定义自定义事件类型
 interface LanguageChangeEventDetail {
@@ -18,7 +19,8 @@ export default function Home() {
   const [language, setLanguage] = useState<'zh' | 'en'>('zh');
   const [lightbox, setLightbox] = useState({
     isOpen: false,
-    currentImage: ''
+    images: [] as string[],
+    initialIndex: 0
   });
   
   // 初始化语言设置
@@ -51,19 +53,20 @@ export default function Home() {
   };
   
   // 打开灯箱
-  const openLightbox = (imageSrc: string) => {
+  const openLightbox = (images: string[], index: number) => {
     setLightbox({
       isOpen: true,
-      currentImage: imageSrc
+      images,
+      initialIndex: index
     });
   };
   
   // 关闭灯箱
   const closeLightbox = () => {
-    setLightbox({
-      isOpen: false,
-      currentImage: ''
-    });
+    setLightbox(prev => ({
+      ...prev,
+      isOpen: false
+    }));
   };
 
   return (
@@ -97,22 +100,26 @@ export default function Home() {
           }}>{texts.familyMembers[language]}</h2>
 
           {/* Dash */}
-          <FamilyMemberCard
-            name={texts.dash.name[language]}
-            title={texts.dash.title[language]}
-            description={texts.dash.desc[language]}
-            imageSrc={photos.dash}
-            layout="horizontal"
-          />
+          <ScrollReveal delay={100}>
+            <FamilyMemberCard
+              name={texts.dash.name[language]}
+              title={texts.dash.title[language]}
+              description={texts.dash.desc[language]}
+              imageSrc={photos.dash}
+              layout="horizontal"
+            />
+          </ScrollReveal>
 
           {/* Cherry */}
-          <FamilyMemberCard
-            name={texts.cherry.name[language]}
-            title={texts.cherry.title[language]}
-            description={texts.cherry.desc[language]}
-            imageSrc={photos.cherry}
-            layout="horizontal-reverse"
-          />
+          <ScrollReveal delay={100}>
+            <FamilyMemberCard
+              name={texts.cherry.name[language]}
+              title={texts.cherry.title[language]}
+              description={texts.cherry.desc[language]}
+              imageSrc={photos.cherry}
+              layout="horizontal-reverse"
+            />
+          </ScrollReveal>
 
           {/* 孩子们 - 并排展示 */}
           <div style={{
@@ -122,36 +129,44 @@ export default function Home() {
             gap: '2rem',
             marginBottom: '8rem'
           }}>
-            <FamilyMemberCard
-              name={texts.jimmy.name[language]}
-              title={texts.jimmy.title[language]}
-              description={texts.jimmy.desc[language]}
-              imageSrc={photos.jimmy}
-              layout="vertical"
-            />
+            <ScrollReveal delay={100} style={{ flex: 1, minWidth: '300px' }}>
+              <FamilyMemberCard
+                name={texts.jimmy.name[language]}
+                title={texts.jimmy.title[language]}
+                description={texts.jimmy.desc[language]}
+                imageSrc={photos.jimmy}
+                layout="vertical"
+              />
+            </ScrollReveal>
             
-            <FamilyMemberCard
-              name={texts.tinny.name[language]}
-              title={texts.tinny.title[language]}
-              description={texts.tinny.desc[language]}
-              imageSrc={photos.tinny}
-              layout="vertical"
-            />
+            <ScrollReveal delay={300} style={{ flex: 1, minWidth: '300px' }}>
+              <FamilyMemberCard
+                name={texts.tinny.name[language]}
+                title={texts.tinny.title[language]}
+                description={texts.tinny.desc[language]}
+                imageSrc={photos.tinny}
+                layout="vertical"
+              />
+            </ScrollReveal>
             
-            <FamilyMemberCard
-              name={texts.kelly.name[language]}
-              title={texts.kelly.title[language]}
-              description={texts.kelly.desc[language]}
-              imageSrc={photos.kelly}
-              layout="vertical"
-            />
+            <ScrollReveal delay={500} style={{ flex: 1, minWidth: '300px' }}>
+              <FamilyMemberCard
+                name={texts.kelly.name[language]}
+                title={texts.kelly.title[language]}
+                description={texts.kelly.desc[language]}
+                imageSrc={photos.kelly}
+                layout="vertical"
+              />
+            </ScrollReveal>
           </div>
 
           {/* 相册预览 */}
-          <PhotoGalleryPreview 
-            language={language} 
-            onImageClick={openLightbox}
-          />
+          <ScrollReveal delay={200}>
+            <PhotoGalleryPreview 
+              language={language} 
+              onImageClick={openLightbox}
+            />
+          </ScrollReveal>
         </div>
       </section>
 
@@ -178,7 +193,8 @@ export default function Home() {
       {/* 灯箱组件 */}
       <Lightbox 
         isOpen={lightbox.isOpen}
-        imageSrc={lightbox.currentImage}
+        images={lightbox.images}
+        initialIndex={lightbox.initialIndex}
         onClose={closeLightbox}
       />
     </div>
