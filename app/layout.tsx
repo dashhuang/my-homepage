@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeInitializer } from "./components/ThemeInitializer";
 import { Analytics } from '@vercel/analytics/react';
 import BalloonTrigger from "./components/BalloonTrigger";
+import CustomCursor from "./components/CustomCursor";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -151,6 +152,9 @@ export default function RootLayout({
         
         {/* Vercel Analytics 统计 */}
         <Analytics />
+        
+        {/* 自定义光标 (仅桌面端显示) */}
+        <CustomCursor />
       </body>
     </html>
   );

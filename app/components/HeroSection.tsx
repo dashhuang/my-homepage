@@ -5,6 +5,7 @@ import { colors, photos } from '../constants/styles';
 import { texts } from '../constants/texts';
 import { blurDataURL } from '../utils/imageBlurData';
 import TiltCard from './TiltCard';
+import TextScramble from './TextScramble';
 
 interface HeroSectionProps {
   language: 'zh' | 'en';
@@ -122,9 +123,10 @@ export default function HeroSection({ language }: HeroSectionProps) {
                       fontStyle: 'italic',
                       letterSpacing: '0.08em',
                       textDecoration: 'none',
-                      border: 'none'
+                      border: 'none',
+                      minHeight: '1.2em' // 防止高度坍塌
                     }}>
-                      Huang
+                      <TextScramble text="Huang" speed={1.5} delay={500} />
                     </div>
                   </div>
                 </div>

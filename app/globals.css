@@ -289,6 +289,12 @@ p {
   animation: scaleBreath 20s ease-in-out infinite alternate;
 }
 
+/* Text Scramble 动画的乱码样式 */
+.dud {
+  color: rgba(0, 0, 0, 0.3);
+  opacity: 0.7;
+}
+
 /* 确保动画在减少动画偏好的设置下被禁用 */
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up,
