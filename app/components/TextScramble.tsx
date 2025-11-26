@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface TextScrambleProps {
   text: string;
@@ -19,8 +19,6 @@ export default function TextScramble({
   speed = 2,
   delay = 0 
 }: TextScrambleProps) {
-  const [displayText, setDisplayText] = useState(text);
-  const [isAnimating, setIsAnimating] = useState(false);
   const elementRef = useRef<HTMLDivElement>(null);
   const originalText = useRef(text);
 
@@ -50,7 +48,8 @@ export default function TextScramble({
       let complete = 0;
       
       for (let i = 0, n = queue.length; i < n; i++) {
-        let { from, to, start, end, char } = queue[i];
+        const { from, to, start, end } = queue[i];
+        let { char } = queue[i];
         
         if (frame >= end) {
           complete++;
@@ -71,7 +70,7 @@ export default function TextScramble({
       }
       
       if (complete === queue.length) {
-        setIsAnimating(false);
+        // 动画完成
       } else {
         frame += speed;
         animationId = requestAnimationFrame(update);
@@ -79,7 +78,6 @@ export default function TextScramble({
     };
 
     const startAnimation = () => {
-      setIsAnimating(true);
       initQueue();
       frame = 0;
       update();
@@ -112,5 +110,6 @@ export default function TextScramble({
     />
   );
 }
+
 
 

@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client';
 
 import { useState, useEffect, useCallback } from 'react';
@@ -35,6 +36,14 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
     setLoading(true);
   }, [currentIndex]);
 
+  const showPrev = useCallback(() => {
+    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1));
+  }, [images.length]);
+
+  const showNext = useCallback(() => {
+    setCurrentIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
+  }, [images.length]);
+
   // 处理键盘事件
   useEffect(() => {
     if (!isOpen) return;
@@ -47,15 +56,7 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, currentIndex]); // eslint-disable-line react-hooks/exhaustive-deps
-
-  const showPrev = useCallback(() => {
-    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1));
-  }, [images.length]);
-
-  const showNext = useCallback(() => {
-    setCurrentIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
-  }, [images.length]);
+  }, [isOpen, onClose, showPrev, showNext]);
 
   if (!isOpen) return null;
 
@@ -115,10 +116,11 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
           className={`lightbox-image ${loading ? 'loading' : 'loaded'}`}
           onLoad={() => setLoading(false)}
         />
-        
-        <div className="lightbox-counter">
-          {currentIndex + 1} / {images.length}
-        </div>
+      </div>
+
+      {/* 计数器 - 移到外部固定到底部 */}
+      <div className="lightbox-counter">
+        {currentIndex + 1} / {images.length}
       </div>
 
       <style jsx>{`
@@ -233,12 +235,14 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
 
         .lightbox-counter {
           position: absolute;
-          bottom: -40px;
+          bottom: 30px; /* 固定在屏幕底部 */
           left: 50%;
           transform: translateX(-50%);
           color: rgba(255,255,255,0.7);
           font-size: 14px;
           letter-spacing: 1px;
+          z-index: 10003; /* 确保在最上层 */
+          text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
 
         .lightbox-loader {
