@@ -13,7 +13,7 @@
 
 ## 技术栈
 
-- Next.js 15.2.1 (使用 App Router)
+- Next.js 15.5.9 (使用 App Router)
 - React 同构渲染
 - CSS-in-JS 样式（内联样式对象）
 - 响应式设计（使用clamp()等现代CSS特性）
@@ -118,6 +118,10 @@ scripts/
 
 ## 最近更新
 
+### 2025年12月 - 依赖安全升级
+- 升级 `glob` 到 10.5.0，修复 GitHub 安全告警（CVE-2025-64756）
+- 升级 Next.js 到 15.5.9，修复 `npm audit` 报告的关键级安全漏洞
+
 ### 2024年10月 - 重大性能和结构优化
 - **代码重构与模块化**：
   - 将900+行的page.tsx拆分成多个可复用组件
@@ -199,7 +203,7 @@ scripts/
 
 ### Next.js配置更新
 
-Next.js 15.2.1版本中，一些配置选项已移动或重命名，会导致警告。解决方案：
+Next.js 15.5.9版本中，一些配置选项已移动或重命名，会导致警告。解决方案：
 
 1. **移动配置选项**：
    - 将`experimental.outputFileTracingExcludes`移到根级别的`outputFileTracingExcludes`
