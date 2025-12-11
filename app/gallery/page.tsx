@@ -166,6 +166,8 @@ export default function Gallery() {
           {photoSets.heic.map((photo, index) => (
              <ScrollReveal key={`heic-${index}`} delay={(index % 4) * 100}>
                <div className="gallery-item">
+                {/* HEIC 在部分浏览器不被 Next/Image 支持或需要特殊错误处理，因此保留原生 img；此处关闭对应 ESLint 性能提示 */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={photo}
                   alt={`家庭照片 HEIC ${index + 1}`}

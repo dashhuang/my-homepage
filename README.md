@@ -78,6 +78,35 @@ npm run dev
 
 在浏览器中打开 [http://localhost:3000](http://localhost:3000) 查看结果。
 
+## 代码质量与常用检查
+
+- **代码规范检查（ESLint）**：
+```bash
+npm run lint
+```
+
+- **类型检查（TypeScript）**：
+```bash
+npx tsc -p tsconfig.json --noEmit
+```
+
+- **生产构建验证（Next.js）**：
+```bash
+npx next build
+```
+
+> 说明：相册页为了兼容 HEIC 的错误处理，局部保留原生 `<img>`，并在代码里加了注释关闭对应的 ESLint 性能提示。
+>
+> 备注：
+> - Next.js 15.x 会提示 `next lint` 未来在 Next.js 16 移除；升级大版本前，建议迁移到 ESLint CLI（按提示运行 codemod）。
+> - 如果看到 Browserslist 数据过旧提示，可定期运行 `npx update-browserslist-db@latest`。
+
+## 优化文档
+
+- `OPTIMIZATION_SUMMARY.md`：优化总结（结构、SEO、性能、可访问性）
+- `优化建议清单.md`：可继续推进的优化清单与优先级
+- `优化完成报告.md`：阶段性优化完成报告与指标对比
+
 ## 文件结构
 
 ```
@@ -110,7 +139,7 @@ app/
         └── route.ts                 # 照片路由API
 
 public/
-└── family-photos/                    # 家庭照片目录（172张照片）
+└── family-photos/                    # 家庭照片目录（约214张照片，另含少量HEIC）
 
 scripts/
 └── generate-photo-list.js            # 自动生成照片列表脚本

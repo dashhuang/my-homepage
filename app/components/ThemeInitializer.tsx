@@ -14,10 +14,14 @@ export function ThemeInitializer() {
       // 根据本地存储或用户偏好设置初始主题
       if (savedTheme === 'dark' || (savedTheme === null && isDarkMode)) {
         document.documentElement.classList.add('dark');
-        console.log("主题初始化器：应用暗色主题");
+        if (process.env.NODE_ENV === 'development') {
+          console.log("主题初始化器：应用暗色主题");
+        }
       } else {
         document.documentElement.classList.remove('dark');
-        console.log("主题初始化器：应用亮色主题");
+        if (process.env.NODE_ENV === 'development') {
+          console.log("主题初始化器：应用亮色主题");
+        }
       }
       
       // 监听系统主题变化
@@ -26,7 +30,9 @@ export function ThemeInitializer() {
         // 只有在用户没有手动设置主题的情况下跟随系统
         if (!localStorage.getItem('theme')) {
           document.documentElement.classList.toggle('dark', e.matches);
-          console.log("系统主题变化：", e.matches ? "暗色" : "亮色");
+          if (process.env.NODE_ENV === 'development') {
+            console.log("系统主题变化：", e.matches ? "暗色" : "亮色");
+          }
         }
       };
       
