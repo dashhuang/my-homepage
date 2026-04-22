@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeInitializer } from "./components/ThemeInitializer";
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import BalloonTrigger from "./components/BalloonTrigger";
 import CustomCursor from "./components/CustomCursor";
 
@@ -152,6 +153,9 @@ export default function RootLayout({
         
         {/* Vercel Analytics 统计 */}
         <Analytics />
+        
+        {/* Vercel Speed Insights */}
+        <SpeedInsights />
         
         {/* 自定义光标 (仅桌面端显示) */}
         <CustomCursor />
