@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
 interface LightboxProps {
   isOpen: boolean;
@@ -14,20 +14,23 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [loading, setLoading] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false);
+  const previousBodyOverflow = useRef('');
 
   // 当 isOpen 或 initialIndex 变化时更新内部状态
   useEffect(() => {
-    if (isOpen) {
-      setCurrentIndex(initialIndex);
-      setLoading(true);
-      document.body.style.overflow = 'hidden';
-      setIsAnimating(true);
-    } else {
-      document.body.style.overflow = 'auto';
+    if (!isOpen) {
       setIsAnimating(false);
+      return;
     }
+
+    previousBodyOverflow.current = document.body.style.overflow;
+    setCurrentIndex(initialIndex);
+    setLoading(true);
+    document.body.style.overflow = 'hidden';
+    setIsAnimating(true);
+
     return () => {
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = previousBodyOverflow.current;
     };
   }, [isOpen, initialIndex]);
 
@@ -37,12 +40,20 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
   }, [currentIndex]);
 
   const showPrev = useCallback(() => {
+    if (images.length === 0) return;
     setCurrentIndex((prev) => (prev > 0 ? prev - 1 : images.length - 1));
   }, [images.length]);
 
   const showNext = useCallback(() => {
+    if (images.length === 0) return;
     setCurrentIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
   }, [images.length]);
+
+  useEffect(() => {
+    if (images.length > 0 && currentIndex >= images.length) {
+      setCurrentIndex(images.length - 1);
+    }
+  }, [currentIndex, images.length]);
 
   // 处理键盘事件
   useEffect(() => {
@@ -58,7 +69,7 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose, showPrev, showNext]);
 
-  if (!isOpen) return null;
+  if (!isOpen || images.length === 0) return null;
 
   const currentImage = images[currentIndex];
 
@@ -66,21 +77,26 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
     <div 
       className={`lightbox-overlay ${isAnimating ? 'open' : ''}`}
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label="图片查看器"
     >
       {/* 背景遮罩 */}
       <div className="lightbox-backdrop" />
 
       {/* 关闭按钮 */}
       <button
+        type="button"
         aria-label="关闭"
         className="lightbox-close"
-        onClick={onClose}
+        onClick={(e) => { e.stopPropagation(); onClose(); }}
       >
         ✕
       </button>
 
       {/* 上一张按钮 */}
       <button
+        type="button"
         aria-label="上一张"
         className="lightbox-nav prev"
         onClick={(e) => { e.stopPropagation(); showPrev(); }}
@@ -90,6 +106,7 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
 
       {/* 下一张按钮 */}
       <button
+        type="button"
         aria-label="下一张"
         className="lightbox-nav next"
         onClick={(e) => { e.stopPropagation(); showNext(); }}
@@ -177,6 +194,19 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
         .lightbox-image.loaded {
           opacity: 1;
           transform: scale(1);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .lightbox-overlay,
+          .lightbox-image,
+          .lightbox-close,
+          .lightbox-nav {
+            transition: none;
+          }
+
+          .spinner {
+            animation: none;
+          }
         }
 
         .lightbox-close {

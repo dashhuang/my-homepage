@@ -27,15 +27,11 @@ export default function Home() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const savedLanguage = localStorage.getItem('language') as 'zh' | 'en' | null;
-      if (savedLanguage) {
-        setLanguage(savedLanguage);
-      } else {
-        const browserLang = navigator.language.toLowerCase();
-        const preferredLang = browserLang.startsWith('zh') ? 'zh' : 'en';
-        setLanguage(preferredLang);
-        localStorage.setItem('language', preferredLang);
-        document.documentElement.lang = preferredLang === 'zh' ? 'zh-CN' : 'en';
-      }
+      const browserLang = navigator.language.toLowerCase();
+      const preferredLang = savedLanguage || (browserLang.startsWith('zh') ? 'zh' : 'en');
+      setLanguage(preferredLang);
+      localStorage.setItem('language', preferredLang);
+      document.documentElement.lang = preferredLang === 'zh' ? 'zh-CN' : 'en';
     }
   }, []);
   

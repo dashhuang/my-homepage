@@ -13,7 +13,7 @@
 
 ## 技术栈
 
-- Next.js 15.5.9 (使用 App Router)
+- Next.js 15.5.18 (使用 App Router)
 - React 同构渲染
 - CSS-in-JS 样式（内联样式对象）
 - 响应式设计（使用clamp()等现代CSS特性）
@@ -38,29 +38,30 @@
 ### 添加新照片
 
 1. 将新照片添加到 `public/family-photos/` 目录
-2. 运行以下命令更新照片列表：
+2. 运行以下命令更新照片元数据和优化图：
    ```bash
    npm run update-photos
    ```
 3. 提交更改：
    ```bash
-   git add public/photos-data.json app/api/photos/route.ts public/family-photos/[新照片]
+   git add public/photos-data.json public/family-photos-optimized public/family-photos/[新照片]
    git commit -m "添加新照片"
    git push
    ```
 
 ### 自动化
 
-- 构建过程中会自动更新照片列表（通过 `npm run build` 命令）
-- 可以单独运行 `npm run update-photos` 来更新照片列表
-- 照片列表在 `app/api/photos/route.ts` 和 `public/photos-data.json` 中维护
+- `npm run update-photos` 会扫描原图目录，生成 `public/photos-data.json`，并输出 WebP 预览图和大图到 `public/family-photos-optimized/`
+- `npm run check-photos` 只做校验，不写文件
+- `npm run build` 会先执行照片校验，避免构建过程偷偷改脏工作区
+- 照片元数据只维护在 `public/photos-data.json` 中
 
 ### 技术实现
 
 - 照片列表由 `scripts/generate-photo-list.js` 脚本生成
-- 相册页面通过静态JSON文件获取照片列表并显示所有照片
-- 使用静态JSON文件完全避免了API路由调用，确保在Vercel上更稳定地工作
-- 保留了API路由作为备份，但前端默认使用静态JSON文件
+- 相册页在服务端导入静态 JSON，首屏直接带照片数据
+- 首页预览使用同一份静态 JSON
+- HEIC 原图会在本地通过 `sips` fallback 转为 WebP 优化图，浏览器端不直接加载 HEIC
 
 ## 运行项目
 
@@ -87,19 +88,17 @@ npm run lint
 
 - **类型检查（TypeScript）**：
 ```bash
-npx tsc -p tsconfig.json --noEmit
+npm run typecheck
 ```
 
 - **生产构建验证（Next.js）**：
 ```bash
-npx next build
+npm run build
 ```
 
-> 说明：相册页为了兼容 HEIC 的错误处理，局部保留原生 `<img>`，并在代码里加了注释关闭对应的 ESLint 性能提示。
->
 > 备注：
-> - Next.js 15.x 会提示 `next lint` 未来在 Next.js 16 移除；升级大版本前，建议迁移到 ESLint CLI（按提示运行 codemod）。
 > - 如果看到 Browserslist 数据过旧提示，可定期运行 `npx update-browserslist-db@latest`。
+> - 本机如果使用 Node 23，部分 ESLint 子依赖会提示 engine 范围不包含 Node 23；Node 20/22/24 均在声明支持范围内。
 
 ## 优化文档
 
@@ -132,24 +131,32 @@ app/
 ├── utils/                            # 工具函数
 │   └── imageBlurData.ts             # 图片模糊占位符
 ├── gallery/                          # 相册功能
-│   ├── page.tsx                     # 相册页面
-│   └── gallery-api.ts               # 照片API
-└── api/
-    └── photos/
-        └── route.ts                 # 照片路由API
+│   ├── page.tsx                     # 相册服务端入口
+│   ├── GalleryClient.tsx            # 相册客户端交互
+│   └── gallery-api.ts               # 照片类型和客户端读取工具
 
 public/
-└── family-photos/                    # 家庭照片目录（约214张照片，另含少量HEIC）
+├── family-photos/                    # 原始家庭照片目录（约214张照片，另含少量HEIC）
+├── family-photos-optimized/          # 生成的WebP预览图和大图
+└── photos-data.json                  # 单一照片元数据源
 
 scripts/
-└── generate-photo-list.js            # 自动生成照片列表脚本
+└── generate-photo-list.js            # 生成/校验照片元数据和优化图
 ```
 
 ## 最近更新
 
+### 2026年5月 - 照片管线、安全和构建维护
+- 将照片数据源收敛为 `public/photos-data.json`
+- 移除重复的 `/api/photos` 路由
+- 为 214 张原图生成 WebP 预览图和大图，HEIC 也转为浏览器可用的 WebP
+- `npm run build` 改为先校验照片元数据，避免构建时产生未提交改动
+- 迁移 `next lint` 到 ESLint CLI，并重新启用 `react-hooks/exhaustive-deps`
+- 升级依赖并通过 `npm audit`
+
 ### 2025年12月 - 依赖安全升级
 - 升级 `glob` 到 10.5.0，修复 GitHub 安全告警（CVE-2025-64756）
-- 升级 Next.js 到 15.5.9，修复 `npm audit` 报告的关键级安全漏洞
+- 升级 Next.js 到 15.5.x，修复 `npm audit` 报告的关键级安全漏洞
 
 ### 2024年10月 - 重大性能和结构优化
 - **代码重构与模块化**：
@@ -218,87 +225,23 @@ scripts/
 
 ## 部署问题解决方案
 
-### ESLint错误修复
+### 照片校验失败
 
-在部署到Vercel时可能遇到ESLint检查错误，特别是关于TypeScript的`no-explicit-any`规则。解决方案：
+如果 `npm run build` 在 `check-photos` 阶段失败，说明原图目录、`photos-data.json` 或优化图不同步。运行：
 
-1. **定义正确的类型**：
-   - 为自定义事件创建明确的接口定义而不是使用`any`类型
-   - 示例：`interface LanguageChangeEventDetail { language: 'zh' | 'en'; }`
+```bash
+npm run update-photos
+```
 
-2. **类型转换**：
-   - 使用`as EventListener`替代`as any`进行类型转换
-   - 确保事件触发和监听使用相同的类型定义
+然后提交更新后的 `public/photos-data.json` 和 `public/family-photos-optimized/`。
 
-### Next.js配置更新
+### 安全依赖
 
-Next.js 15.5.9版本中，一些配置选项已移动或重命名，会导致警告。解决方案：
+当前依赖通过 `npm audit --audit-level=moderate`。`package.json` 里使用 `overrides.postcss` 将 Next 内部的 PostCSS 锁到安全版本；升级 Next 时需要重新确认这个 override 是否还必要。
 
-1. **移动配置选项**：
-   - 将`experimental.outputFileTracingExcludes`移到根级别的`outputFileTracingExcludes`
-   - 移除`outputFileTracing: true`，现在这是默认行为
+### HEIC处理
 
-2. **添加缺失的配置**：
-   - 使用`serverComponentsExternalPackages: ['fs', 'path']`外部化模块
-   - 确保viewport配置从metadata中分离出来
-
-### 图片优化警告
-
-项目中可能出现关于使用`<img>`标签而非Next.js的`<Image>`组件的警告。这些警告不是错误，而是性能建议。
-
-某些情况下，保留`<img>`标签是有意为之的：
-1. **HEIC格式图片**：需要特殊的错误处理，在浏览器不支持时隐藏
-2. **灯箱（Lightbox）组件**：需要精确控制图片显示行为和样式
-3. **动态加载的内容**：某些情况下，Image组件对动态内容支持有限
-
-### React Hooks警告
-
-React Hook的依赖项问题可能引起几种类型的警告和错误：
-
-1. **缺失依赖警告**：
-   ```javascript
-   useEffect(() => {
-     // 使用了外部变量，但没有在依赖数组中列出
-   }, []); // 警告：React Hook useEffect has a missing dependency
-   ```
-
-2. **无限循环错误**：
-   ```javascript
-   useEffect(() => {
-     // 设置状态
-     setRandomPhotos(photos.gallery);
-     // 如果photos.gallery在依赖数组中，可能导致无限循环
-   }, [photos.gallery]); // 可能导致：Maximum update depth exceeded
-   ```
-
-解决方案：
-- 对于缺失依赖，添加所有必要的依赖到数组中
-- 对于可能引起循环的依赖，使用useRef、useMemo或空依赖数组
-- 有时组件只需要在挂载时执行一次，使用`[]`依赖数组是合适的
-
-特别是对于数据获取等操作，通常只需在组件挂载时执行一次，不需要添加可能引起循环的依赖。
-
-### Vercel部署大小限制
-
-Vercel对Serverless函数有300MB的大小限制，而我们的API函数因为包含了所有照片文件，达到了762MB。解决方案：
-
-1. **使用静态照片列表**：
-   - 在`app/api/photos/route.ts`中预定义照片路径列表
-   - 不再动态读取文件系统
-
-2. **优化Next.js配置**：
-   - 在`next.config.js`中添加`output: 'standalone'`
-   - 设置`serverComponentsExternalPackages: ['fs', 'path']`
-
-3. **改进API调用**：
-   - 创建专门的客户端照片获取函数(`getPhotoPathsClient`)
-   - 更新相册和首页组件使用新的API方法
-
-### 照片管理
-
-如需添加新照片：
-1. 将照片放入`public/family-photos/`目录
-2. 在`app/api/photos/route.ts`中的`PHOTOS`对象中添加照片路径
+本地 `npm run update-photos` 会优先使用 `sharp` 处理图片；HEIC 如果遇到 libheif 支持不足，会在 macOS 上 fallback 到 `sips` 先转 JPEG，再输出 WebP。部署构建只做校验，不需要在 Vercel 环境转换 HEIC。
 
 ## 部署
 

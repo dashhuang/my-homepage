@@ -1,178 +1,1932 @@
 {
   "standard": [
-    "/family-photos/09A5D818-AA9A-43D2-B177-CA1901A0CBDB.jpg",
-    "/family-photos/0D72608E-AD55-4B4D-BC32-02AED1EFE052.jpg",
-    "/family-photos/2U2A5457.jpg",
-    "/family-photos/2U2A5495.jpg",
-    "/family-photos/2U2A5498.jpg",
-    "/family-photos/2U2A5506.jpg",
-    "/family-photos/2U2A5569.jpg",
-    "/family-photos/37545F19-BEE8-4006-97C1-CB8F3E0C5A5C.jpg",
-    "/family-photos/388ED0BA-052B-4C4A-AB71-A413B6150BB2.jpg",
-    "/family-photos/3C54DBB6-EC95-4239-A462-A70CB1676335.jpg",
-    "/family-photos/4CD2D181-F5D5-4444-A7B0-C5DA358A0E5B.jpg",
-    "/family-photos/719BD143-ADD6-4F94-8CFC-BAF43235608A.jpg",
-    "/family-photos/76BDC83B-BE39-40AF-A727-2A80C6E3AD80.jpg",
-    "/family-photos/7BEC102F-E2B6-4F11-BADA-3A0A82A713DF.jpg",
-    "/family-photos/ADE7BEC9-AEAE-4840-BB9D-C7CEB5BC6380.jpg",
-    "/family-photos/BDBE8C4A-2729-42A6-8B44-CAAF8A8C0FC6.jpg",
-    "/family-photos/C2AC0575-C298-4FC7-A17B-69D69448A6E3.jpg",
-    "/family-photos/CW__4659.jpg",
-    "/family-photos/CW__4778.jpg",
-    "/family-photos/CW__4837.jpg",
-    "/family-photos/CW__4860.jpg",
-    "/family-photos/CW__4874.jpg",
-    "/family-photos/CW__4882.jpg",
-    "/family-photos/CW__4934.jpg",
-    "/family-photos/CW__4982.jpg",
-    "/family-photos/DSC00024.jpeg",
-    "/family-photos/DSC00130.jpeg",
-    "/family-photos/DSC00147.jpeg",
-    "/family-photos/DSC00162.jpeg",
-    "/family-photos/DSC00187.JPG",
-    "/family-photos/DSC00213.jpeg",
-    "/family-photos/DSC00278.jpeg",
-    "/family-photos/DSC00284.jpeg",
-    "/family-photos/DSC00463.JPG",
-    "/family-photos/DSC00568.JPG",
-    "/family-photos/DSC01132.jpeg",
-    "/family-photos/DSC01328.jpeg",
-    "/family-photos/DSC01422.jpeg",
-    "/family-photos/DSC01657.jpeg",
-    "/family-photos/DSC02025.JPG",
-    "/family-photos/DSC02544.JPG",
-    "/family-photos/DSC02602.JPG",
-    "/family-photos/DSC02747.JPG",
-    "/family-photos/DSC03442.JPG",
-    "/family-photos/DSC03872.JPG",
-    "/family-photos/DSC04526.JPG",
-    "/family-photos/DSC05100.JPG",
-    "/family-photos/DSC05199.JPG",
-    "/family-photos/DSC05548.JPG",
-    "/family-photos/DSC06090.JPG",
-    "/family-photos/DSC06571.JPG",
-    "/family-photos/DSC06705.JPG",
-    "/family-photos/DSC07706.JPG",
-    "/family-photos/DSC08184.JPG",
-    "/family-photos/DSC08873.JPG",
-    "/family-photos/DSC09046.JPG",
-    "/family-photos/DSC09604.jpeg",
-    "/family-photos/DSC09769.jpeg",
-    "/family-photos/DSC09846.jpeg",
-    "/family-photos/DSC09994.jpeg",
-    "/family-photos/E34F462E-7983-4621-9CAB-BD30834047B6.jpg",
-    "/family-photos/F2BBE752-80B2-4521-BD44-91ABB198FFC4.jpg",
-    "/family-photos/F5F44A70-B20D-411B-AB8A-6B2255B8BB1E.jpg",
-    "/family-photos/HUJT00P1S4549-HUJT781407006.jpeg",
-    "/family-photos/IMG_0063.jpeg",
-    "/family-photos/IMG_0111.jpeg",
-    "/family-photos/IMG_0115.jpeg",
-    "/family-photos/IMG_0130.jpeg",
-    "/family-photos/IMG_0156.jpeg",
-    "/family-photos/IMG_0245.JPG",
-    "/family-photos/IMG_0246.JPG",
-    "/family-photos/IMG_0248.JPG",
-    "/family-photos/IMG_0276.jpeg",
-    "/family-photos/IMG_0384.jpeg",
-    "/family-photos/IMG_0464.jpeg",
-    "/family-photos/IMG_0508.jpeg",
-    "/family-photos/IMG_0540.jpeg",
-    "/family-photos/IMG_0677.jpeg",
-    "/family-photos/IMG_0712.jpeg",
-    "/family-photos/IMG_0724.jpeg",
-    "/family-photos/IMG_0740.jpeg",
-    "/family-photos/IMG_0746.jpeg",
-    "/family-photos/IMG_0783.jpeg",
-    "/family-photos/IMG_0875.jpeg",
-    "/family-photos/IMG_0896.jpeg",
-    "/family-photos/IMG_0919.jpeg",
-    "/family-photos/IMG_1004.jpeg",
-    "/family-photos/IMG_1037.jpeg",
-    "/family-photos/IMG_1050.jpeg",
-    "/family-photos/IMG_1073.JPG",
-    "/family-photos/IMG_1114.jpeg",
-    "/family-photos/IMG_1148.jpeg",
-    "/family-photos/IMG_1168.jpeg",
-    "/family-photos/IMG_1206.jpeg",
-    "/family-photos/IMG_1212.jpeg",
-    "/family-photos/IMG_1252.jpeg",
-    "/family-photos/IMG_1318.jpeg",
-    "/family-photos/IMG_1435.jpeg",
-    "/family-photos/IMG_1483.jpeg",
-    "/family-photos/IMG_1542.jpeg",
-    "/family-photos/IMG_1570.jpeg",
-    "/family-photos/IMG_1628.jpeg",
-    "/family-photos/IMG_1742.jpeg",
-    "/family-photos/IMG_1780.jpeg",
-    "/family-photos/IMG_1809.jpeg",
-    "/family-photos/IMG_1854.jpeg",
-    "/family-photos/IMG_1859.jpeg",
-    "/family-photos/IMG_1903.jpeg",
-    "/family-photos/IMG_2153.jpeg",
-    "/family-photos/IMG_2240.jpeg",
-    "/family-photos/IMG_2271.jpeg",
-    "/family-photos/IMG_2356.jpeg",
-    "/family-photos/IMG_2373.jpeg",
-    "/family-photos/IMG_2407.jpeg",
-    "/family-photos/IMG_2433.jpeg",
-    "/family-photos/IMG_2753.jpeg",
-    "/family-photos/IMG_2828.jpeg",
-    "/family-photos/IMG_3221.jpeg",
-    "/family-photos/IMG_3364.jpeg",
-    "/family-photos/IMG_3571.JPG",
-    "/family-photos/IMG_3657.jpeg",
-    "/family-photos/IMG_3779.jpeg",
-    "/family-photos/IMG_3782.jpeg",
-    "/family-photos/IMG_3784.jpeg",
-    "/family-photos/IMG_3826.jpeg",
-    "/family-photos/IMG_3848.jpeg",
-    "/family-photos/IMG_3855.jpeg",
-    "/family-photos/IMG_3865.jpeg",
-    "/family-photos/IMG_3875.jpeg",
-    "/family-photos/IMG_3908.jpeg",
-    "/family-photos/IMG_3924.jpeg",
-    "/family-photos/IMG_3950.jpeg",
-    "/family-photos/IMG_4004.jpeg",
-    "/family-photos/IMG_4015.JPG",
-    "/family-photos/IMG_4031.jpeg",
-    "/family-photos/IMG_4046.JPG",
-    "/family-photos/IMG_4230.jpeg",
-    "/family-photos/IMG_4360.jpeg",
-    "/family-photos/IMG_4384.JPG",
-    "/family-photos/IMG_4452.jpeg",
-    "/family-photos/IMG_4470.jpeg",
-    "/family-photos/IMG_4473.jpeg",
-    "/family-photos/IMG_4488.jpeg",
-    "/family-photos/IMG_4880.jpeg",
-    "/family-photos/IMG_4994.jpeg",
-    "/family-photos/IMG_5043.jpeg",
-    "/family-photos/IMG_5096.jpeg",
-    "/family-photos/IMG_5325.jpeg",
-    "/family-photos/IMG_5395.jpeg",
-    "/family-photos/IMG_5428.jpeg",
-    "/family-photos/IMG_5648.jpeg",
-    "/family-photos/IMG_5710.jpeg",
-    "/family-photos/IMG_6314.jpeg",
-    "/family-photos/IMG_6933.jpeg",
-    "/family-photos/IMG_7604.jpeg",
-    "/family-photos/IMG_7858.jpeg",
-    "/family-photos/IMG_7869.jpeg",
-    "/family-photos/IMG_8789.jpeg",
-    "/family-photos/IMG_9071.jpeg",
-    "/family-photos/IMG_9092.jpeg",
-    "/family-photos/IMG_9139.jpeg",
-    "/family-photos/IMG_9147.jpeg",
-    "/family-photos/IMG_9155.jpeg",
-    "/family-photos/IMG_9200.jpeg",
-    "/family-photos/IMG_9387.jpeg",
-    "/family-photos/IMG_9479.jpeg",
-    "/family-photos/IMG_9664.jpeg",
-    "/family-photos/L1030065.JPG",
-    "/family-photos/eaa9182d5c5bdaf8d5a6a4cfef8a8dc9.jpg",
-    "/family-photos/jimmy.jpg"
+    {
+      "id": "0D72608E-AD55-4B4D-BC32-02AED1EFE052",
+      "originalSrc": "/family-photos/0D72608E-AD55-4B4D-BC32-02AED1EFE052.jpg",
+      "previewSrc": "/family-photos-optimized/preview/0D72608E-AD55-4B4D-BC32-02AED1EFE052.webp",
+      "fullSrc": "/family-photos-optimized/full/0D72608E-AD55-4B4D-BC32-02AED1EFE052.webp",
+      "width": 1872,
+      "height": 1872,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "2U2A5457",
+      "originalSrc": "/family-photos/2U2A5457.jpg",
+      "previewSrc": "/family-photos-optimized/preview/2U2A5457.webp",
+      "fullSrc": "/family-photos-optimized/full/2U2A5457.webp",
+      "width": 4480,
+      "height": 6720,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "2U2A5495",
+      "originalSrc": "/family-photos/2U2A5495.jpg",
+      "previewSrc": "/family-photos-optimized/preview/2U2A5495.webp",
+      "fullSrc": "/family-photos-optimized/full/2U2A5495.webp",
+      "width": 6720,
+      "height": 4480,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "2U2A5498",
+      "originalSrc": "/family-photos/2U2A5498.jpg",
+      "previewSrc": "/family-photos-optimized/preview/2U2A5498.webp",
+      "fullSrc": "/family-photos-optimized/full/2U2A5498.webp",
+      "width": 6720,
+      "height": 4480,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "2U2A5506",
+      "originalSrc": "/family-photos/2U2A5506.jpg",
+      "previewSrc": "/family-photos-optimized/preview/2U2A5506.webp",
+      "fullSrc": "/family-photos-optimized/full/2U2A5506.webp",
+      "width": 6720,
+      "height": 4480,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "2U2A5569",
+      "originalSrc": "/family-photos/2U2A5569.jpg",
+      "previewSrc": "/family-photos-optimized/preview/2U2A5569.webp",
+      "fullSrc": "/family-photos-optimized/full/2U2A5569.webp",
+      "width": 4480,
+      "height": 6720,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "3C54DBB6-EC95-4239-A462-A70CB1676335",
+      "originalSrc": "/family-photos/3C54DBB6-EC95-4239-A462-A70CB1676335.jpg",
+      "previewSrc": "/family-photos-optimized/preview/3C54DBB6-EC95-4239-A462-A70CB1676335.webp",
+      "fullSrc": "/family-photos-optimized/full/3C54DBB6-EC95-4239-A462-A70CB1676335.webp",
+      "width": 2069,
+      "height": 2069,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "4CD2D181-F5D5-4444-A7B0-C5DA358A0E5B",
+      "originalSrc": "/family-photos/4CD2D181-F5D5-4444-A7B0-C5DA358A0E5B.jpg",
+      "previewSrc": "/family-photos-optimized/preview/4CD2D181-F5D5-4444-A7B0-C5DA358A0E5B.webp",
+      "fullSrc": "/family-photos-optimized/full/4CD2D181-F5D5-4444-A7B0-C5DA358A0E5B.webp",
+      "width": 1440,
+      "height": 1800,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "7BEC102F-E2B6-4F11-BADA-3A0A82A713DF",
+      "originalSrc": "/family-photos/7BEC102F-E2B6-4F11-BADA-3A0A82A713DF.jpg",
+      "previewSrc": "/family-photos-optimized/preview/7BEC102F-E2B6-4F11-BADA-3A0A82A713DF.webp",
+      "fullSrc": "/family-photos-optimized/full/7BEC102F-E2B6-4F11-BADA-3A0A82A713DF.webp",
+      "width": 1440,
+      "height": 1080,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "09A5D818-AA9A-43D2-B177-CA1901A0CBDB",
+      "originalSrc": "/family-photos/09A5D818-AA9A-43D2-B177-CA1901A0CBDB.jpg",
+      "previewSrc": "/family-photos-optimized/preview/09A5D818-AA9A-43D2-B177-CA1901A0CBDB.webp",
+      "fullSrc": "/family-photos-optimized/full/09A5D818-AA9A-43D2-B177-CA1901A0CBDB.webp",
+      "width": 1440,
+      "height": 1080,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "76BDC83B-BE39-40AF-A727-2A80C6E3AD80",
+      "originalSrc": "/family-photos/76BDC83B-BE39-40AF-A727-2A80C6E3AD80.jpg",
+      "previewSrc": "/family-photos-optimized/preview/76BDC83B-BE39-40AF-A727-2A80C6E3AD80.webp",
+      "fullSrc": "/family-photos-optimized/full/76BDC83B-BE39-40AF-A727-2A80C6E3AD80.webp",
+      "width": 1284,
+      "height": 1284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "388ED0BA-052B-4C4A-AB71-A413B6150BB2",
+      "originalSrc": "/family-photos/388ED0BA-052B-4C4A-AB71-A413B6150BB2.jpg",
+      "previewSrc": "/family-photos-optimized/preview/388ED0BA-052B-4C4A-AB71-A413B6150BB2.webp",
+      "fullSrc": "/family-photos-optimized/full/388ED0BA-052B-4C4A-AB71-A413B6150BB2.webp",
+      "width": 3024,
+      "height": 3780,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "719BD143-ADD6-4F94-8CFC-BAF43235608A",
+      "originalSrc": "/family-photos/719BD143-ADD6-4F94-8CFC-BAF43235608A.jpg",
+      "previewSrc": "/family-photos-optimized/preview/719BD143-ADD6-4F94-8CFC-BAF43235608A.webp",
+      "fullSrc": "/family-photos-optimized/full/719BD143-ADD6-4F94-8CFC-BAF43235608A.webp",
+      "width": 3944,
+      "height": 3944,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "37545F19-BEE8-4006-97C1-CB8F3E0C5A5C",
+      "originalSrc": "/family-photos/37545F19-BEE8-4006-97C1-CB8F3E0C5A5C.jpg",
+      "previewSrc": "/family-photos-optimized/preview/37545F19-BEE8-4006-97C1-CB8F3E0C5A5C.webp",
+      "fullSrc": "/family-photos-optimized/full/37545F19-BEE8-4006-97C1-CB8F3E0C5A5C.webp",
+      "width": 3024,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "ADE7BEC9-AEAE-4840-BB9D-C7CEB5BC6380",
+      "originalSrc": "/family-photos/ADE7BEC9-AEAE-4840-BB9D-C7CEB5BC6380.jpg",
+      "previewSrc": "/family-photos-optimized/preview/ADE7BEC9-AEAE-4840-BB9D-C7CEB5BC6380.webp",
+      "fullSrc": "/family-photos-optimized/full/ADE7BEC9-AEAE-4840-BB9D-C7CEB5BC6380.webp",
+      "width": 1921,
+      "height": 2401,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "BDBE8C4A-2729-42A6-8B44-CAAF8A8C0FC6",
+      "originalSrc": "/family-photos/BDBE8C4A-2729-42A6-8B44-CAAF8A8C0FC6.jpg",
+      "previewSrc": "/family-photos-optimized/preview/BDBE8C4A-2729-42A6-8B44-CAAF8A8C0FC6.webp",
+      "fullSrc": "/family-photos-optimized/full/BDBE8C4A-2729-42A6-8B44-CAAF8A8C0FC6.webp",
+      "width": 1440,
+      "height": 1440,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "C2AC0575-C298-4FC7-A17B-69D69448A6E3",
+      "originalSrc": "/family-photos/C2AC0575-C298-4FC7-A17B-69D69448A6E3.jpg",
+      "previewSrc": "/family-photos-optimized/preview/C2AC0575-C298-4FC7-A17B-69D69448A6E3.webp",
+      "fullSrc": "/family-photos-optimized/full/C2AC0575-C298-4FC7-A17B-69D69448A6E3.webp",
+      "width": 1440,
+      "height": 1796,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "CW__4659",
+      "originalSrc": "/family-photos/CW__4659.jpg",
+      "previewSrc": "/family-photos-optimized/preview/CW__4659.webp",
+      "fullSrc": "/family-photos-optimized/full/CW__4659.webp",
+      "width": 4480,
+      "height": 6720,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "CW__4778",
+      "originalSrc": "/family-photos/CW__4778.jpg",
+      "previewSrc": "/family-photos-optimized/preview/CW__4778.webp",
+      "fullSrc": "/family-photos-optimized/full/CW__4778.webp",
+      "width": 5183,
+      "height": 4209,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "CW__4837",
+      "originalSrc": "/family-photos/CW__4837.jpg",
+      "previewSrc": "/family-photos-optimized/preview/CW__4837.webp",
+      "fullSrc": "/family-photos-optimized/full/CW__4837.webp",
+      "width": 4480,
+      "height": 6720,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "CW__4860",
+      "originalSrc": "/family-photos/CW__4860.jpg",
+      "previewSrc": "/family-photos-optimized/preview/CW__4860.webp",
+      "fullSrc": "/family-photos-optimized/full/CW__4860.webp",
+      "width": 4480,
+      "height": 6720,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "CW__4874",
+      "originalSrc": "/family-photos/CW__4874.jpg",
+      "previewSrc": "/family-photos-optimized/preview/CW__4874.webp",
+      "fullSrc": "/family-photos-optimized/full/CW__4874.webp",
+      "width": 5290,
+      "height": 4124,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "CW__4882",
+      "originalSrc": "/family-photos/CW__4882.jpg",
+      "previewSrc": "/family-photos-optimized/preview/CW__4882.webp",
+      "fullSrc": "/family-photos-optimized/full/CW__4882.webp",
+      "width": 4480,
+      "height": 6720,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "CW__4934",
+      "originalSrc": "/family-photos/CW__4934.jpg",
+      "previewSrc": "/family-photos-optimized/preview/CW__4934.webp",
+      "fullSrc": "/family-photos-optimized/full/CW__4934.webp",
+      "width": 4480,
+      "height": 6720,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "CW__4982",
+      "originalSrc": "/family-photos/CW__4982.jpg",
+      "previewSrc": "/family-photos-optimized/preview/CW__4982.webp",
+      "fullSrc": "/family-photos-optimized/full/CW__4982.webp",
+      "width": 5221,
+      "height": 4480,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC00024",
+      "originalSrc": "/family-photos/DSC00024.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/DSC00024.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC00024.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC00130",
+      "originalSrc": "/family-photos/DSC00130.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/DSC00130.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC00130.webp",
+      "width": 1616,
+      "height": 1080,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC00147",
+      "originalSrc": "/family-photos/DSC00147.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/DSC00147.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC00147.webp",
+      "width": 1616,
+      "height": 1080,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC00162",
+      "originalSrc": "/family-photos/DSC00162.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/DSC00162.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC00162.webp",
+      "width": 1616,
+      "height": 1080,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC00187",
+      "originalSrc": "/family-photos/DSC00187.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC00187.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC00187.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC00213",
+      "originalSrc": "/family-photos/DSC00213.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/DSC00213.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC00213.webp",
+      "width": 1616,
+      "height": 1080,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC00278",
+      "originalSrc": "/family-photos/DSC00278.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/DSC00278.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC00278.webp",
+      "width": 1616,
+      "height": 1080,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC00284",
+      "originalSrc": "/family-photos/DSC00284.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/DSC00284.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC00284.webp",
+      "width": 1616,
+      "height": 1080,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC00463",
+      "originalSrc": "/family-photos/DSC00463.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC00463.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC00463.webp",
+      "width": 5760,
+      "height": 8640,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC00568",
+      "originalSrc": "/family-photos/DSC00568.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC00568.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC00568.webp",
+      "width": 5760,
+      "height": 8640,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC01132",
+      "originalSrc": "/family-photos/DSC01132.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/DSC01132.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC01132.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC01328",
+      "originalSrc": "/family-photos/DSC01328.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/DSC01328.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC01328.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC01422",
+      "originalSrc": "/family-photos/DSC01422.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/DSC01422.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC01422.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC01657",
+      "originalSrc": "/family-photos/DSC01657.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/DSC01657.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC01657.webp",
+      "width": 5760,
+      "height": 8640,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC02025",
+      "originalSrc": "/family-photos/DSC02025.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC02025.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC02025.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC02544",
+      "originalSrc": "/family-photos/DSC02544.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC02544.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC02544.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC02602",
+      "originalSrc": "/family-photos/DSC02602.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC02602.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC02602.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC02747",
+      "originalSrc": "/family-photos/DSC02747.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC02747.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC02747.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC03442",
+      "originalSrc": "/family-photos/DSC03442.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC03442.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC03442.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC03872",
+      "originalSrc": "/family-photos/DSC03872.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC03872.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC03872.webp",
+      "width": 4192,
+      "height": 2795,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC04526",
+      "originalSrc": "/family-photos/DSC04526.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC04526.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC04526.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC05100",
+      "originalSrc": "/family-photos/DSC05100.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC05100.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC05100.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC05199",
+      "originalSrc": "/family-photos/DSC05199.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC05199.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC05199.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC05548",
+      "originalSrc": "/family-photos/DSC05548.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC05548.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC05548.webp",
+      "width": 3897,
+      "height": 2598,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC06090",
+      "originalSrc": "/family-photos/DSC06090.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC06090.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC06090.webp",
+      "width": 7857,
+      "height": 5238,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC06571",
+      "originalSrc": "/family-photos/DSC06571.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC06571.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC06571.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC06705",
+      "originalSrc": "/family-photos/DSC06705.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC06705.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC06705.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC07706",
+      "originalSrc": "/family-photos/DSC07706.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC07706.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC07706.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC08184",
+      "originalSrc": "/family-photos/DSC08184.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC08184.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC08184.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC08873",
+      "originalSrc": "/family-photos/DSC08873.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC08873.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC08873.webp",
+      "width": 6450,
+      "height": 4300,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC09046",
+      "originalSrc": "/family-photos/DSC09046.JPG",
+      "previewSrc": "/family-photos-optimized/preview/DSC09046.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC09046.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC09604",
+      "originalSrc": "/family-photos/DSC09604.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/DSC09604.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC09604.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC09769",
+      "originalSrc": "/family-photos/DSC09769.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/DSC09769.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC09769.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC09846",
+      "originalSrc": "/family-photos/DSC09846.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/DSC09846.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC09846.webp",
+      "width": 8640,
+      "height": 5760,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "DSC09994",
+      "originalSrc": "/family-photos/DSC09994.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/DSC09994.webp",
+      "fullSrc": "/family-photos-optimized/full/DSC09994.webp",
+      "width": 6516,
+      "height": 4344,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "E34F462E-7983-4621-9CAB-BD30834047B6",
+      "originalSrc": "/family-photos/E34F462E-7983-4621-9CAB-BD30834047B6.jpg",
+      "previewSrc": "/family-photos-optimized/preview/E34F462E-7983-4621-9CAB-BD30834047B6.webp",
+      "fullSrc": "/family-photos-optimized/full/E34F462E-7983-4621-9CAB-BD30834047B6.webp",
+      "width": 1440,
+      "height": 1080,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "eaa9182d5c5bdaf8d5a6a4cfef8a8dc9",
+      "originalSrc": "/family-photos/eaa9182d5c5bdaf8d5a6a4cfef8a8dc9.jpg",
+      "previewSrc": "/family-photos-optimized/preview/eaa9182d5c5bdaf8d5a6a4cfef8a8dc9.webp",
+      "fullSrc": "/family-photos-optimized/full/eaa9182d5c5bdaf8d5a6a4cfef8a8dc9.webp",
+      "width": 3144,
+      "height": 4192,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "F2BBE752-80B2-4521-BD44-91ABB198FFC4",
+      "originalSrc": "/family-photos/F2BBE752-80B2-4521-BD44-91ABB198FFC4.jpg",
+      "previewSrc": "/family-photos-optimized/preview/F2BBE752-80B2-4521-BD44-91ABB198FFC4.webp",
+      "fullSrc": "/family-photos-optimized/full/F2BBE752-80B2-4521-BD44-91ABB198FFC4.webp",
+      "width": 2698,
+      "height": 2698,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "F5F44A70-B20D-411B-AB8A-6B2255B8BB1E",
+      "originalSrc": "/family-photos/F5F44A70-B20D-411B-AB8A-6B2255B8BB1E.jpg",
+      "previewSrc": "/family-photos-optimized/preview/F5F44A70-B20D-411B-AB8A-6B2255B8BB1E.webp",
+      "fullSrc": "/family-photos-optimized/full/F5F44A70-B20D-411B-AB8A-6B2255B8BB1E.webp",
+      "width": 3295,
+      "height": 3295,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "HUJT00P1S4549-HUJT781407006",
+      "originalSrc": "/family-photos/HUJT00P1S4549-HUJT781407006.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/HUJT00P1S4549-HUJT781407006.webp",
+      "fullSrc": "/family-photos-optimized/full/HUJT00P1S4549-HUJT781407006.webp",
+      "width": 3927,
+      "height": 2945,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0056",
+      "originalSrc": "/family-photos/IMG_0056.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0056.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0056.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0063",
+      "originalSrc": "/family-photos/IMG_0063.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0063.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0063.webp",
+      "width": 2268,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0074",
+      "originalSrc": "/family-photos/IMG_0074.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0074.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0074.webp",
+      "width": 2890,
+      "height": 3854,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0097",
+      "originalSrc": "/family-photos/IMG_0097.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0097.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0097.webp",
+      "width": 3338,
+      "height": 4450,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0111",
+      "originalSrc": "/family-photos/IMG_0111.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0111.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0111.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0115",
+      "originalSrc": "/family-photos/IMG_0115.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0115.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0115.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0130",
+      "originalSrc": "/family-photos/IMG_0130.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0130.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0130.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0149",
+      "originalSrc": "/family-photos/IMG_0149.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0149.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0149.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0156",
+      "originalSrc": "/family-photos/IMG_0156.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0156.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0156.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0245",
+      "originalSrc": "/family-photos/IMG_0245.JPG",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0245.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0245.webp",
+      "width": 2475,
+      "height": 1856,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0246",
+      "originalSrc": "/family-photos/IMG_0246.JPG",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0246.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0246.webp",
+      "width": 2475,
+      "height": 1856,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0248",
+      "originalSrc": "/family-photos/IMG_0248.JPG",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0248.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0248.webp",
+      "width": 2475,
+      "height": 1856,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0276",
+      "originalSrc": "/family-photos/IMG_0276.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0276.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0276.webp",
+      "width": 3113,
+      "height": 4151,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0315",
+      "originalSrc": "/family-photos/IMG_0315.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0315.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0315.webp",
+      "width": 4386,
+      "height": 3290,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0349",
+      "originalSrc": "/family-photos/IMG_0349.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0349.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0349.webp",
+      "width": 4284,
+      "height": 5712,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0384",
+      "originalSrc": "/family-photos/IMG_0384.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0384.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0384.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0449",
+      "originalSrc": "/family-photos/IMG_0449.JPG",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0449.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0449.webp",
+      "width": 1800,
+      "height": 2400,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0464",
+      "originalSrc": "/family-photos/IMG_0464.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0464.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0464.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0508",
+      "originalSrc": "/family-photos/IMG_0508.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0508.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0508.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0540",
+      "originalSrc": "/family-photos/IMG_0540.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0540.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0540.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0630",
+      "originalSrc": "/family-photos/IMG_0630.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0630.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0630.webp",
+      "width": 3024,
+      "height": 4032,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0677",
+      "originalSrc": "/family-photos/IMG_0677.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0677.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0677.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0712",
+      "originalSrc": "/family-photos/IMG_0712.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0712.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0712.webp",
+      "width": 3024,
+      "height": 4032,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0724",
+      "originalSrc": "/family-photos/IMG_0724.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0724.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0724.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0740",
+      "originalSrc": "/family-photos/IMG_0740.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0740.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0740.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0746",
+      "originalSrc": "/family-photos/IMG_0746.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0746.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0746.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0767",
+      "originalSrc": "/family-photos/IMG_0767.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0767.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0767.webp",
+      "width": 5707,
+      "height": 3210,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0783",
+      "originalSrc": "/family-photos/IMG_0783.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0783.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0783.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0843",
+      "originalSrc": "/family-photos/IMG_0843.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0843.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0843.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0866",
+      "originalSrc": "/family-photos/IMG_0866.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0866.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0866.webp",
+      "width": 3835,
+      "height": 2876,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0875",
+      "originalSrc": "/family-photos/IMG_0875.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0875.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0875.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0896",
+      "originalSrc": "/family-photos/IMG_0896.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0896.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0896.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0918",
+      "originalSrc": "/family-photos/IMG_0918.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0918.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0918.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0919",
+      "originalSrc": "/family-photos/IMG_0919.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0919.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0919.webp",
+      "width": 4284,
+      "height": 5712,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0924",
+      "originalSrc": "/family-photos/IMG_0924.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0924.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0924.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_0963",
+      "originalSrc": "/family-photos/IMG_0963.JPG",
+      "previewSrc": "/family-photos-optimized/preview/IMG_0963.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_0963.webp",
+      "width": 1800,
+      "height": 2400,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1003",
+      "originalSrc": "/family-photos/IMG_1003.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1003.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1003.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1004",
+      "originalSrc": "/family-photos/IMG_1004.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1004.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1004.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1037",
+      "originalSrc": "/family-photos/IMG_1037.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1037.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1037.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1050",
+      "originalSrc": "/family-photos/IMG_1050.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1050.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1050.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1073",
+      "originalSrc": "/family-photos/IMG_1073.JPG",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1073.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1073.webp",
+      "width": 3840,
+      "height": 2160,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1100",
+      "originalSrc": "/family-photos/IMG_1100.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1100.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1100.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1114",
+      "originalSrc": "/family-photos/IMG_1114.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1114.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1114.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1116",
+      "originalSrc": "/family-photos/IMG_1116.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1116.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1116.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1148",
+      "originalSrc": "/family-photos/IMG_1148.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1148.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1148.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1168",
+      "originalSrc": "/family-photos/IMG_1168.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1168.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1168.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1173",
+      "originalSrc": "/family-photos/IMG_1173.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1173.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1173.webp",
+      "width": 4284,
+      "height": 5712,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1206",
+      "originalSrc": "/family-photos/IMG_1206.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1206.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1206.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1212",
+      "originalSrc": "/family-photos/IMG_1212.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1212.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1212.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1219",
+      "originalSrc": "/family-photos/IMG_1219.JPG",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1219.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1219.webp",
+      "width": 4600,
+      "height": 3450,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1228",
+      "originalSrc": "/family-photos/IMG_1228.JPG",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1228.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1228.webp",
+      "width": 4600,
+      "height": 3450,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1252",
+      "originalSrc": "/family-photos/IMG_1252.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1252.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1252.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1255",
+      "originalSrc": "/family-photos/IMG_1255.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1255.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1255.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1318",
+      "originalSrc": "/family-photos/IMG_1318.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1318.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1318.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1386",
+      "originalSrc": "/family-photos/IMG_1386.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1386.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1386.webp",
+      "width": 4284,
+      "height": 5712,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1435",
+      "originalSrc": "/family-photos/IMG_1435.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1435.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1435.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1483",
+      "originalSrc": "/family-photos/IMG_1483.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1483.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1483.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1542",
+      "originalSrc": "/family-photos/IMG_1542.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1542.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1542.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1551",
+      "originalSrc": "/family-photos/IMG_1551.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1551.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1551.webp",
+      "width": 4284,
+      "height": 5712,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1570",
+      "originalSrc": "/family-photos/IMG_1570.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1570.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1570.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1621",
+      "originalSrc": "/family-photos/IMG_1621.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1621.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1621.webp",
+      "width": 3624,
+      "height": 2718,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1628",
+      "originalSrc": "/family-photos/IMG_1628.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1628.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1628.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1742",
+      "originalSrc": "/family-photos/IMG_1742.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1742.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1742.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1769",
+      "originalSrc": "/family-photos/IMG_1769.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1769.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1769.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1780",
+      "originalSrc": "/family-photos/IMG_1780.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1780.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1780.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1809",
+      "originalSrc": "/family-photos/IMG_1809.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1809.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1809.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1854",
+      "originalSrc": "/family-photos/IMG_1854.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1854.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1854.webp",
+      "width": 4284,
+      "height": 5712,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1859",
+      "originalSrc": "/family-photos/IMG_1859.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1859.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1859.webp",
+      "width": 4284,
+      "height": 5712,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1903",
+      "originalSrc": "/family-photos/IMG_1903.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1903.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1903.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_1994",
+      "originalSrc": "/family-photos/IMG_1994.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_1994.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_1994.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_2153",
+      "originalSrc": "/family-photos/IMG_2153.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_2153.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_2153.webp",
+      "width": 3334,
+      "height": 4446,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_2240",
+      "originalSrc": "/family-photos/IMG_2240.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_2240.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_2240.webp",
+      "width": 3926,
+      "height": 5234,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_2271",
+      "originalSrc": "/family-photos/IMG_2271.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_2271.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_2271.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_2356",
+      "originalSrc": "/family-photos/IMG_2356.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_2356.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_2356.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_2373",
+      "originalSrc": "/family-photos/IMG_2373.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_2373.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_2373.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_2407",
+      "originalSrc": "/family-photos/IMG_2407.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_2407.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_2407.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_2433",
+      "originalSrc": "/family-photos/IMG_2433.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_2433.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_2433.webp",
+      "width": 3585,
+      "height": 2689,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_2753",
+      "originalSrc": "/family-photos/IMG_2753.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_2753.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_2753.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_2828",
+      "originalSrc": "/family-photos/IMG_2828.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_2828.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_2828.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_3221",
+      "originalSrc": "/family-photos/IMG_3221.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_3221.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_3221.webp",
+      "width": 3088,
+      "height": 2316,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_3364",
+      "originalSrc": "/family-photos/IMG_3364.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_3364.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_3364.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_3571",
+      "originalSrc": "/family-photos/IMG_3571.JPG",
+      "previewSrc": "/family-photos-optimized/preview/IMG_3571.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_3571.webp",
+      "width": 2400,
+      "height": 1800,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_3657",
+      "originalSrc": "/family-photos/IMG_3657.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_3657.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_3657.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_3779",
+      "originalSrc": "/family-photos/IMG_3779.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_3779.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_3779.webp",
+      "width": 3024,
+      "height": 4032,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_3782",
+      "originalSrc": "/family-photos/IMG_3782.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_3782.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_3782.webp",
+      "width": 3024,
+      "height": 4032,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_3784",
+      "originalSrc": "/family-photos/IMG_3784.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_3784.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_3784.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_3826",
+      "originalSrc": "/family-photos/IMG_3826.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_3826.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_3826.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_3848",
+      "originalSrc": "/family-photos/IMG_3848.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_3848.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_3848.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_3855",
+      "originalSrc": "/family-photos/IMG_3855.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_3855.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_3855.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_3865",
+      "originalSrc": "/family-photos/IMG_3865.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_3865.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_3865.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_3875",
+      "originalSrc": "/family-photos/IMG_3875.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_3875.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_3875.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_3908",
+      "originalSrc": "/family-photos/IMG_3908.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_3908.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_3908.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_3924",
+      "originalSrc": "/family-photos/IMG_3924.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_3924.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_3924.webp",
+      "width": 4284,
+      "height": 5712,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_3950",
+      "originalSrc": "/family-photos/IMG_3950.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_3950.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_3950.webp",
+      "width": 4462,
+      "height": 3346,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_4004",
+      "originalSrc": "/family-photos/IMG_4004.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_4004.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_4004.webp",
+      "width": 4944,
+      "height": 3708,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_4015",
+      "originalSrc": "/family-photos/IMG_4015.JPG",
+      "previewSrc": "/family-photos-optimized/preview/IMG_4015.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_4015.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_4031",
+      "originalSrc": "/family-photos/IMG_4031.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_4031.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_4031.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_4046",
+      "originalSrc": "/family-photos/IMG_4046.JPG",
+      "previewSrc": "/family-photos-optimized/preview/IMG_4046.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_4046.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_4230",
+      "originalSrc": "/family-photos/IMG_4230.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_4230.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_4230.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_4360",
+      "originalSrc": "/family-photos/IMG_4360.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_4360.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_4360.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_4384",
+      "originalSrc": "/family-photos/IMG_4384.JPG",
+      "previewSrc": "/family-photos-optimized/preview/IMG_4384.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_4384.webp",
+      "width": 1800,
+      "height": 2400,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_4452",
+      "originalSrc": "/family-photos/IMG_4452.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_4452.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_4452.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_4470",
+      "originalSrc": "/family-photos/IMG_4470.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_4470.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_4470.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_4473",
+      "originalSrc": "/family-photos/IMG_4473.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_4473.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_4473.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_4476",
+      "originalSrc": "/family-photos/IMG_4476.JPG",
+      "previewSrc": "/family-photos-optimized/preview/IMG_4476.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_4476.webp",
+      "width": 3024,
+      "height": 4032,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_4488",
+      "originalSrc": "/family-photos/IMG_4488.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_4488.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_4488.webp",
+      "width": 3240,
+      "height": 2430,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_4549",
+      "originalSrc": "/family-photos/IMG_4549.JPG",
+      "previewSrc": "/family-photos-optimized/preview/IMG_4549.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_4549.webp",
+      "width": 3024,
+      "height": 4032,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_4880",
+      "originalSrc": "/family-photos/IMG_4880.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_4880.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_4880.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_4994",
+      "originalSrc": "/family-photos/IMG_4994.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_4994.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_4994.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_5043",
+      "originalSrc": "/family-photos/IMG_5043.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_5043.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_5043.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_5096",
+      "originalSrc": "/family-photos/IMG_5096.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_5096.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_5096.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_5325",
+      "originalSrc": "/family-photos/IMG_5325.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_5325.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_5325.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_5395",
+      "originalSrc": "/family-photos/IMG_5395.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_5395.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_5395.webp",
+      "width": 2316,
+      "height": 3088,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_5428",
+      "originalSrc": "/family-photos/IMG_5428.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_5428.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_5428.webp",
+      "width": 4092,
+      "height": 3069,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_5648",
+      "originalSrc": "/family-photos/IMG_5648.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_5648.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_5648.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_5710",
+      "originalSrc": "/family-photos/IMG_5710.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_5710.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_5710.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_6314",
+      "originalSrc": "/family-photos/IMG_6314.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_6314.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_6314.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_6933",
+      "originalSrc": "/family-photos/IMG_6933.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_6933.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_6933.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_7604",
+      "originalSrc": "/family-photos/IMG_7604.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_7604.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_7604.webp",
+      "width": 4702,
+      "height": 3526,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_7858",
+      "originalSrc": "/family-photos/IMG_7858.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_7858.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_7858.webp",
+      "width": 4032,
+      "height": 3024,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_7869",
+      "originalSrc": "/family-photos/IMG_7869.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_7869.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_7869.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_8789",
+      "originalSrc": "/family-photos/IMG_8789.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_8789.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_8789.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_9071",
+      "originalSrc": "/family-photos/IMG_9071.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_9071.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_9071.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_9092",
+      "originalSrc": "/family-photos/IMG_9092.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_9092.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_9092.webp",
+      "width": 5031,
+      "height": 3773,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_9139",
+      "originalSrc": "/family-photos/IMG_9139.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_9139.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_9139.webp",
+      "width": 2057,
+      "height": 2743,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_9147",
+      "originalSrc": "/family-photos/IMG_9147.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_9147.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_9147.webp",
+      "width": 3256,
+      "height": 4341,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_9155",
+      "originalSrc": "/family-photos/IMG_9155.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_9155.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_9155.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_9200",
+      "originalSrc": "/family-photos/IMG_9200.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_9200.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_9200.webp",
+      "width": 3024,
+      "height": 4032,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_9387",
+      "originalSrc": "/family-photos/IMG_9387.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_9387.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_9387.webp",
+      "width": 4284,
+      "height": 5712,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_9479",
+      "originalSrc": "/family-photos/IMG_9479.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_9479.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_9479.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "IMG_9664",
+      "originalSrc": "/family-photos/IMG_9664.jpeg",
+      "previewSrc": "/family-photos-optimized/preview/IMG_9664.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_9664.webp",
+      "width": 4284,
+      "height": 5712,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "jimmy",
+      "originalSrc": "/family-photos/jimmy.jpg",
+      "previewSrc": "/family-photos-optimized/preview/jimmy.webp",
+      "fullSrc": "/family-photos-optimized/full/jimmy.webp",
+      "width": 3305,
+      "height": 2751,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "L1000017",
+      "originalSrc": "/family-photos/L1000017.JPG",
+      "previewSrc": "/family-photos-optimized/preview/L1000017.webp",
+      "fullSrc": "/family-photos-optimized/full/L1000017.webp",
+      "width": 9520,
+      "height": 6336,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "L1000021",
+      "originalSrc": "/family-photos/L1000021.JPG",
+      "previewSrc": "/family-photos-optimized/preview/L1000021.webp",
+      "fullSrc": "/family-photos-optimized/full/L1000021.webp",
+      "width": 9520,
+      "height": 6336,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "L1000026",
+      "originalSrc": "/family-photos/L1000026.JPG",
+      "previewSrc": "/family-photos-optimized/preview/L1000026.webp",
+      "fullSrc": "/family-photos-optimized/full/L1000026.webp",
+      "width": 9520,
+      "height": 6336,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "L1000091",
+      "originalSrc": "/family-photos/L1000091.JPG",
+      "previewSrc": "/family-photos-optimized/preview/L1000091.webp",
+      "fullSrc": "/family-photos-optimized/full/L1000091.webp",
+      "width": 9520,
+      "height": 6336,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "L1000109",
+      "originalSrc": "/family-photos/L1000109.JPG",
+      "previewSrc": "/family-photos-optimized/preview/L1000109.webp",
+      "fullSrc": "/family-photos-optimized/full/L1000109.webp",
+      "width": 9520,
+      "height": 6336,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "L1000112",
+      "originalSrc": "/family-photos/L1000112.JPG",
+      "previewSrc": "/family-photos-optimized/preview/L1000112.webp",
+      "fullSrc": "/family-photos-optimized/full/L1000112.webp",
+      "width": 9520,
+      "height": 6336,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "L1000114",
+      "originalSrc": "/family-photos/L1000114.JPG",
+      "previewSrc": "/family-photos-optimized/preview/L1000114.webp",
+      "fullSrc": "/family-photos-optimized/full/L1000114.webp",
+      "width": 9520,
+      "height": 6336,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "L1000125",
+      "originalSrc": "/family-photos/L1000125.JPG",
+      "previewSrc": "/family-photos-optimized/preview/L1000125.webp",
+      "fullSrc": "/family-photos-optimized/full/L1000125.webp",
+      "width": 9520,
+      "height": 6336,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "L1000162",
+      "originalSrc": "/family-photos/L1000162.JPG",
+      "previewSrc": "/family-photos-optimized/preview/L1000162.webp",
+      "fullSrc": "/family-photos-optimized/full/L1000162.webp",
+      "width": 9520,
+      "height": 6336,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "L1000534",
+      "originalSrc": "/family-photos/L1000534.JPG",
+      "previewSrc": "/family-photos-optimized/preview/L1000534.webp",
+      "fullSrc": "/family-photos-optimized/full/L1000534.webp",
+      "width": 6336,
+      "height": 9520,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "L1000579",
+      "originalSrc": "/family-photos/L1000579.JPG",
+      "previewSrc": "/family-photos-optimized/preview/L1000579.webp",
+      "fullSrc": "/family-photos-optimized/full/L1000579.webp",
+      "width": 9520,
+      "height": 6336,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "L1000614",
+      "originalSrc": "/family-photos/L1000614.JPG",
+      "previewSrc": "/family-photos-optimized/preview/L1000614.webp",
+      "fullSrc": "/family-photos-optimized/full/L1000614.webp",
+      "width": 9520,
+      "height": 6336,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "L1000621",
+      "originalSrc": "/family-photos/L1000621.JPG",
+      "previewSrc": "/family-photos-optimized/preview/L1000621.webp",
+      "fullSrc": "/family-photos-optimized/full/L1000621.webp",
+      "width": 9520,
+      "height": 6336,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "L1000626",
+      "originalSrc": "/family-photos/L1000626.JPG",
+      "previewSrc": "/family-photos-optimized/preview/L1000626.webp",
+      "fullSrc": "/family-photos-optimized/full/L1000626.webp",
+      "width": 6336,
+      "height": 9520,
+      "sourceFormat": "jpeg"
+    },
+    {
+      "id": "L1030065",
+      "originalSrc": "/family-photos/L1030065.JPG",
+      "previewSrc": "/family-photos-optimized/preview/L1030065.webp",
+      "fullSrc": "/family-photos-optimized/full/L1030065.webp",
+      "width": 4272,
+      "height": 2848,
+      "sourceFormat": "jpeg"
+    }
   ],
   "heic": [
-    "/family-photos/IMG_7055.HEIC",
-    "/family-photos/IMG_7078.HEIC"
+    {
+      "id": "IMG_7055",
+      "originalSrc": "/family-photos/IMG_7055.HEIC",
+      "previewSrc": "/family-photos-optimized/preview/IMG_7055.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_7055.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "heif"
+    },
+    {
+      "id": "IMG_7078",
+      "originalSrc": "/family-photos/IMG_7078.HEIC",
+      "previewSrc": "/family-photos-optimized/preview/IMG_7078.webp",
+      "fullSrc": "/family-photos-optimized/full/IMG_7078.webp",
+      "width": 5712,
+      "height": 4284,
+      "sourceFormat": "heif"
+    }
   ]
 }

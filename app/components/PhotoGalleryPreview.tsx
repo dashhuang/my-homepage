@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import { colors } from '../constants/styles';
 import { texts } from '../constants/texts';
-import { getPhotoPathsClient } from '../gallery/gallery-api';
+import { allPhotos, getPhotoPathsClient, type PhotoAsset } from '../gallery/gallery-api';
 import { blurDataURL } from '../utils/imageBlurData';
 import TiltCard from './TiltCard';
 
@@ -15,9 +15,9 @@ interface PhotoGalleryPreviewProps {
 }
 
 // 从照片集合中随机选择特定数量的照片
-const getRandomPhotos = (photos: string[], count: number) => {
+const getRandomPhotos = (photos: PhotoAsset[], count: number) => {
   const photosCopy = [...photos];
-  const result = [];
+  const result: PhotoAsset[] = [];
   
   for (let i = 0; i < count && photosCopy.length > 0; i++) {
     const randomIndex = Math.floor(Math.random() * photosCopy.length);
@@ -29,7 +29,7 @@ const getRandomPhotos = (photos: string[], count: number) => {
 };
 
 export default function PhotoGalleryPreview({ language, onImageClick }: PhotoGalleryPreviewProps) {
-  const [randomPhotos, setRandomPhotos] = useState<string[]>([]);
+  const [randomPhotos, setRandomPhotos] = useState<PhotoAsset[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const photosLoadedRef = useRef(false);
   
@@ -40,8 +40,7 @@ export default function PhotoGalleryPreview({ language, onImageClick }: PhotoGal
       setIsLoading(true);
       try {
         const data = await getPhotoPathsClient();
-        const allPhotos = [...data.standard, ...data.heic];
-        const selected = getRandomPhotos(allPhotos, 8);
+        const selected = getRandomPhotos(allPhotos(data), 8);
         setRandomPhotos(selected);
         photosLoadedRef.current = true;
       } catch (error) {
@@ -93,12 +92,12 @@ export default function PhotoGalleryPreview({ language, onImageClick }: PhotoGal
                 borderRadius: '4px',
               }}
             >
-              <div 
-                onClick={() => onImageClick(randomPhotos, index)}
+              <div
+                onClick={() => onImageClick(randomPhotos.map(photo => photo.fullSrc), index)}
                 style={{ width: '100%', height: '100%', position: 'relative', borderRadius: '4px', overflow: 'hidden' }}
               >
                 <Image 
-                  src={photo}
+                  src={photo.previewSrc}
                   alt={`${language === 'zh' ? '家庭照片' : 'Family photo'} ${index+1}`}
                   fill
                   style={{ objectFit: 'cover' }}

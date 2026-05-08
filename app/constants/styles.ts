@@ -9,20 +9,10 @@ export const colors = {
 
 // 照片路径配置
 export const photos = {
-  hero: '/family-photos/719BD143-ADD6-4F94-8CFC-BAF43235608A.jpg',
-  dash: '/family-photos/IMG_0875.jpeg',
-  cherry: '/family-photos/L1030065.JPG',
-  jimmy: '/family-photos/jimmy.jpg',
-  tinny: '/family-photos/IMG_3908.jpeg',
-  kelly: '/family-photos/IMG_9664.jpeg',
-  gallery: [
-    '/family-photos/IMG_9200.jpeg',
-    '/family-photos/IMG_9147.jpeg',
-    '/family-photos/IMG_9139.jpeg',
-    '/family-photos/IMG_9071.jpeg',
-    '/family-photos/IMG_1435.jpeg',
-    '/family-photos/IMG_7604.jpeg',
-    '/family-photos/2U2A5498.jpg',
-    '/family-photos/2U2A5506.jpg'
-  ]
+  hero: '/family-photos-optimized/full/719BD143-ADD6-4F94-8CFC-BAF43235608A.webp',
+  dash: '/family-photos-optimized/full/IMG_0875.webp',
+  cherry: '/family-photos-optimized/full/L1030065.webp',
+  jimmy: '/family-photos-optimized/full/jimmy.webp',
+  tinny: '/family-photos-optimized/full/IMG_3908.webp',
+  kelly: '/family-photos-optimized/full/IMG_9664.webp',
 } as const;
