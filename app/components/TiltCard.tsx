@@ -101,7 +101,8 @@ export default function TiltCard({
       style={{
         ...style,
         perspective: `${perspective}px`,
-        transformStyle: 'preserve-3d',
+        // Keep the outer hit-test plane flat so tilted links receive pointer events.
+        transformStyle: 'flat',
         // 在移动端可能需要 touch-action: none 来防止滚动干扰，但对于大卡片这会破坏页面滚动
         // 所以我们只在小卡片上可能需要注意。这里暂不强制 touch-action。
       }}
