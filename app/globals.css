@@ -1,164 +1,97 @@
-/* 基础样式 */
+/* 设计 token：颜色、阴影、字体、版心宽度都从这里取 */
 :root {
-  --foreground: #171717;
-  --background: #ffffff;
-  --primary: #f59e0b;
-  --secondary: #4b5563;
-  --accent: #ef4444;
-  --card-bg: #ffffff;
-  --card-border: #e5e5e5;
-}
+  --color-mint: #c8d6cf;      /* 淡薄荷绿色背景 */
+  --color-sand: #d7cec0;      /* 沙色块 */
+  --color-surface: #ffffff;   /* 白色块 */
+  --color-text: #3a3a3a;      /* 深色文字 */
+  --color-text-muted: #6a6a6a;/* 浅色文字 */
+  --color-text-faint: #999999;
 
-.dark {
-  --foreground: #ededed;
-  --background: #0a0a0a;
-  --card-bg: #1f2937;
-  --card-border: #374151;
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --shadow-photo: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+  --font-body: "Times New Roman", serif;
+  /* "黄"：优先使用本机书法/宋体，没有时用按需加载的 Noto Serif SC */
+  --font-hanzi: "造字工房朗宋", "汉仪瑞兽", "FZLangSong", "华文隶书", "LiSu", var(--font-noto-serif-sc), serif;
+  --font-display: var(--font-cinzel), "Trajan Pro", "Times New Roman", serif;
+
+  --content-width: min(90%, 1600px);
 }
 
 html {
   scroll-behavior: smooth;
   box-sizing: border-box;
+  font-size: 16px;
 }
 
-*, *:before, *:after {
+*, *::before, *::after {
   box-sizing: inherit;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: var(--background);
-  color: var(--foreground);
-  min-height: 100vh;
   margin: 0;
-  padding: 0;
-  width: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
+  background-color: var(--color-mint);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* 确保所有图片适应容器大小 */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* 链接颜色统一 */
 a {
   color: inherit;
   text-decoration: none;
 }
 
-/* 布局样式 */
-.container {
-  min-height: 100vh;
-  background-color: #fffbeb;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  box-sizing: border-box;
-  width: 100%;
-}
-
-h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-h2 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-}
-
-h3 {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-
-p {
-  margin-bottom: 0.5rem;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.welcome-text {
-  font-size: 1.25rem;
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-/* 卡片网格 */
-.members-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  width: 100%;
-  padding: 0 1rem;
-  box-sizing: border-box;
-}
-
-.members-grid {
-  display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 1.5rem;
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  .members-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.member-card {
-  background-color: white;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
-}
-
-.dark .member-card {
-  background-color: #1f2937;
-}
-
-/* 移动端优化 */
-@media (max-width: 767px) {
-  html, body {
-    overflow-x: hidden;
-  }
-  
-  body {
-    position: relative;
-    width: 100vw;
-  }
-  
-  /* 改进移动端的触摸滚动 */
-  * {
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  /* 优化移动端字体大小 */
-  html {
-    font-size: 16px;
-  }
-}
-
-/* 平板优化 */
+/* 平板 */
 @media (min-width: 768px) and (max-width: 1024px) {
   html {
     font-size: 17px;
   }
 }
 
-/* 桌面优化 */
+/* 桌面 */
 @media (min-width: 1025px) {
   html {
     font-size: 18px;
   }
+}
+
+/* 只给屏幕阅读器的文字 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 下划线文字链接（"了解我们的家庭 →"、"查看完整相册 →"等） */
+.text-link {
+  display: inline-block;
+  padding: 0 0 0.25rem;
+  border-bottom: 1px solid currentColor;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: border-bottom-width 0.3s ease, padding-bottom 0.3s ease;
+}
+
+.text-link:hover,
+.text-link:focus-visible {
+  border-bottom-width: 2px;
+  padding-bottom: 0.15rem;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 3px;
 }
 
 /* 气球效果样式 */
@@ -259,23 +192,16 @@ p {
   100% { margin-left: 0; }
 }
 
-/* === 高级动画 === */
-
-/* 滚动淡入动画 (Fade Up) */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* 滚动渐显（ScrollReveal） */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.animate-fade-up {
-  opacity: 0; /* 初始隐藏 */
-  animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
 /* 呼吸缩放动画 (Scale Breathing) */
@@ -295,13 +221,19 @@ p {
   opacity: 0.7;
 }
 
-/* 确保动画在减少动画偏好的设置下被禁用 */
+/* 减少动效：直接显示内容，关闭装饰动画 */
 @media (prefers-reduced-motion: reduce) {
-  .animate-fade-up,
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
   .animate-scale-breath {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
+    animation: none;
   }
 }

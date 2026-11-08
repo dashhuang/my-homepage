@@ -1,7 +1,10 @@
 'use client';
 
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import BalloonEffect from './BalloonEffect';
+import { familyMembers } from '../constants/family';
+import { texts } from '../constants/texts';
+import type { Lang } from '../lib/i18n';
 
 declare global {
   interface Window {
@@ -9,48 +12,16 @@ declare global {
   }
 }
 
-interface BalloonTriggerProps {
-  specialDates?: string[];
-  showOnFirstVisit?: boolean;
-  autoTriggerEnabled?: boolean;
-}
-
-const birthdayInfo: Record<string, { name: string, chineseName: string }> = {
-  '03-18': { name: 'Dash', chineseName: 'Dash' },
-  '12-14': { name: 'Cherry', chineseName: 'Cherry' },
-  '03-23': { name: 'Jimmy', chineseName: 'Jimmy' },
-  '09-21': { name: 'Tinny', chineseName: 'Tinny' },
-  '10-16': { name: 'Kelly', chineseName: 'Kelly' }
-};
-
-function checkFirstVisit() {
-  const hasVisited = localStorage.getItem('hasVisited');
-  if (hasVisited) return false;
-
-  localStorage.setItem('hasVisited', 'true');
-  return true;
-}
-
-function getTodaySpecialPerson(specialDates: string[]) {
+function getTodayBirthdayPerson() {
   const today = new Date();
   const month = String(today.getMonth() + 1).padStart(2, '0');
   const day = String(today.getDate()).padStart(2, '0');
-  const dateString = `${month}-${day}`;
-
-  if (!specialDates.includes(dateString)) {
-    return null;
-  }
-
-  return birthdayInfo[dateString] || null;
+  return familyMembers.find(member => member.birthday === `${month}-${day}`) ?? null;
 }
 
-function showBirthdayNotification(person: { name: string, chineseName: string }) {
-  const language = localStorage.getItem('language') as 'zh' | 'en' || 'zh';
-  const message = language === 'zh'
-    ? `今天是${person.chineseName}的生日！`
-    : `Today is ${person.name}'s birthday!`;
-
+function showBirthdayNotification(message: string) {
   const notification = document.createElement('div');
+  notification.setAttribute('role', 'status');
   notification.style.position = 'fixed';
   notification.style.bottom = '2rem';
   notification.style.left = '50%';
@@ -69,43 +40,33 @@ function showBirthdayNotification(person: { name: string, chineseName: string })
   return () => notification.remove();
 }
 
-export default function BalloonTrigger({
-  specialDates = [],
-  showOnFirstVisit = false,
-  autoTriggerEnabled = true
-}: BalloonTriggerProps) {
+// 家庭成员生日当天自动放气球并提示；也可以在控制台调用 window.triggerBalloonEffect()
+export default function BalloonTrigger({ lang }: { lang: Lang }) {
   const [balloonRunId, setBalloonRunId] = useState(0);
-  const specialDateKey = useMemo(() => specialDates.join('|'), [specialDates]);
 
   useEffect(() => {
-    if (!autoTriggerEnabled) return;
+    const birthdayPerson = getTodayBirthdayPerson();
+    if (!birthdayPerson) return;
 
-    const normalizedSpecialDates = specialDateKey ? specialDateKey.split('|') : [];
-    const birthdayPerson = getTodaySpecialPerson(normalizedSpecialDates);
-    const shouldShowBalloons = (showOnFirstVisit && checkFirstVisit()) || Boolean(birthdayPerson);
-
-    if (!shouldShowBalloons) return;
-
-    setBalloonRunId(runId => runId + 1);
+    // 减少动效时只显示文字提示，不放气球
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      setBalloonRunId(runId => runId + 1);
+    }
 
     let removeNotification: (() => void) | undefined;
-    const notificationTimer = birthdayPerson
-      ? window.setTimeout(() => {
-          removeNotification = showBirthdayNotification(birthdayPerson);
-        }, 3000)
-      : undefined;
-    const removeTimer = birthdayPerson
-      ? window.setTimeout(() => {
-          removeNotification?.();
-        }, 13000)
-      : undefined;
+    const notificationTimer = window.setTimeout(() => {
+      removeNotification = showBirthdayNotification(texts.birthday[lang](birthdayPerson.nickname));
+    }, 3000);
+    const removeTimer = window.setTimeout(() => {
+      removeNotification?.();
+    }, 13000);
 
     return () => {
-      if (notificationTimer) window.clearTimeout(notificationTimer);
-      if (removeTimer) window.clearTimeout(removeTimer);
+      window.clearTimeout(notificationTimer);
+      window.clearTimeout(removeTimer);
       removeNotification?.();
     };
-  }, [autoTriggerEnabled, showOnFirstVisit, specialDateKey]);
+  }, [lang]);
 
   const triggerBalloons = useCallback(() => {
     setBalloonRunId(runId => runId + 1);

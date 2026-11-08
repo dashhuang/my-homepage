@@ -1,0 +1,85 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: 5vh 0;
+  overflow: hidden;
+}
+
+.tilt {
+  margin: 0 auto;
+  width: var(--content-width);
+  min-height: 75vh;
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.photo {
+  flex: 8 1 300px;
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.photoInner {
+  position: absolute;
+  inset: 0;
+}
+
+.content {
+  flex: 5 1 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(2rem, 5vw, 5rem);
+}
+
+.title {
+  margin: 2rem 0 2rem;
+  font-weight: 300;
+}
+
+.hanzi {
+  display: block;
+  font-size: clamp(4rem, 6vw, 7rem);
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+  font-family: var(--font-hanzi);
+  letter-spacing: 0.05em;
+}
+
+.latin {
+  display: block;
+  min-height: 1.2em; /* 动画开始前占位，防止高度坍塌 */
+  font-size: clamp(2.5rem, 4vw, 4.5rem);
+  opacity: 0.7;
+  font-family: var(--font-display);
+  font-style: italic;
+  letter-spacing: 0.08em;
+}
+
+.intro {
+  margin: 0 0 1rem;
+  font-size: clamp(1rem, 1.3vw, 1.3rem);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  max-width: 600px;
+}
+
+@media (max-width: 767px) {
+  .photo {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+}

@@ -8,22 +8,29 @@
 - 完整展示黄家成员信息（Dash 黄一孟、Cherry 吴智群、Jimmy、Tinny、Kelly）
 - 独立的相册页面，展示家庭珍贵回忆
 - 响应式设计，在各种设备上都能良好显示
-- 中文与英文双语展示
+- 中文与英文双语展示（中文 `/`，英文 `/en`，均为服务端渲染）
 - 优雅的字体选择，特别为"黄"字使用了传统中文书法字体
 
 ## 技术栈
 
-- Next.js 15.5.18 (使用 App Router)
-- React 同构渲染
-- CSS-in-JS 样式（内联样式对象）
+- Next.js 15.5.29 (使用 App Router)
+- 页面为服务端组件 + 静态生成；只有交互部分（倾斜卡片、灯箱、换一批、语言切换、气球）是客户端组件
+- CSS Modules + `app/globals.css` 中的设计 token（CSS 变量）
 - 响应式设计（使用clamp()等现代CSS特性）
-- 图片优化（使用Next.js的Image组件）
+- 字体：`next/font` 自托管 Cinzel（"Huang"）和 Noto Serif SC（"黄"的兜底字体，按 unicode-range 只下载需要的切片）
 
 ## 页面结构
 
-- **主页 (/)**: 展示家庭概览和所有成员简介
-- **相册页面 (/gallery)**: 展示家庭照片集
-- 未来可扩展更多页面
+- **主页 (`/`、`/en`)**: 展示家庭概览、所有成员简介和 8 张随机照片（每 5 分钟重新生成，可点"换一批"）
+- **相册页面 (`/gallery`、`/en/gallery`)**: 按原始宽高比的等高行布局展示全部照片，点开为灯箱（支持键盘、左右滑动）
+- `robots.txt`、`sitemap.xml`（含 hreflang）由 `app/robots.ts`、`app/sitemap.ts` 生成
+
+### 多语言路由
+
+- 路由实际位于 `app/[lang]/`，`middleware.ts` 把无前缀地址内部 rewrite 到 `/zh/...`，`/zh/...` 会 308 到无前缀地址
+- 首次访问按 `Accept-Language` 决定语言（爬虫和链接预览固定看中文）；点页脚的语言按钮会写入 `lang` cookie，之后以 cookie 为准
+- 直接访问 `/en/...` 时始终显示英文，方便分享英文链接
+- 界面文案在 `app/constants/texts.ts`，家庭成员资料（含生日、照片）在 `app/constants/family.tsx`
 
 ## 设计特色
 
@@ -58,10 +65,11 @@
 
 ### 技术实现
 
-- 照片列表由 `scripts/generate-photo-list.js` 脚本生成
-- 相册页在服务端导入静态 JSON，首屏直接带照片数据
-- 首页预览使用同一份静态 JSON
+- 照片列表由 `scripts/generate-photo-list.js` 脚本生成，宽高记录的是按 EXIF 方向旋转后的尺寸
+- `app/lib/photos.ts` 在服务端导入静态 JSON，首页和相册都在服务端渲染照片，不再客户端 fetch
+- 相册缩略图直接使用生成好的 720px 预览 WebP（`unoptimized`），不重复走 Vercel 图片优化；首页大图和成员照片仍由 `next/image` 优化
 - HEIC 原图会在本地通过 `sips` fallback 转为 WebP 优化图，浏览器端不直接加载 HEIC
+- 社交分享图是 `public/og.jpg`（1200×630，由首页大图裁切生成）；换首页大图时请一并更新
 
 ## 运行项目
 
@@ -100,51 +108,63 @@ npm run build
 > - 如果看到 Browserslist 数据过旧提示，可定期运行 `npx update-browserslist-db@latest`。
 > - 本机如果使用 Node 23，部分 ESLint 子依赖会提示 engine 范围不包含 Node 23；Node 20/22/24 均在声明支持范围内。
 
-## 优化文档
-
-- `OPTIMIZATION_SUMMARY.md`：优化总结（结构、SEO、性能、可访问性）
-- `优化建议清单.md`：可继续推进的优化清单与优先级
-- `优化完成报告.md`：阶段性优化完成报告与指标对比
+- **CI**：`.github/workflows/ci.yml` 在 push 到 main 和 PR 上跑 lint、typecheck、build
 
 ## 文件结构
 
 ```
+middleware.ts                         # 语言检测与 / ↔ /zh 的 rewrite / redirect
 app/
-├── page.tsx                          # 主页入口（已优化，200行左右）
-├── layout.tsx                        # 全局布局（含SEO和结构化数据）
-├── globals.css                       # 全局样式
-├── components/                       # 组件目录
-│   ├── HeroSection.tsx              # 首页英雄区组件
-│   ├── FamilyMemberCard.tsx         # 家庭成员卡片组件
-│   ├── PhotoGalleryPreview.tsx      # 相册预览组件
-│   ├── LanguageSwitcher.tsx         # 语言切换器
-│   ├── Lightbox.tsx                 # 图片灯箱组件
-│   ├── BalloonEffect.tsx            # 气球特效组件
-│   ├── BalloonTrigger.tsx           # 气球触发器
-│   ├── CelebrationButton.tsx        # 庆祝按钮
-│   ├── LanguageFooter.tsx           # 多语言页脚
-│   ├── ThemeInitializer.tsx         # 主题初始化
-│   └── ThemeToggle.tsx              # 主题切换器
-├── constants/                        # 配置常量
-│   ├── styles.ts                    # 样式和颜色配置
-│   └── texts.ts                     # 多语言文本内容
-├── utils/                            # 工具函数
-│   └── imageBlurData.ts             # 图片模糊占位符
-├── gallery/                          # 相册功能
-│   ├── page.tsx                     # 相册服务端入口
-│   ├── GalleryClient.tsx            # 相册客户端交互
-│   └── gallery-api.ts               # 照片类型和客户端读取工具
+├── [lang]/                           # 实际路由（zh / en），根布局在这里
+│   ├── layout.tsx                   # <html lang>、字体、JSON-LD、气球、Analytics
+│   ├── page.tsx                     # 首页（服务端组件，ISR 5 分钟）
+│   ├── gallery/page.tsx             # 相册页
+│   └── not-found.tsx                # 404
+├── robots.ts / sitemap.ts            # SEO 文件
+├── globals.css                       # 设计 token 和全局样式
+├── components/
+│   ├── HeroSection.tsx              # 首页英雄区
+│   ├── FamilyMemberCard.tsx         # 家庭成员卡片
+│   ├── PhotoGrid.tsx                # 等高行照片网格 + 灯箱（客户端）
+│   ├── PhotoGalleryPreview.tsx      # 首页相册预览 + 换一批（客户端）
+│   ├── Lightbox.tsx                 # 图片灯箱
+│   ├── SiteFooter.tsx               # 页脚
+│   ├── LanguageSwitcher.tsx         # 语言切换（写 cookie）
+│   ├── TiltCard.tsx                 # 3D 倾斜卡片（仅鼠标设备，尊重减少动效）
+│   ├── TextScramble.tsx             # "Huang" 乱码动画
+│   ├── ScrollReveal.tsx             # 滚动渐显
+│   └── BalloonTrigger.tsx / BalloonEffect.tsx  # 生日气球
+├── constants/
+│   ├── texts.ts                     # 界面文案
+│   └── family.tsx                   # 家庭成员资料
+├── lib/
+│   ├── i18n.ts                      # 语言列表、路径工具
+│   ├── metadata.ts                  # 每页 canonical / hreflang / OG
+│   └── photos.ts                    # 照片数据（服务端）
+└── utils/                            # 随机挑选、模糊占位图
 
 public/
 ├── family-photos/                    # 原始家庭照片目录（约214张照片，另含少量HEIC）
 ├── family-photos-optimized/          # 生成的WebP预览图和大图
-└── photos-data.json                  # 单一照片元数据源
+├── photos-data.json                  # 单一照片元数据源
+└── og.jpg                            # 社交分享图
 
 scripts/
 └── generate-photo-list.js            # 生成/校验照片元数据和优化图
 ```
 
 ## 最近更新
+
+### 2026年11月 - 架构与体验优化
+- 首页和相册改为服务端渲染，中英文拆成 `/` 和 `/en` 两套可被收录的页面（hreflang、sitemap、robots 齐全）
+- 首页随机照片改为服务端挑选，去掉"加载中"和布局跳动，新增"换一批"
+- 相册改为按原始比例的等高行布局，照片可用键盘打开；灯箱支持左右滑动、预加载相邻照片、焦点管理和中英文标签
+- 修复照片脚本按 EXIF 旋转前尺寸记录宽高的问题（11 张竖拍照片）
+- 修复滚动渐显依赖未启用的 Tailwind class 导致的"先显示再消失再淡入"闪烁
+- 倾斜效果只在鼠标设备启用，所有动画尊重"减少动效"系统设置
+- 样式从内联对象迁移到 CSS Modules + 设计 token；移除未使用的 Tailwind、主题切换、旧组件和旧优化文档
+- 正确加载 Cinzel 和"黄"字兜底字体；新增 1200×630 分享图；新增 GitHub Actions CI
+- 依赖安全升级：Next.js 15.5.29、PostCSS 8.5.32、sharp 0.35，加上 ESLint 工具链的 overrides，`npm audit` 清零
 
 ### 2026年5月 - 照片管线、安全和构建维护
 - 将照片数据源收敛为 `public/photos-data.json`
@@ -237,7 +257,11 @@ npm run update-photos
 
 ### 安全依赖
 
-当前依赖通过 `npm audit --audit-level=moderate`。`package.json` 里使用 `overrides.postcss` 将 Next 内部的 PostCSS 锁到安全版本；升级 Next 时需要重新确认这个 override 是否还必要。
+当前依赖 `npm audit` 为 0 个漏洞（2026年11月）。`package.json` 的 `overrides` 用来修补上游还没跟进的间接依赖，升级相关包时需要重新确认是否还必要：
+
+- `postcss`：把 Next 内部的 PostCSS 锁到与项目相同的安全版本
+- `brace-expansion@1`：ESLint 旧版 `minimatch@3` 依赖的版本，强制到 `^1.1.21`
+- `@typescript-eslint/typescript-estree` 下的 `minimatch`：上游要求 `^10`，而 10.x 没有修复版，强制到 `^11.0.5`
 
 ### HEIC处理
 

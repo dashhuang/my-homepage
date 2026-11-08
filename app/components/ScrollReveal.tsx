@@ -10,9 +10,10 @@ interface ScrollRevealProps {
   style?: React.CSSProperties;
 }
 
-export default function ScrollReveal({ 
-  children, 
-  threshold = 0.1, 
+// 初始隐藏样式和过渡都在 globals.css 的 .reveal 中；减少动效或无 JS 时直接显示
+export default function ScrollReveal({
+  children,
+  threshold = 0.1,
   delay = 0,
   className = '',
   style = {}
@@ -21,49 +22,27 @@ export default function ScrollReveal({
   const domRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const element = domRef.current;
+    if (!element) return;
+
     const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          // 设置一个小延迟，让动画更有节奏感
-          setTimeout(() => {
-            setIsVisible(true);
-          }, delay);
-          
-          // 触发后取消观察，只播放一次动画
-          if (domRef.current) {
-            observer.unobserve(domRef.current);
-          }
-        }
-      });
+      if (entries.some(entry => entry.isIntersecting)) {
+        setIsVisible(true);
+        observer.disconnect(); // 只播放一次
+      }
     }, { threshold });
 
-    const currentRef = domRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, [threshold, delay]);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [threshold]);
 
   return (
     <div
       ref={domRef}
-      className={`${className} ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}
-      style={{
-        ...style,
-        // 如果还没显示，保持透明以避免闪烁
-        // 注意：animate-fade-up 也会设置 opacity: 0 -> 1，这里是为了防止 JS 加载前的闪烁
-        opacity: isVisible ? 1 : 0, 
-        transition: 'opacity 0.1s' 
-      }}
+      className={`reveal ${isVisible ? 'is-visible' : ''} ${className}`}
+      style={{ ...style, transitionDelay: `${delay}ms` }}
     >
       {children}
     </div>
   );
 }
-
-
