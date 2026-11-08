@@ -1,0 +1,104 @@
+/* 竖版（孩子们） */
+.verticalTilt {
+  height: 100%;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-shadow: var(--shadow-card);
+}
+
+.verticalPhoto {
+  background-color: var(--color-sand);
+  min-height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.verticalContent {
+  background-color: var(--color-surface);
+  padding: clamp(2rem, 4vw, 3rem);
+  flex: 1;
+}
+
+.verticalName {
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: 300;
+  margin: 0 0 1rem;
+}
+
+.verticalDivider {
+  width: 30px;
+  height: 2px;
+  background-color: var(--color-sand);
+  margin-bottom: 1.5rem;
+}
+
+.verticalText {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  margin: 0 0 1rem;
+}
+
+/* 横版（爸爸妈妈） */
+.horizontalTilt {
+  margin-bottom: 8rem;
+}
+
+.horizontal {
+  display: flex;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow-card);
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.horizontalPhoto {
+  background-color: var(--color-sand);
+  flex: 1 1 300px;
+  min-height: 400px;
+  position: relative;
+  overflow: hidden;
+}
+
+.horizontalContent {
+  background-color: var(--color-surface);
+  flex: 1 1 300px;
+  padding: clamp(2rem, 5vw, 4rem);
+}
+
+.horizontalName {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 300;
+  margin: 0 0 1.5rem;
+}
+
+.horizontalDivider {
+  width: 50px;
+  height: 2px;
+  background-color: var(--color-sand);
+  margin-bottom: 2rem;
+}
+
+.horizontalText {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+  margin: 0 0 1.5rem;
+}
+
+@media (max-width: 767px) {
+  .horizontalTilt {
+    margin-bottom: 4rem;
+  }
+
+  .horizontalPhoto {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+}

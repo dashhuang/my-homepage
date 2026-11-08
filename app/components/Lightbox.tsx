@@ -1,20 +1,29 @@
 /* eslint-disable @next/next/no-img-element */
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, type TouchEvent } from 'react';
+import { texts } from '../constants/texts';
+import type { Lang } from '../lib/i18n';
 
 interface LightboxProps {
   isOpen: boolean;
   images: string[];
   initialIndex: number;
   onClose: () => void;
+  lang: Lang;
 }
 
-export default function Lightbox({ isOpen, images, initialIndex, onClose }: LightboxProps) {
+const SWIPE_THRESHOLD = 50;
+
+export default function Lightbox({ isOpen, images, initialIndex, onClose, lang }: LightboxProps) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [loading, setLoading] = useState(true);
   const [isAnimating, setIsAnimating] = useState(false);
   const previousBodyOverflow = useRef('');
+  const overlayRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const touchStartX = useRef<number | null>(null);
+  const labels = texts.lightbox[lang];
 
   // 当 isOpen 或 initialIndex 变化时更新内部状态
   useEffect(() => {
@@ -24,13 +33,17 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
     }
 
     previousBodyOverflow.current = document.body.style.overflow;
+    const previouslyFocused = document.activeElement as HTMLElement | null;
     setCurrentIndex(initialIndex);
     setLoading(true);
     document.body.style.overflow = 'hidden';
     setIsAnimating(true);
+    closeButtonRef.current?.focus({ preventScroll: true });
 
     return () => {
       document.body.style.overflow = previousBodyOverflow.current;
+      // 关闭后把焦点还给打开灯箱的那张照片
+      previouslyFocused?.focus({ preventScroll: true });
     };
   }, [isOpen, initialIndex]);
 
@@ -49,6 +62,28 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
     setCurrentIndex((prev) => (prev < images.length - 1 ? prev + 1 : 0));
   }, [images.length]);
 
+  // 预加载前后两张，翻页时不用等
+  useEffect(() => {
+    if (!isOpen || images.length < 2) return;
+    for (const offset of [1, -1]) {
+      const preload = new window.Image();
+      preload.src = images[(currentIndex + offset + images.length) % images.length];
+    }
+  }, [isOpen, currentIndex, images]);
+
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartX.current = e.touches[0]?.clientX ?? null;
+  };
+
+  const handleTouchEnd = (e: TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const deltaX = (e.changedTouches[0]?.clientX ?? touchStartX.current) - touchStartX.current;
+    touchStartX.current = null;
+    if (Math.abs(deltaX) < SWIPE_THRESHOLD) return;
+    if (deltaX > 0) showPrev();
+    else showNext();
+  };
+
   useEffect(() => {
     if (images.length > 0 && currentIndex >= images.length) {
       setCurrentIndex(images.length - 1);
@@ -63,6 +98,14 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
       if (e.key === 'Escape') onClose();
       if (e.key === 'ArrowLeft') showPrev();
       if (e.key === 'ArrowRight') showNext();
+      // 焦点限制在灯箱的按钮之间
+      if (e.key === 'Tab' && overlayRef.current) {
+        const buttons = Array.from(overlayRef.current.querySelectorAll('button'));
+        const index = buttons.indexOf(document.activeElement as HTMLButtonElement);
+        const next = e.shiftKey ? index - 1 : index + 1;
+        e.preventDefault();
+        buttons[(next + buttons.length) % buttons.length]?.focus();
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -74,20 +117,24 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
   const currentImage = images[currentIndex];
 
   return (
-    <div 
+    <div
+      ref={overlayRef}
       className={`lightbox-overlay ${isAnimating ? 'open' : ''}`}
       onClick={onClose}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
       role="dialog"
       aria-modal="true"
-      aria-label="图片查看器"
+      aria-label={labels.dialog}
     >
       {/* 背景遮罩 */}
       <div className="lightbox-backdrop" />
 
       {/* 关闭按钮 */}
       <button
+        ref={closeButtonRef}
         type="button"
-        aria-label="关闭"
+        aria-label={labels.close}
         className="lightbox-close"
         onClick={(e) => { e.stopPropagation(); onClose(); }}
       >
@@ -97,7 +144,7 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
       {/* 上一张按钮 */}
       <button
         type="button"
-        aria-label="上一张"
+        aria-label={labels.prev}
         className="lightbox-nav prev"
         onClick={(e) => { e.stopPropagation(); showPrev(); }}
       >
@@ -107,7 +154,7 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
       {/* 下一张按钮 */}
       <button
         type="button"
-        aria-label="下一张"
+        aria-label={labels.next}
         className="lightbox-nav next"
         onClick={(e) => { e.stopPropagation(); showNext(); }}
       >
@@ -129,14 +176,14 @@ export default function Lightbox({ isOpen, images, initialIndex, onClose }: Ligh
         <img
           key={currentImage} // Key change forces re-render for animation
           src={currentImage}
-          alt={`Photo ${currentIndex + 1}`}
+          alt={`${texts.familyPhoto[lang]} ${currentIndex + 1}`}
           className={`lightbox-image ${loading ? 'loading' : 'loaded'}`}
           onLoad={() => setLoading(false)}
         />
       </div>
 
       {/* 计数器 - 移到外部固定到底部 */}
-      <div className="lightbox-counter">
+      <div className="lightbox-counter" aria-live="polite">
         {currentIndex + 1} / {images.length}
       </div>
 

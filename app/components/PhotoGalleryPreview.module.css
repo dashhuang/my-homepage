@@ -1,0 +1,28 @@
+.preview {
+  margin-bottom: 5rem;
+}
+
+.heading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 300;
+  margin: 0 0 3rem;
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  margin-top: 3rem;
+}
+
+.shuffle {
+  background: none;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  font-family: inherit;
+  cursor: pointer;
+}

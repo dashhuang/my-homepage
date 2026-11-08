@@ -1,0 +1,35 @@
+.footer {
+  background-color: var(--color-surface);
+  padding: 5vh 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.meta {
+  text-align: right;
+}
+
+.copyright {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.credits {
+  font-size: 0.85rem;
+  color: var(--color-text-faint);
+  margin: 0.5rem 0 0;
+  font-weight: 300;
+}
+
+.credits strong {
+  font-weight: 500;
+}
+
+.heart {
+  color: #e25555;
+}

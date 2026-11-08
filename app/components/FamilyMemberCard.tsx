@@ -1,50 +1,26 @@
-'use client';
-
 import Image from "next/image";
-import { colors } from '../constants/styles';
+import type { FamilyMember } from '../constants/family';
+import type { Lang } from '../lib/i18n';
 import { blurDataURL } from '../utils/imageBlurData';
 import TiltCard from './TiltCard';
+import styles from './FamilyMemberCard.module.css';
 
 interface FamilyMemberCardProps {
-  name: string;
-  title: string;
-  description: string;
-  imageSrc: string;
+  member: FamilyMember;
+  lang: Lang;
   layout?: 'horizontal' | 'horizontal-reverse' | 'vertical';
 }
 
-export default function FamilyMemberCard({ 
-  name, 
-  title, 
-  description, 
-  imageSrc, 
-  layout = 'horizontal' 
-}: FamilyMemberCardProps) {
+export default function FamilyMemberCard({ member, lang, layout = 'horizontal' }: FamilyMemberCardProps) {
+  const name = member.name[lang];
+
   if (layout === 'vertical') {
     return (
-      <TiltCard
-        style={{
-          flex: '1',
-          minWidth: '300px',
-        }}
-        maxRotation={5}
-        glareMaxOpacity={0.15}
-      >
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
-          height: '100%'
-        }}>
-          {/* 上方照片 */}
-          <div style={{
-            backgroundColor: colors.sand,
-            minHeight: '300px',
-            position: 'relative',
-            overflow: 'hidden'
-          }}>
-            <Image 
-              src={imageSrc}
+      <TiltCard className={styles.verticalTilt} maxRotation={5} glareMaxOpacity={0.15}>
+        <article className={styles.vertical}>
+          <div className={styles.verticalPhoto}>
+            <Image
+              src={member.photo}
               alt={name}
               fill
               style={{ objectFit: 'cover' }}
@@ -53,72 +29,23 @@ export default function FamilyMemberCard({
               blurDataURL={blurDataURL}
             />
           </div>
-          {/* 下方内容 */}
-          <div style={{
-            backgroundColor: colors.white,
-            padding: '3rem',
-            flex: '1'
-          }}>
-            <h3 style={{
-              fontSize: 'clamp(1.5rem, 2vw, 2rem)',
-              fontWeight: '300',
-              marginBottom: '1rem',
-              color: colors.darkText
-            }}>{name}</h3>
-            <div style={{
-              width: '30px',
-              height: '2px',
-              backgroundColor: colors.sand,
-              marginBottom: '1.5rem'
-            }}></div>
-            <p style={{
-              fontSize: '1rem',
-              lineHeight: '1.8',
-              color: colors.lightText,
-              marginBottom: '1rem'
-            }}>
-              {title}
-            </p>
-            <p style={{
-              fontSize: '1rem',
-              lineHeight: '1.8',
-              color: colors.lightText
-            }}>
-              {description}
-            </p>
+          <div className={styles.verticalContent}>
+            <h3 className={styles.verticalName}>{name}</h3>
+            <div className={styles.verticalDivider} />
+            <p className={styles.verticalText}>{member.title[lang]}</p>
+            <p className={styles.verticalText}>{member.desc[lang]}</p>
           </div>
-        </div>
+        </article>
       </TiltCard>
     );
   }
 
   return (
-    <TiltCard
-      style={{
-        marginBottom: '8rem',
-      }}
-      maxRotation={3}
-      glareMaxOpacity={0.1}
-      scale={1.02}
-    >
-      <div style={{
-        display: 'flex',
-        flexDirection: layout === 'horizontal-reverse' ? 'row-reverse' : 'row',
-        flexWrap: 'wrap',
-        boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
-        height: '100%'
-      }}>
-        {/* 照片 */}
-        <div style={{
-          backgroundColor: colors.sand,
-          flex: '1',
-          minWidth: '300px',
-          minHeight: '400px',
-          position: 'relative',
-          overflow: 'hidden'
-        }}>
-          <Image 
-            src={imageSrc}
+    <TiltCard className={styles.horizontalTilt} maxRotation={3} glareMaxOpacity={0.1} scale={1.02}>
+      <article className={`${styles.horizontal} ${layout === 'horizontal-reverse' ? styles.reverse : ''}`}>
+        <div className={styles.horizontalPhoto}>
+          <Image
+            src={member.photo}
             alt={name}
             fill
             style={{ objectFit: 'cover' }}
@@ -127,37 +54,12 @@ export default function FamilyMemberCard({
             blurDataURL={blurDataURL}
           />
         </div>
-        {/* 内容 */}
-        <div style={{
-          backgroundColor: colors.white,
-          flex: '1',
-          minWidth: '300px',
-          padding: '4rem',
-          position: 'relative'
-        }}>
-          <h3 style={{
-            fontSize: 'clamp(2rem, 3vw, 2.5rem)',
-            fontWeight: '300',
-            marginBottom: '1.5rem',
-            color: colors.darkText
-          }}>{name}</h3>
-          <div style={{
-            width: '50px',
-            height: '2px',
-            backgroundColor: colors.sand,
-            marginBottom: '2rem'
-          }}></div>
-          <p 
-            style={{
-              fontSize: '1.1rem',
-              lineHeight: '1.8',
-              color: colors.lightText,
-              marginBottom: '1.5rem'
-            }}
-            dangerouslySetInnerHTML={{ __html: description }}
-          />
+        <div className={styles.horizontalContent}>
+          <h3 className={styles.horizontalName}>{name}</h3>
+          <div className={styles.horizontalDivider} />
+          <p className={styles.horizontalText}>{member.desc[lang]}</p>
         </div>
-      </div>
+      </article>
     </TiltCard>
   );
 }

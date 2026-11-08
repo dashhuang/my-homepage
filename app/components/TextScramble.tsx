@@ -12,88 +12,69 @@ interface TextScrambleProps {
 
 const CHARS = '!<>-_\\/[]{}—=+*^?#________';
 
-export default function TextScramble({ 
-  text, 
-  className = '', 
+const escapeHtml = (char: string) =>
+  char === '<' ? '&lt;' : char === '>' ? '&gt;' : char === '&' ? '&amp;' : char;
+
+export default function TextScramble({
+  text,
+  className = '',
   style = {},
   speed = 2,
-  delay = 0 
+  delay = 0
 }: TextScrambleProps) {
-  const elementRef = useRef<HTMLDivElement>(null);
-  const originalText = useRef(text);
+  const elementRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    originalText.current = text;
-    
-    let frame = 0;
-    let queue: Array<{ from: string; to: string; start: number; end: number; char?: string }> = [];
-    let animationId: number;
-    let timeoutId: NodeJS.Timeout;
+    const element = elementRef.current;
+    if (!element) return;
 
-    // 初始化队列
-    const initQueue = () => {
-      queue = [];
-      const len = originalText.current.length;
-      for (let i = 0; i < len; i++) {
-        const from = ''; // 起始字符（空）
-        const to = originalText.current[i]; // 目标字符
-        const start = Math.floor(Math.random() * 40); // 随机开始时间
-        const end = start + Math.floor(Math.random() * 40); // 随机持续时间
-        queue.push({ from, to, start, end });
-      }
-    };
+    // 减少动效时直接显示最终文字
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      element.textContent = text;
+      return;
+    }
+
+    let frame = 0;
+    let animationId = 0;
+    let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    const queue = Array.from(text, to => {
+      const start = Math.floor(Math.random() * 40); // 随机开始时间
+      const end = start + Math.floor(Math.random() * 40); // 随机持续时间
+      return { to, start, end, char: '' };
+    });
 
     const update = () => {
       let output = '';
       let complete = 0;
-      
-      for (let i = 0, n = queue.length; i < n; i++) {
-        const { from, to, start, end } = queue[i];
-        let { char } = queue[i];
-        
-        if (frame >= end) {
+
+      for (const item of queue) {
+        if (frame >= item.end) {
           complete++;
-          output += to;
-        } else if (frame >= start) {
-          if (!char || Math.random() < 0.28) {
-            char = CHARS[Math.floor(Math.random() * CHARS.length)];
-            queue[i].char = char;
+          output += escapeHtml(item.to);
+        } else if (frame >= item.start) {
+          if (!item.char || Math.random() < 0.28) {
+            item.char = CHARS[Math.floor(Math.random() * CHARS.length)];
           }
-          output += `<span class="dud">${char}</span>`;
-        } else {
-          output += from;
+          output += `<span class="dud">${escapeHtml(item.char)}</span>`;
         }
       }
-      
-      if (elementRef.current) {
-        elementRef.current.innerHTML = output;
-      }
-      
-      if (complete === queue.length) {
-        // 动画完成
-      } else {
+
+      element.innerHTML = output;
+
+      if (complete < queue.length) {
         frame += speed;
         animationId = requestAnimationFrame(update);
       }
     };
 
-    const startAnimation = () => {
-      initQueue();
-      frame = 0;
-      update();
-    };
-
-    // Intersection Observer: 当元素进入视口时触发
+    // 元素进入视口时才开始
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
-        timeoutId = setTimeout(startAnimation, delay);
+        timeoutId = setTimeout(update, delay);
         observer.disconnect();
       }
     });
-
-    if (elementRef.current) {
-      observer.observe(elementRef.current);
-    }
+    observer.observe(element);
 
     return () => {
       cancelAnimationFrame(animationId);
@@ -103,13 +84,10 @@ export default function TextScramble({
   }, [text, speed, delay]);
 
   return (
-    <div 
-      ref={elementRef} 
-      className={className} 
-      style={{ ...style, display: 'inline-block', whiteSpace: 'pre-wrap' }}
-    />
+    <span className={className} style={style}>
+      {/* 屏幕阅读器和搜索引擎读取完整文字，动画层对它们隐藏 */}
+      <span className="sr-only">{text}</span>
+      <span ref={elementRef} aria-hidden="true" style={{ display: 'inline-block', whiteSpace: 'pre-wrap' }} />
+    </span>
   );
 }
-
-
-

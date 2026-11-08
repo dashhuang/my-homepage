@@ -80,13 +80,15 @@ async function buildPhotoEntries() {
     const sourcePath = path.join(CONFIG.photoDir, fileName);
     const slug = stableSlug(fileName, usedSlugs);
     const metadata = await sharp(sourcePath, { limitInputPixels: false }).metadata();
+    // Variants are written with .rotate(), so record the EXIF-oriented size.
+    const { width, height } = metadata.autoOrient || metadata;
     const entry = {
       id: slug,
       originalSrc: publicPath('family-photos', fileName),
       previewSrc: publicPath('family-photos-optimized', 'preview', `${slug}.webp`),
       fullSrc: publicPath('family-photos-optimized', 'full', `${slug}.webp`),
-      width: metadata.width || 0,
-      height: metadata.height || 0,
+      width: width || 0,
+      height: height || 0,
       sourceFormat: (metadata.format || path.extname(fileName).slice(1)).toLowerCase(),
     };
 
